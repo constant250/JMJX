@@ -17,9 +17,9 @@ class CreatePersonTable extends Migration
             $table->increments('id');
             $table->enum('prefix',['Mr','Mrs','Ms']);
             $table->integer('person_type')->unsigned();
-            // $table->foreign('person_type')->references('id')->on('person_types');
+            $table->foreign('person_type')->references('id')->on('person_types');
             $table->integer('party_id')->unsigned();
-            // $table->foreign('party_id')->references('id')->on('party')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('party_id')->references('id')->on('party')->onDelete('cascade')->onUpdate('no action');
             $table->string('firstname');
             $table->string('middlename');
             $table->string('lastname');
