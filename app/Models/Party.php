@@ -13,7 +13,12 @@ class Party extends Model
     						'name',
     						'active'
     					];
+
     public function user(){
     	return $this->belongsTo(User::class);
+    }
+
+    public function student(){
+    	return $this->hasOne(Student::class);
     }
 }
