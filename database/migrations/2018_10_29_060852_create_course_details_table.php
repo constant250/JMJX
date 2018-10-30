@@ -19,6 +19,7 @@ class CreateCourseDetailsTable extends Migration
             $table->foreign('course_code')->references('code')->on('courses')->onDelete('cascade');
             $table->string('cricos_code');
             $table->integer('duration_weeks');
+            $table->integer('duration_weeks_package');
             $table->timestamps();
             $table->softDeletes();
         });
