@@ -1,0 +1,157 @@
+.grid-no-padding{margin:0 -15px;}
+
+.select-label{margin-right: 10px;}
+.student-training-select{border: 1px solid #727272;}
+
+.student-training-wrapper{position: relative; padding: 10px 15px;   margin-bottom: 30px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; background: #FFFFFF; box-shadow: 0px 0px 4px 0.28px rgba(85, 83, 83, 0.24); -o-box-shadow: 0px 0px 4px 0.28px rgba(85, 83, 83, 0.24); -moz-box-shadow: 0px 0px 4px 0.28px rgba(85, 83, 83, 0.24); -webkit-box-shadow: 0px 0px 4px 0.28px rgba(85, 83, 83, 0.24);}
+.student-training-option-list{position: absolute; top: 10px; left: 15px;}
+.student-training-option-list li a{background: #577477; color: #FFFFFF; padding: 4px 10px; border-radius: 5px;}
+.eligibility-table{position: absolute; top: 10px; right: 15px;}
+
+.student-training-profile{margin-top: 35px;}
+.student-training-profile .profile-picture{position: relative; height: 56px; width: 56px; border-radius: 50%; border: 3px solid #0AC8CF;}
+.student-training-profile .profile-picture img{height: 50px; width: 50px; border-radius: 50%; overflow:hidden;}
+.student-training-profile .profile-picture:before{content:""; background: #0AC8CF; height: 7px; width: 7px; border-radius: 50%; position: absolute;  bottom: 6px; right: 0;}
+
+table.qualified-students-table{margin-left: -6px; margin-bottom: 0 !important;}
+table.qualified-students-table tbody tr td{padding: 3px 6px !important;}
+table.qualified-students-table tbody tr td:last-child{text-align:left !important;}
+
+table.eligibility-table tbody tr td{padding: 0 6px 2px;}
+table.eligibility-table tbody tr td:first-child{text-align: left; color: #525558;}
+table.eligibility-table tbody tr td:last-child{text-align: right; color: #0AC8CF;}
+
+table.details-table{margin-bottom:10px;}
+table.details-table thead tr th{padding: 5px 0; text-align: center;}
+table.details-table tbody tr td{padding: 5px 6px;}
+table.details-table tbody tr td span.status{color: #FFFFFF; text-transform: uppercase; display: block; padding: 3px 0; border-radius: 3px; text-align:center;}
+table.details-table tbody tr td span.status-active{background: #0AC8CF;}
+table.details-table tbody tr td span.status-completed{background: #577477;}
+table.details-table tbody tr td span.status-done{background: #59C393;}
+table.details-table tbody tr td:first-child{text-align:left; color: #577477;}
+table.details-table tbody tr td:last-child{text-align:right; font-family:'proximanova-semibold'; color: #0AC8CF;}
+table.details-table tfoot tr td{padding: 7px 6px;}
+table.details-table tfoot tr td:last-child{text-align: right;}
+
+table.course-fee-type{box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.11); -o-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.11); -moz-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.11); -webkit-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.11);}
+table.course-fee-type tbody tr td{padding:7px 6px;}
+table.course-fee-type tbody tr:nth-child(odd) td{background: #f8f9f9;}
+
+.course-fee-type-wrapper{position: absolute; bottom: 0; width: 100%; margin-left: -15px; padding: 0 15px;}
+
+/*Add Syudent*/
+.add-student-container{border-radius: 5px; padding-top: 10px; margin-bottom: 30px; box-shadow: 0px 0px 4px 0.28px rgba(85, 83, 83, 0.24);-o-box-shadow: 0px 0px 4px 0.28px rgba(85, 83, 83, 0.24);-moz-box-shadow: 0px 0px 4px 0.28px rgba(85, 83, 83, 0.24);-webkit-box-shadow: 0px 0px 4px 0.28px rgba(85, 83, 83, 0.24);}
+.add-student-container .container-header{padding: 3px 15px;}
+
+.current-students-wrapper .container-content{height: auto; min-height: auto; max-height: 570px; overflow-x: hidden; overflow-y: auto;}
+.current-listed-student{margin: 10px 0;}
+.current-listed-student .remove-listed-student .remove-btn{padding: 5px 0;}
+.current-listed-student .listed-student-container{background: #F6F6F6; display: block;}
+.current-listed-student .listed-student-container .listed-student-profile{padding: 10px;}
+.current-listed-student .listed-student-container .listed-student-details{margin: 8px 5px; background: #FFFFFF; box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.11); -o-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.11); -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.11); -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.11);}
+
+.qualified-students-wrapper .container-content{height: auto; overflow-x: hidden;}
+.qualified-students-wrapper .qualified-student-list .qualified-listed-student{position: relative; padding: 8px 13px; display: block;}
+.qualified-students-wrapper .qualified-student-list .qualified-listed-student .add-student-btn{position: absolute; top: 35%; right: 15px;}
+
+.qualified-students-wrapper ul li:nth-child(even){background: #F7F7F7;}
+
+/*Pagination*/
+.training-schedule-pagination .display-pagination{float: right;}
+.training-schedule-pagination span{color: #7d7d7d; font-size:12px;}
+.training-schedule-pagination span ul li{padding: 0;}
+.training-schedule-pagination span ul li a{font-weight: bold; color: #7d7d7d; font-size:12px; padding: 12px;}
+.training-schedule-pagination span ul li.active a{background: #577477; color: #f1f1f1 !important;}
+
+
+@media only screen and (max-width: 544px) {
+	.training-schedule-pagination .display-entries{display: table; margin: 0 auto; margin-bottom: 20px;}
+	.training-schedule-pagination .display-pagination{float: none; display: table; margin: 0 auto; margin-bottom: 20px;}	
+}
+/*xs*/
+@media only screen and (min-width: 545px) and (max-width: 768px){}
+/*sm*/
+@media only screen and (min-width: 769px) and (max-width: 922px){}
+/*md*/
+@media only screen and (min-width: 923px) and (max-width: 1024px){}
+@media only screen and (min-width: 1024px) and (max-width: 1200px){} 
+@media only screen and (min-width: 923px) and (max-width: 1200px){}
+@media only screen and (min-width: 992px) and (max-width: 1200px){}
+/*lg*/
+@media only screen and (min-width: 1201px) and (max-width: 1440px){}
+
+
+/*TRAINING SCHEDULE - ATTENDANCE*/
+  .datatable-wrapper table.custom-datatable tbody tr td a.blue-link{    display: block;text-align: center;    background-color: #5ac4c0;color: #fff;padding: 8px;text-decoration: none;border-radius: 3px;}
+ a.green-bg-button{padding: 10px;background-color: #59c393;text-decoration: none;color: #fff;border-radius: 5px;display: block;text-align: center;margin-bottom: 10px;}
+ a.skyblue-bg-btn{padding: 10px;background-color: #09c8d0;text-decoration: none;color: #fff;border-radius: 5px;display: block;text-align: center;margin-bottom: 10px;}
+/*----search----*/
+.search-form{    width: 100%;}
+.search-form .input-group{width: 100%;}
+.search-form input.form-control, .search-form .input-group-addon{border-color: #727272;height:40px;}
+.search-form  .search-input-left{border-right: 0;}
+.search-form .input-group-addon{border-left: 0;background-color: transparent;color: #727272;}
+
+
+.training-sched-attendance-wrapper  table.sched-details-table {color: #525558; border: 0;}
+.training-sched-attendance-wrapper  table.sched-details-table thead tr th{font-size: 20px;    padding: 20px 5px; }
+.training-sched-attendance-wrapper  table.sched-details-table tbody tr td{padding:10px 5px; }
+.training-sched-attendance-wrapper   #student-attendance-table tbody tr td {text-align: left!important;}
+.upload-files-wrapper .drag-files{height: 165px;border: 2px dashed #7debba;padding:25px;margin-bottom: 20px;}
+.upload-files-wrapper .drag-files a{color: rgba(23, 130, 82, 0.62);font-size: 12px;text-decoration: none;text-align: center;}
+.upload-files-wrapper .drag-files a span{display: block;}
+.upload-list-wrapper .upload-list{padding: 0;}
+.upload-list-wrapper .upload-list li, .upload-list-wrapper .upload-list li span a{list-style: none;font-size: 12px;color: #cecece;    padding-bottom: 45px;}
+.upload-list-wrapper .upload-list li span.filename{color: #75787a;}
+.upload-list-wrapper .upload-list li span i{color: #cecece;display: block;text-align: center;    font-size: 40px;}
+.upload-list-wrapper .upload-list li  .progress{border-radius: 5px;height: 10px;}
+.upload-list-wrapper .upload-list li  .progress .progress-bar{ background-color: #7debba;   background-image: none;border-radius: 5px;}
+.upload-files-wrapper .btn-wrapper button.upload-btn{width: 100%; margin-bottom: 15px;    background-color: #81f0be;color: #178252;outline: 0!important;text-align: left;}
+ .training-sched-attendance-wrapper .btn-wrapper button.save-btn{    margin-right: 30px;    background-color: #14c1c5;color: #fff;border-radius: 0;padding: 10px;width: 230px;outline: none;}
+@media only screen and (max-width: 544px) {
+   .training-sched-attendance-wrapper .btn-wrapper button.save-btn{width: 100%;    float: none!important;text-align: center;margin: 0;}
+}
+
+/*TRAINING SCHEDULE - ATTENDANCE (DETAILED)*/
+.tsa-detailed-wrapper .legend-wrapper {padding: 15px;}
+.tsa-detailed-wrapper .profile-image-wrapper img{width: 115px;height: 115px;border-radius: 50%;display: block;margin: 0 auto;}
+.tsa-detailed-wrapper .legend-wrapper ul.legend-list li{list-style: none;display: inline-block;width: 48%;    font-size: 16px;    padding: 6px 0;}
+.tsa-detailed-wrapper .legend-wrapper ul.legend-list li i{font-size: 22px;margin-right: 5px;}
+.tsa-detailed-wrapper .legend-wrapper ul.legend-list li i.attend{color: #0ac8cf!important;background-color: transparent;}
+.tsa-detailed-wrapper .legend-wrapper ul.legend-list li i.absent{color: #577477!important;background-color: transparent;}
+.tsa-detailed-wrapper .legend-wrapper ul.legend-list li i.remaining-days{color: #29cb82!important;background-color: transparent;}
+.tsa-detailed-wrapper .legend-wrapper ul.legend-list li i.late{color: #68c79c!important;background-color: transparent;}
+.tsa-detailed-wrapper .legend-wrapper ul.legend-list li i.excuse{color: #acdce1!important;background-color: transparent;}
+ .tsa-detailed-wrapper form input.form-control,   .tsa-detailed-wrapper form select.form-control{border-radius: 5px;color: #525558;border: 2px solid #cccccc!important;background-color: #fff;}
+
+ .tsa-detailed-wrapper{color: #525558;}
+ ul.week-view-list li {padding-right: 20px;}
+ul.week-view-list li  h1{font-size: 16px;color: #525558;text-transform: uppercase;font-weight: bold;    margin: 20px 0 30px;}
+ul.week-view-list li ul li{    list-style: none;display: inline-block;padding: 5px 0;width: 100%;}
+ .square{ width: 40px;height: 35px;border: 1px solid #0ac8cf;border-radius: 5px;    float: right;    position: relative;top: -8px;}
+
+
+.month-view-year-calendar .calendar-header{display: none;}
+.month-view-year-calendar .month-container{    margin: 25px 0 40px!important;}
+.month-view-year-calendar table.month:before{display: table!important;content: " "!important;}
+.month-view-year-calendar table.month tbody tr td:first-child, .month-view-year-calendar table.month tbody tr td:last-child,  .month-view-year-calendar table.month thead tr th.day-header:first-child,  .month-view-year-calendar table.month thead tr th.day-header:last-child{display: none;}
+.month-view-year-calendar table.month thead tr th.month-title{color: #525558;text-transform: uppercase;font-size: 20px;text-align: left!important;}
+.month-view-year-calendar table.month thead tr th.month-title::after { content: "  2017";}
+.month-view-year-calendar table.month tbody tr td.day .day-content{    border: 1px solid #0ac8cf;border-radius: 0;color: #525558;padding: 8px 15px;margin: 1px;font-size: 16px;}
+.month-view-year-calendar table.month tbody tr td.day .day-content:hover {background: rgba(0, 0, 0, 0.2);cursor: pointer;border-color: transparent!important;}
+
+
+/*styled classes that corresponds the legends for week view and month view*/
+.tsa-detailed-wrapper .attend{background-color: #0ac8cf;border-color:#0ac8cf!important;color: #fff!important;}
+.tsa-detailed-wrapper .absent{background-color: #577477;border-color: #577477!important;color: #fff!important;}
+.tsa-detailed-wrapper .remaining-days{background-color: #29cb82;border-color:#29cb82!important;color: #fff!important;}
+.tsa-detailed-wrapper .late{background-color: #68c79c;border-color: #68c79c!important;color: #fff!important;}
+.tsa-detailed-wrapper .excuse{background-color: #acdce1;border-color:#acdce1!important;color: #fff!important;}
+
+/* 
+ * Bootstrap year calendar v1.1.0
+ * Created by Paul David-Sivelle
+ * Licensed under the Apache License, Version 2.0
+ */
+ 
+ .calendar{padding:4px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;direction:ltr;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.calendar:after{clear:both;content:"";display:block}.calendar.calendar-rtl{direction:rtl}.calendar.calendar-rtl table tr td span{float:right}.calendar table{margin:auto}.calendar table td,.calendar table th{text-align:center;width:20px;height:20px;border:none;padding:4px 5px;font-size:12px}.calendar .calendar-header{width:100%;margin-bottom:20px}.calendar .calendar-header table{width:100%}.calendar .calendar-header table th{font-size:22px;padding:5px 10px}.calendar .calendar-header table th:hover{background:#eee;cursor:pointer}.calendar .calendar-header table th.disabled,.calendar .calendar-header table th.disabled:hover{background:0 0;cursor:default;color:#fff}.calendar .calendar-header table th.next,.calendar .calendar-header table th.prev{width:20px}.calendar .year-title{font-weight:700;text-align:center;height:20px;width:auto}.calendar .year-neighbor{color:#aaa}.calendar .year-neighbor2,.calendar table.month tr td.disabled,.calendar table.month tr td.disabled:hover{color:#ddd}.calendar .months-container{width:100%;display:none}.calendar .month-container{text-align:center;height:200px;padding:0}.calendar table.month th.month-title{font-size:16px;padding-bottom:5px}.calendar table.month th.day-header{font-size:14px}.calendar table.month tr td,.calendar table.month tr th{padding:0}.calendar table.month tr td.hidden,.calendar table.month tr th.hidden{display:none}.calendar table.month td.week-number{cursor:default;font-weight:700;border-right:1px solid #eee;padding:5px}.calendar .round-left{-webkit-border-radius:8px 0 0 8px;-moz-border-radius:8px 0 0 8px;border-radius:8px 0 0 8px}.calendar .round-right{webkit-border-radius:0 8px 8px 0;-moz-border-radius:0 8px 8px 0;border-radius:0 8px 8px 0}.calendar table.month tr td .day-content{-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;padding:5px 6px}.table-striped .calendar table.month tr td,.table-striped .calendar table.month tr th{background-color:transparent}.calendar table.month td.day .day-content:hover{background:rgba(0,0,0,.2);cursor:pointer}.calendar table.month td.day.disabled .day-content:hover,.calendar table.month tr td.new,.calendar table.month tr td.new:hover,.calendar table.month tr td.old,.calendar table.month tr td.old:hover{background:0 0;cursor:default}.calendar table.month tr td.range .day-content{background:rgba(0,0,0,.2);-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}.calendar table.month tr td.range.range-start .day-content{border-top-left-radius:4px;border-bottom-left-radius:4px}.calendar table.month tr td.range.range-end .day-content{border-top-right-radius:4px;border-bottom-right-radius:4px}.calendar-context-menu,.calendar-context-menu .submenu{border:1px solid #ddd;background-color:#fff;box-shadow:2px 2px 5px rgba(0,0,0,.2);-webkit-box-shadow:2px 2px 5px rgba(0,0,0,.2);position:absolute;display:none}.calendar-context-menu .item{padding:5px 10px;cursor:pointer;display:table;width:100%}.calendar-context-menu .item:hover{background:#eee}.calendar-context-menu .item .content{display:table-cell}.calendar-context-menu .item span{display:table-cell;padding-left:10px;text-align:right}.calendar-context-menu .item span:last-child{display:none}.calendar-context-menu .submenu{left:100%;margin-top:-6px}.calendar-context-menu .item:hover>.submenu{display:block}

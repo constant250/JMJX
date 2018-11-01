@@ -1,0 +1,12 @@
+<p><b>Welcome to Insert Company Name!</b></p>
+<p><b>This is the official confirmation of your aplication. This means we have booked your spot in our %course_name% intake starting on the %start_date%.</b></p>
+
+<p>We will hold your spot until the %start_date%. Attached to this email you will find Insert Company Name Student Enrolment Pack incuding: </p>
+
+<p> Insert Company Name Enrolment Form</p>
+<p>Insert Company Name  Student Agreement</p>
+<p>Insert Company Name  Tax Invoice</p>
+<p>  Insert Company Name  Student Handbook</p>
+<p>Stutatory Application (if Applicable)</p>
+<p>Certificate 3 Student Fact Sheet</p>
+<p> Pre-training Review</p>

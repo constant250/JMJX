@@ -1,0 +1,74 @@
+/*Submission Form*/
+.crm-form-container{background: #F6F6F6; }
+.crm-form-container form{padding: 30px;padding-top: 0;}
+/*FORM styles for Add Course, Add Units and add customer Forms*/
+.form-padding-left-right{padding: 0 30px;}
+ .horizontal-line-wrapper{margin: 15px 0;position: relative;}
+ .horizontal-line-wrapper h3{color: #fff;margin: 0;font-size: 12px;background-color: #0ac8cf;padding: 5px 10px;}
+ .bootstrap-datetimepicker-widget{z-index:999 !important;}
+form.form-template{ background-color: #eef9f4;padding: 15px 0 30px 0;}
+form.form-template .form-group {margin-bottom: 10px;}
+ form.form-template label{color: #525558;font-size: 12px;font-family: 'ProximaNova-SemiBold' !important;margin-bottom: 0!important;line-height: 60%;}
+  form.form-template label:before{/*font-family: FontAwesome;*/content: "*";display: inline-block;padding-right: 3px;vertical-align: middle;color: #0ac8cf;}
+  form.form-template label.not-required:before{/*font-family: FontAwesome;*/content: "" !important;display: none !important;}
+ .radio-label:before{display: none !important;}
+ form.form-template input.form-control,  form.form-template select.form-control{border-radius: 0;background-color: #fff;font-family: 'ProximaNova-Regular' !important;}
+ form.form-template select.form-control{font-size:13px;}
+ form.form-template select.form-control > option{font-weight:lighter;}
+ form.form-template textarea{border-radius: 0;background-color: #fff;height: 100px;resize: none;font-family: 'ProximaNova-Regular' !important;}
+ form.form-template .input-group.date input{border-right: 0!important;}
+ form.form-template span.input-group-addon{border-radius:0;background-color: #fff;border-left: 0;}
+ form.form-template  button.save-btn{    margin: 25px auto 0 auto;width: 230px;display: block;border-radius: 0;}
+ form.form-template span.note{border: 1px solid #a7dcc4;padding: 5px 10px;color: #75787a;float: right;margin-right: 15px;font-size: 10px;}
+form.form-template span.note span  {color: #0ac8cf;}
+@media only screen and  (max-width: 480px) {
+   form.form-template  button{width: 100%;}
+}
+/*RADIO BUTTONS*/
+ form.form-template label.btn{outline: none!important;}
+ form.form-template label.btn:before{display: none!important;}
+ form.form-template label.btn span {font-size: 11px ;}
+form.form-template label input[type="radio"] ~ i.fa.fa-circle-o{color: #c8c8c8;    display: inline;}
+ form.form-template label input[type="radio"] ~ i.fa.fa-dot-circle-o{display: none;}
+ form.form-template label input[type="radio"]:checked ~ i.fa.fa-circle-o{display: none;}
+ form.form-template label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{color: #389b6e;    display: inline;}
+ form.form-template label:hover input[type="radio"] ~ i.fa {color: #389b6e;}
+ form.form-template label input[type="checkbox"] ~ i.fa.fa-square-o{color: #c8c8c8;    display: inline;}
+ form.form-template label input[type="checkbox"] ~ i.fa.fa-check-square-o{display: none}
+ form.form-template label input[type="checkbox"]:checked ~ i.fa.fa-square-o{display: none;}
+ form.form-template label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{color: #389b6e;    display: inline;}
+ form.form-template label:hover input[type="checkbox"] ~ i.fa {color: #389b6e;}
+ form.form-template div[data-toggle="buttons"] label.active{color: #389b6e;}
+ form.form-template div[data-toggle="buttons"] label {display: inline-block;padding: 0 12px;margin-bottom: 0;font-size: 14px;font-weight: normal;text-align: left;white-space: nowrap;vertical-align: top;cursor: pointer;background-color: none;border: 0px solid #c8c8c8;border-radius: 3px;color: #c8c8c8;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;}
+ form.form-template div[data-toggle="buttons"] label:hover {color: #389b6e;}
+ form.form-template div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {-webkit-box-shadow: none;box-shadow: none;}
+
+/*FORM SELECTIZED*/
+  form.form-template .selectize-input>input{padding:5px 0px !important;}
+  form.form-template .selectize-input, 
+  form.form-template .selectize-input.focus, 
+  form.form-template .selectize-control.multi .selectize-input.has-items, 
+  form.form-template .selectize-input:focus{padding: 0 5px;border-radius: 0;border: 2px solid #cccccc!important;background-color: #fff;font-family: 'ProximaNova-Regular' !important;margin-top: -;}
+  form.form-template .selectize-control.multi .selectize-input>div{margin-top: 4px; word-break: break-word;}
+
+	/*Header*/
+.crm-form-container .crm-form-header{}
+	/*Body*/
+ .crm-form-container .crm-form-body{}
+/*Application Form*/
+
+
+/*----search form----*/
+.search-form{width: 100%;margin-bottom: 10px!important;}
+.search-form.width-auto{width: auto !important;}
+.search-form .input-group{width: 100%;}
+.search-form input.form-control, 
+.search-form select.form-control, 
+.search-form .input-group-addon{border-color: #727272;height:40px;}
+.search-form .form-btn{padding: 10px;text-decoration: none;color: #fff;border-radius: 5px;display: inline-block;text-align: center;margin-bottom: 10px; float: right;}
+.search-form  .search-input-left{border-right: 0;}
+.search-form .input-group-addon{border-left: 0;background-color: transparent;color: #727272;}
+
+/*Upload Form*/
+.crm-upload-form{border: 2px dashed #7debba; width: 100%; height:130px; border-radius: 5px;}
+.crm-upload-form span{padding: 0 30px;}

@@ -1,0 +1,62 @@
+  .column-section{min-height: 510px; height: auto; background-color: #FFFFFF; padding: 30px 40px;}
+  .column-section .column-header{border-bottom: 1px solid #EDF0F2; padding-bottom: 20px; margin-bottom: 20px;}
+
+  .time-start-end-btn-group .btn{height: 55px; border-radius: 0; border: 0;}
+  .breat-start-end-btn-group .break-out-btn{background-color: #BD404E; height: 45px; border-radius: 0;}
+  .breat-start-end-btn-group .break-in-btn{background-color: #EBBF4E; height: 45px; border-radius: 0;}
+  .breat-start-end-btn-group .disabled{cursor: not-allowed; pointer-events: none;-khtml-user-select: none;-o-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none; user-drag: none; user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;}
+  .breat-start-end-btn-group .disabled:hover{color: #A6A6A6 !important; border: 1px solid #A6A6A6;}
+  .ok-btn{background-color: #336177;height: 40px; min-width: 205px; width: 100%; border-radius: 0;}
+
+.datepicker-horizontal{width: 80%; text-align-last:center; text-align: center;}
+
+.time-status{width: 215px; margin: 0 auto; display: table; margin-bottom: 10px}
+.time-status .status-header{ color: #FFFFFF; width: 50%; text-align: center; display: table-cell; padding: 10px 5px;}
+.time-status .status-content{width: 50%; text-align: center; display: table-cell; padding: 10px 5px;}
+
+  .timelog-dates .date-ranged .range-wrapper{display: inline-block;}
+  .timelog-dates .date-ranged .range-wrapper.datepicker-input {padding: 0;border: 0;cursor: pointer;outline: none;width: 50%;}
+
+  .time-in-status{border: 1px solid #0AC8CF;}
+  .time-in-status .status-header{background-color: #0AC8CF;}
+  .time-out-status{border: 1px solid #598F99;}
+  .time-out-status .status-header{background-color: #598F99;}
+
+  .timelog-wrapper .form-group{margin-bottom: 10px; }
+  #datepicker{border: 0;  appearance:none;-moz-appearance:none;-webkit-appearance:none; pointer-events: none;-khtml-user-select: none;-o-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none; user-drag: none; user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;}
+  #datepicker::-ms-expand{display:none}
+
+.timelog-table thead tr{background-color: #09C8D0; color: #FFFFFF;}
+.timelog-table thead tr th,
+.timelog-table tbody tr td{padding: 10px 15px; border: 0;}
+.timelog-table tbody tr:nth-child(odd){background-color: #F2F2F2;}
+.timelog-table tbody tr:nth-child(even){background-color: #FFFFFF;}
+
+.timelog-progress .progressbar-caption{height: 100%; float: left; display: block; overflow: hidden;}
+.timelog-progress .progressbar-caption span{color: #F1F1F1; vertical-align: -webkit-baseline-middle; padding: 0 10px;}
+.timelog-progress .time-caption{float: left; height: 100%; line-height: 28px; padding: 0 10px; position: absolute;}
+.timelog-progress .time-caption span{background-color: #FFFFFF; color: #598F99; padding: 3px 0;}
+.total-hours-worked-progress{width: 300px; height: 33px; margin: 0 auto; border: 1px solid #0AC8CF; position: relative; margin-bottom: 10px;}
+.total-hours-worked-progress:after{content: ""; position: absolute; height: 40px; top: 50%; left: 60%; width: 1px; display: block; background-color: #598F99; transform: translate(-50%, -50%);}
+.total-hours-worked-progress .progressbar-caption{background-color: #0AC8CF; }
+.total-breaks-progress{width: 300px; height: 33px; margin: 0 auto; border: 1px solid #BD404E; position: relative; margin-bottom: 10px;}
+.total-breaks-progress:after{content: ""; position: absolute; height: 40px; top: 50%; left: 90%; width: 1px; display: block; background-color: #EBBF4E; transform: translate(-50%, -50%);}
+.total-breaks-progress .progressbar-caption{background-color: #BD404E;}
+
+
+/*timelog list styles*/
+.height-40px{height: 40px;}
+.dark-grey-font-color {color: #46596b;}
+.ash-lightgreen-font-color{color: #598f99;}
+.yellow-background-color{background-color: #ebbf4e;}
+.timelogs-filter .btn-select {border-radius: 3px;background-color: #598f99;color: white !important;height: 40px;padding: 10px;text-align: justify;}
+.timelogs-filter .btn-select span.caret{margin-top: 8px;float: right;}
+.timelogs-filter .form-group a{position: relative;top: -25px;}
+table#timelogs-list{box-shadow: 3px 4px 7px 0px rgba(45, 42, 41, 0.16);}
+table#timelogs-list thead tr th{text-align: center;color: #fff!important;}
+table#timelogs-list thead tr th, table#timelogs-list tbody tr td{color: #525558;padding: 15px 6px; white-space: nowrap;}
+table#timelogs-list tbody tr td span{background-color: #5ac4c0;padding: 3px 10px;color: #fff;width: 100px;display: inline-block;}
+table#timelogs-list tbody tr td span.label-danger{background-color: #bd404e;}
+@media only screen and (max-width: 1199px) {
+.timelogs-filter .form-group a, .datepicker-wrapper .form-group{position: initial!important;}
+} 

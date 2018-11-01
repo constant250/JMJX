@@ -1,0 +1,41 @@
+.student-assesment-wrapper{position: relative;}
+.student-assesment-wrapper  .datatable-wrapper table#student-assesment-table thead tr th, .student-assesment-wrapper .datatable-wrapper table#student-assesment-table tbody tr td{font-size: 11px !important;padding: 8px 3px!important;}
+
+.student-assesment-wrapper #legends-table>tbody>tr>td{border-top:1px solid #dbd9d9;text-align: left;}
+.student-assesment-wrapper #legends-table .legend-title{font-size: 14px;font-weight: bold;text-transform: uppercase;text-align: center;}
+.student-assesment-wrapper ol.upper-alpha {list-style-type: upper-alpha;padding-left: 15px;}
+.student-assesment-wrapper ol.upper-alpha li{    font-size: 12px;}
+.student-assesment-wrapper ol.decimal {list-style-type: decimal;}
+.student-assesment-wrapper #legends-table ul {padding:0;}
+.student-assesment-wrapper #legends-table ul li{list-style: none;    font-size: 12px;}
+.student-assesment-wrapper #legends-table .legend-main-title {font-size: 18px;font-weight: bold;text-transform: uppercase;background-color: #0ac8cf;color: #fff;}
+
+.student-assesment-wrapper  .details-list-wrapper{background-color: #fff;padding: 15px 15px 15px 55px;margin-bottom: 25px;width: 100%;}
+.student-assesment-wrapper  .details-list-wrapper ul{padding: 0;margin: 0;}
+.student-assesment-wrapper  .details-list-wrapper ul li{list-style: none;border-left: 2px solid #09c8d0;padding: 5px;margin-bottom: 8px;-webkit-transition: all 0.3s;-moz-transition: all 0.3s;transition: all 0.3s;display: inline-block;width: 32%;font-size: 12px;}
+.student-assesment-wrapper  .details-list-wrapper span{color: #2c2c2c}
+.student-assesment-wrapper  .details-list-wrapper p{margin: 0;font-weight: bold;}
+
+.student-assesment-wrapper  .profile-image-wrapper img{    position: absolute;height:100%;width: 100%;}
+.student-assesment-wrapper  .profile-image-wrapper{    position: absolute;min-height: 370px;width: 228px;overflow: hidden;top: -20px;z-index: 1;right: -50px;}
+
+
+
+@media only screen and (max-width: 768px) {
+.student-assesment-wrapper  .details-list-wrapper ul li{width: 100%;}
+}
+
+@media only screen and (max-width: 1199px) {
+.student-assesment-wrapper  .profile-image-wrapper{ position: initial;width: 215px; height: 300px; margin: 20px auto;display: block;overflow: hidden;min-height: auto;}
+.student-assesment-wrapper  .profile-image-wrapper img{position: initial;  height: auto;}
+}
+@media only screen and (max-width: 1250px) {
+.student-assesment-wrapper  .datatable-wrapper table#student-assesment-table  tbody tr td:first-child {padding: 8px 8px 8px 30px!important;}
+}
+
+
+
+/*Datepicker table inside datatables*/
+table.table-condensed  thead tr th:nth-child(odd){background-color: #fff!important;color: #555!important;font-weight: bold;}
+table.table-condensed  thead tr th:nth-child(even) {background-color: #fff!important;color: #555!important;font-weight: bold;}
+table.table-condensed  tr  td span{display: inline-block!important;text-align: center!important;}

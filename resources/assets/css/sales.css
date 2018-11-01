@@ -1,0 +1,31 @@
+/*Custom Styles*/
+.box-shadow{box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1); -o-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1); -ms-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);}
+
+/*Summary*/
+.sales-summary-filtering .form-inline{}
+.sales-summary-input{ border:1px solid #E1E1E1; box-shadow: none;}
+.sales-summary-select:focus,
+.sales-summary-select{width: 160px !important; margin: 0 6px; outline: none; border:1px solid #E1E1E1;}
+
+.sales-summary-reports .report-item{background: #FFFFFF; display: block; padding: 5px; color: #8F8F8F;}
+.sales-summary-reports .report-item .item-title{padding: 5px 3px;}
+.sales-summary-reports .report-item .item-content{padding: 15px 0;}
+
+@media only screen and (max-width: 544px) {
+	.sales-summary-filtering .form-inline{float: left !important; width: 100% !important;}
+	.sales-summary-select{width: 100% !important; margin: 0;}
+}
+/*xs*/
+@media only screen and (min-width: 545px) and (max-width: 768px){
+	.sales-summary-filtering .form-inline{float: left !important; width: 100% !important;}
+	.sales-summary-select{width: 100% !important; margin: 0;}
+}
+/*sm*/
+@media only screen and (min-width: 769px) and (max-width: 922px){}
+/*md*/
+@media only screen and (min-width: 923px) and (max-width: 1024px){}
+@media only screen and (min-width: 1024px) and (max-width: 1200px){} 
+@media only screen and (min-width: 923px) and (max-width: 1200px){}
+@media only screen and (min-width: 992px) and (max-width: 1200px){}
+/*lg*/
+@media only screen and (min-width: 1201px) and (max-width: 1440px){}

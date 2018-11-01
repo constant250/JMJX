@@ -1,0 +1,100 @@
+/*Configurations*/
+
+    /*Nav Tabs*/
+/*    .dark-tabs-wrapper .nav-tabs{border:none;}
+    .dark-tabs-wrapper .nav-tabs li a{background: #DCDCDC; color: #B9B9B9; padding: 7px 14px;border: 0; border-radius: 3px;}
+    .dark-tabs-wrapper .nav-tabs li.active a{background: #525558; color: #0AC8CF; border: none;}
+    .dark-tabs-wrapper .nav-tabs li:first-child a{margin: 0;}
+    .dark-tabs-wrapper .nav-tabs li:nth-child(n) a{margin-right: 5px;}*/
+    .dark-tabs-wrapper .nav-tabs{border:none;}
+    .dark-tabs-wrapper .nav-tabs li a{font-size:12px;padding: 7px 14px;border-color: :#fff!important;border-radius: 4px;text-align: center;margin-right: 3px;color: #59c393!important;background-color: #525558!important;border-bottom-left-radius: 0!important;border-bottom-right-radius: 0!important;}
+    .dark-tabs-wrapper .nav-tabs li.active a{border-color:#fff!important;border-bottom: 1px solid #fff!important;box-shadow: -2px -5px 6px rgba(204, 204, 204, 0.42);color: #59c393;background-color: #fff!important;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+    .dark-tabs-wrapper .nav-tabs li:first-child a{margin: 0;}
+    .dark-tabs-wrapper .nav-tabs li:nth-child(n) a{margin-right: 5px;}
+    /*Inner Content Container*/
+    .inner-content-container .content-user-interface .ui-options .go-back-btn{background: #59C393; padding: 10px 35px; border-radius: 5px;}
+    .inner-content-container .content-user-interface .ui-options .dropdown{float: right;}
+    .inner-content-container .content-user-interface .ui-options .dropdown-toggle{background: #5AC4C0; color: #FFFFFF; line-height: 1; padding: 10px 35px; border-radius: 5px;}
+    .inner-content-container .content-user-interface .ui-options .dropdown-toggle span.caret{margin-left: 20px;}
+
+    .template-list-wrapper{box-shadow: 0px 0px 4.9px 0.1px rgba(87, 116, 119, 0.31); -o-box-shadow: 0px 0px 4.9px 0.1px rgba(87, 116, 119, 0.31); -moz-box-shadow: 0px 0px 4.9px 0.1px rgba(87, 116, 119, 0.31); -webkit-box-shadow: 0px 0px 4.9px 0.1px rgba(87, 116, 119, 0.31); padding: 35px 45px; border-radius: 20px;}
+
+    .selectize-input, 
+    .selectize-input.focus,
+    .selectize-control.multi .selectize-input.has-items,
+    .selectize-input:focus{border:none; box-shadow: none; outline: none; -o-box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; margin-bottom: -6px; padding:10px 0;}
+    .selectize-control.multi .selectize-input>div{border-radius:5px; background: #EBEBEB; color: #525558;}
+    .selectize-control.plugin-remove_button [data-value] .remove{border: none;}
+    /*Text Editor*/
+    .texteditor-format-options .divider{width: 10px;}
+    .texteditor-format-options ul li a{color: #525558;}
+
+    
+    .crm-form-wrapper .crm-form-list-formation li{padding: 0 .625rem 1.25rem;}
+    .crm-form-wrapper .crm-form-list-formation li .form-group label{color: #525558; font-family: 'ProximaNova-SemiBold';}
+
+    // .crm-form-wrapper .crm-form-table-formation tr td .form-group{margin: 10px 0;}
+    // .crm-form-wrapper .crm-form-table-formation tr td .form-label{margin:0 15px; margin-top:20px;color: #525558; font-family: 'ProximaNova-SemiBold';}
+    // .crm-form-wrapper .crm-form-table-formation tr td:nth-child(1){text-align: right; padding: 0; vertical-align: top;}
+
+    .crm-form-wrapper .form-input,
+    .crm-form-wrapper .form-input:focus{background: #FFFFFF; font-family:'proximanova-light'; font-size: 12px; height: 30px;border-radius: 0; box-shadow: none; -o-box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none;}
+    .crm-form-wrapper .form-textarea,
+    .crm-form-wrapper .form-textarea:focus{background: #FFFFFF; font-family:'proximanova-light'; font-size: 12px; height: auto;border-radius: 0; box-shadow: none; -o-box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none;}
+    .crm-upload-form{border: 2px dashed #7debba; width: 100%; height:130px; border-radius: 5px;}
+    .crm-upload-form span{padding: 0 30px;}
+    .crm-form-wrapper .form-btn{width:235px; border:none; outline: none; border-radius: 0; padding: 7px 15px; margin-top: 40px;}
+    .crm-form-wrapper .file-form-output{height: 70px; width: 70px; border: 2px solid #cccccc;}
+    .crm-form-wrapper .file-form-input {color: transparent; outline: none; padding: 20px;}
+    .crm-form-wrapper .file-form-input::-webkit-file-upload-button {visibility: hidden; outline: none;}
+    .crm-form-wrapper .file-form-input::before {content: 'Upload Picture';color: black;display: inline-block;background: #0AC8CF; color: #FFFFFF;border-radius: 3px;padding: 5px 8px;outline: none;white-space: nowrap;-webkit-user-select: none;cursor: pointer;font-size: 10pt;}
+    .crm-form-wrapper .file-form-input:hover::before {border-color: black;}
+    .crm-form-wrapper .file-form-input:active,
+    .crm-form-wrapper .file-form-input:focus{outline: none !important;}
+
+    .crm-form-container{background: #EEF9F4;}
+    .crm-form-container form{padding: 30px;padding-top: 0;}
+
+    @media (max-width: 992px) {
+      /*Inner Content Container*/
+
+
+      .template-list-wrapper{padding: 0;}
+      .crm-form-container{border-radius: 20px;}
+    }
+    @media only screen and (max-width: 544px) {
+      .inner-content-container .content-user-interface .ui-options .go-back-btn{width: 100%;}
+
+    .crm-form-wrapper .crm-form-list-formation li{padding: 0;}
+    .crm-form-wrapper .form-grid{padding: 0; margin-bottom: 10px;}
+    .crm-form-wrapper .form-btn{width: 100%; margin-top: 10px;}
+    }
+    /*xs*/
+    @media only screen and (min-width: 545px) and (max-width: 768px){
+
+    .crm-form-wrapper .crm-form-list-formation li{padding: 0;}
+    .crm-form-wrapper .form-grid{padding: 0; margin-bottom: 10px;}
+    .crm-form-wrapper .form-btn{width: 100%; margin-top: 10px;}
+
+    }
+    /*sm*/
+    @media only screen and (min-width: 769px) and (max-width: 922px){
+
+    .crm-form-wrapper .crm-form-list-formation li{padding: 0;}
+    .crm-form-wrapper .form-grid{padding: 0; margin-bottom: 10px;}
+
+    }
+    /*md*/
+    @media only screen and (min-width: 923px) and (max-width: 1024px){
+
+    .crm-form-wrapper .crm-form-list li{padding: 0;}
+    .crm-form-wrapper .form-grid{padding: 0; margin-bottom: 10px;}
+
+    }
+    @media only screen and (min-width: 1024px) and (max-width: 1200px){} 
+    @media only screen and (min-width: 923px) and (max-width: 1200px){}
+    @media only screen and (min-width: 992px) and (max-width: 1200px){}
+    /*lg*/
+    @media only screen and (min-width: 1201px) and (max-width: 1440px){}
+
+    /*table tr td:first-child{padding-left: 30px; padding-right: 10px;}*/

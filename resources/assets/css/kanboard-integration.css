@@ -1,0 +1,106 @@
+.dataTables_length{margin: 5px 0;}
+
+.datatable-wrapper .custom-datatable thead tr th.table-heading{padding: 10px !important;}
+.datatable-wrapper .custom-datatable tbody tr td.table-content{padding: 10px !important;}
+
+/*Kanboard Colors*/
+.color-yellow .item-left-aside{background-color: #DFE32D;}
+.color-blue .item-left-aside{background-color: #A8CFFF;}
+.color-green .item-left-aside{background-color: #4AE371;}
+.color-purple .item-left-aside{background-color: #CD85FE;}
+.color-red .item-left-aside{background-color: #FF9797;}
+.color-orange .item-left-aside{background-color: #FFAC62;}
+.color-grey .item-left-aside{background-color: #CCCCCC;}
+.color-brown .item-left-aside{background-color: #4E342E;}
+.color-deep-orange .item-left-aside{background-color: #E64A19;}
+.color-dark-grey .item-left-aside{background-color: #455A64;}
+.color-pink .item-left-aside{background-color: #D81B60;}
+.color-teal .item-left-aside{background-color: #00695C;}
+.color-cyan .item-left-aside{background-color: #00BCD4;}
+.color-lime .item-left-aside{background-color: #AFB42B;}
+.color-light-green .item-left-aside{background-color: #689F38;}
+.color-amber .item-left-aside{background-color: #FFA000;}
+
+/*Table*/
+.crm-kanboard-integration table thead tr th{color: #FFFFFF; padding: 15px; width: 25%;}
+.crm-kanboard-integration table thead tr th:nth-child(odd){background: #577477;}
+.crm-kanboard-integration table thead tr th:nth-child(even){background: #598f99;}
+.crm-kanboard-integration table thead tr th .add-icon{color: #0AC8CF; margin-right: 5px;}
+.crm-kanboard-integration table tbody tr td{vertical-align: top;}
+
+/*Listed kanboard Tasks*/
+.crm-kanboard-integration .listed-kanboard-task{margin-top: 10px; margin-bottom:0; max-height: 540px; overflow-y: auto; overflow-x:hidden;}
+.crm-kanboard-integration .listed-kanboard-task li{background: #FFFFFF; margin: 7px 3px; border-radius: 5px; overflow: hidden; box-shadow: 0px 0px 3.7199999999999998px 0.28px rgba(85, 83, 83, 0.24); -o-box-shadow: 0px 0px 3.7199999999999998px 0.28px rgba(85, 83, 83, 0.24); -ms-box-shadow: 0px 0px 3.7199999999999998px 0.28px rgba(85, 83, 83, 0.24); -moz-box-shadow: 0px 0px 3.7199999999999998px 0.28px rgba(85, 83, 83, 0.24); -webkit-box-shadow: 0px 0px 3.7199999999999998px 0.28px rgba(85, 83, 83, 0.24);}
+.crm-kanboard-integration .listed-kanboard-task .task-item{display: block;}
+.crm-kanboard-integration .listed-kanboard-task .task-item .item-left-aside{height: 100%;width: 20px; position: absolute; color: #FFFFFF;}
+.crm-kanboard-integration .listed-kanboard-task .task-item .item-left-aside .bullet-spacing{margin: 0 1px;}
+.crm-kanboard-integration .listed-kanboard-task .task-item .item-content{padding: 5px 10px 5px 30px;}
+.crm-kanboard-integration .listed-kanboard-task .task-item .item-content .content-initials{height: 32px; width: 32px;border-radius: 50%; text-align: center; line-height: 32px; position: absolute;right: 10px;}
+.crm-kanboard-integration .listed-kanboard-task .task-item .item-content .content-title{margin: 5px 35px 10px 0;}
+.crm-kanboard-integration .listed-kanboard-task .task-item .item-content .content-details{margin-top:10px;}
+
+/*Kanboard Task Details*/
+.task-details .details-title{border: 1px solid #BCBCBC; background: #F8F7F7; padding: 15px 10px; margin-top: 10px;}
+.task-details .details-title h1{padding-right: 50px;}
+.task-details .details-title a{position:absolute; top: 20px; right: 20px; }
+.task-details .details-content{border: 1px solid #bcbcbc; padding: 15px;}
+.task-details .details-content legend{width: auto; border-bottom: 0; padding: 0 5px; margin-left: 10px; margin-bottom: 0; color: #bcbcbc;}
+.task-details .details-content p{line-height: 1.2;}
+.task-details .details-info{border-top: 1px solid #bcbcbc; border-bottom: 1px solid #bcbcbc;}
+.task-details .details-info li{padding-bottom: 2px;}
+.task-details .details-attachments{color: #209eff; margin-left: 10px;}
+.task-details .details-activity{border-top: 1px solid #bcbcbc;}
+.task-details .details-activity li{padding: 10px 0 5px;}
+.task-details .details-activity li .details-initials{border-radius: 50%; height: 32px; width: 32px; line-height: 32px; position: absolute; left: 20px;}
+.task-details .details-activity li .details-activity-content{margin-left: 50px; padding-top: 5px;}
+.task-details .details-activity li .details-activity-content a{color: #209eff;}
+.task-details .details-comments-form .comment-initials{border-radius: 50%; height: 32px; width: 32px; line-height: 32px; margin: 20px auto;}
+.task-details .details-comments-form textarea.form-control{height: 75px;}
+.task-details .details-comments-form .button-group{margin-top: 20px;}
+
+/*Task Details Attachment Button style*/
+.attachments-file-uploader{display: inline;}
+.attachments-file-uploader .uploader-input{display: none; appearance:none; -webkit-appearance:none; background: transparent; border: 0; color: transparent; outline: none; width: 0px; box-shadow: none;}
+.attachments-file-uploader .uploader-input:focus,
+.attachments-file-uploader .uploader-input::-webkit-file-upload-button{outline: none;box-shadow: none;}
+
+/*Kanboard Form*/
+  .taskboard-fileupload-group .taskboard-fileupload{padding: 5px 12px; outline: none !important;}
+  .taskboard-fileupload-group .taskboard-fileupload:focus{outline: none !important;}
+  .taskboard-fileupload-group .taskboard-fileupload::-webkit-file-upload-button{-webkit-appearance:none; background: transparent; border: 0; color: transparent; outline: none; width: 20px; box-shadow: none;}
+  .taskboard-fileupload-group .fileupload-label{position: absolute; top: 50%; left: 50%; right: 50%; width: 100%; margin-left: 20px; z-index: 9; transform: translate(-50%,-50%); }
+
+@media only screen and (max-width: 544px) {
+  .crm-kanboard-integration{overflow-x: auto;}
+  .crm-kanboard-integration table thead tr th{min-width: 250px;}
+  .crm-kanboard-integration .listed-kanboard-task .task-item .item-content .content-details{padding-left: 25px;}
+}
+/*xs*/
+@media only screen and (min-width: 545px) and (max-width: 768px){
+  .crm-kanboard-integration{overflow-x: auto;}
+  .crm-kanboard-integration table thead tr th{min-width: 250px;}
+  .crm-kanboard-integration .listed-kanboard-task .task-item .item-content .content-details{padding-left: 25px;}
+}
+/*sm*/
+@media only screen and (min-width: 769px) and (max-width: 922px){
+  .crm-kanboard-integration{overflow-x: auto;}
+  .crm-kanboard-integration table thead tr th{min-width: 250px;}
+  .crm-kanboard-integration .listed-kanboard-task .task-item .item-content .content-details{padding-left: 25px;}
+}
+/*md*/
+@media only screen and (min-width: 923px) and (max-width: 1024px){
+  .crm-kanboard-integration{overflow-x: auto;}
+  .crm-kanboard-integration table thead tr th{min-width: 250px;}
+  .crm-kanboard-integration .listed-kanboard-task .task-item .item-content .content-details{padding-left: 25px;}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1200px){
+  .crm-kanboard-integration{overflow-x: auto;}
+  .crm-kanboard-integration table thead tr th{min-width: 250px;}
+} 
+@media only screen and (min-width: 923px) and (max-width: 1200px){
+  .crm-kanboard-integration{overflow-x: auto;}
+  .crm-kanboard-integration table thead tr th{min-width: 250px;}
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px){}
+/*lg*/
+@media only screen and (min-width: 1201px) and (max-width: 1440px){}

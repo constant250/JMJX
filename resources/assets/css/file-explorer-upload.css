@@ -1,0 +1,65 @@
+ .wrapper{padding: 30px 50px;}
+
+
+  /*Naigation Breadcrumbs*/
+  .navigation-breadcrumbs{padding: 20px 0;}
+  .navigation-breadcrumbs ul li{padding: 0;}
+  .navigation-breadcrumbs ul li a{position:relative; padding-right:22px; padding-left: 5px;}
+  .navigation-breadcrumbs ul li a:after{content: "\f054"; font-family: 'FontAwesome'; position:absolute; right: 0;}
+  .navigation-breadcrumbs ul li:last-child a:after{display: none;}
+  /*Folders*/
+  .file-explorer-folders .folder-wrapper{padding: 15px 10px; height: 115px; box-shadow: 0px 0px 8px 0px rgba(45, 42, 41, 0.19); -o-box-shadow: 0px 0px 8px 0px rgba(45, 42, 41, 0.19); -moz-box-shadow: 0px 0px 8px 0px rgba(45, 42, 41, 0.19); -webkit-box-shadow: 0px 0px 8px 0px rgba(45, 42, 41, 0.19);}
+  /*File System*/
+  .file-explorer-filesystem .file-wrapper{padding: 10px; height: 100px;}
+  .file-explorer-filesystem .file-wrapper:hover{box-shadow: 0px 0px 8px 0px rgba(45, 42, 41, 0.19); -o-box-shadow: 0px 0px 8px 0px rgba(45, 42, 41, 0.19); -moz-box-shadow: 0px 0px 8px 0px rgba(45, 42, 41, 0.19); -webkit-box-shadow: 0px 0px 8px 0px rgba(45, 42, 41, 0.19);}
+  .file-explorer-filesystem .file-wrapper .file-name{padding: 10px 0;}
+  .file-explorer-filesystem .file-wrapper .file-options{position: absolute; top: 0; right: 0; display: none; -webkit-transition: all 1s ease;-moz-transition: all 1s ease;ms-transition: all 1s ease;o-transition: all 1s ease;transition: all 1s ease;}
+  .file-explorer-filesystem .file-wrapper .file-options .option-btn{height: 22px; width: 22px; padding: 0; border-radius: 0;}
+  .file-explorer-filesystem .file-wrapper:hover .file-options{display: block;}
+  .file-explorer-filesystem .file-wrapper .file-info{position: absolute;bottom: 0; right:0;}
+        /*Pagination*/
+  .filesystem-pagination .display-pagination{float: right;}
+  .filesystem-pagination span{color: #7d7d7d; font-size:12px;}
+  .filesystem-pagination span ul li{padding: 0;}
+  .filesystem-pagination span ul li a{font-weight: bold; color: #7d7d7d; font-size:12px; padding: 12px;}
+  .filesystem-pagination span ul li.active a{background: #f1f1f1; color: #09C8D0 !important;}
+
+    /*CRM File Uplaod*/
+.crm-upload-list li{margin-bottom: 20px;}
+.crm-upload-list li .upload-progress-bar{border-radius: 50px; height: 6px;}
+.crm-upload-btn{padding: 7px 15px; width: 230px; float: right;}
+.file-explorer-upload .form-wrapper{border-radius: 20px; overflow: hidden; padding: 40px;}
+.file-explorer-upload .form-wrapper .form-container{background-color: #f6f6f6;padding: 40px;}
+@media only screen and (max-width: 544px) {
+  .wrapper{padding: 20px;}
+  .file-explorer-options .form-btn{width: 100%; margin-bottom: 10px;}
+  .filesystem-pagination .display-entries{display: table; margin: 0 auto; margin-bottom: 20px;}
+  .filesystem-pagination .display-pagination{float: none; display: table; margin: 0 auto; margin-bottom: 20px;}
+
+  .file-explorer-upload .form-wrapper{padding: 0;}
+  .file-explorer-upload .form-wrapper .form-container{padding: 20px;}
+  .crm-upload-btn{width: 100%; float: none;}
+
+}
+/*Search Form*/
+.search-form-wrapper .input-group{padding: 25px 20px;}
+.search-form-wrapper .input-group .form-input{border: 1px solid #525558; border-right: 0;}
+.search-form-wrapper .input-group .form-btn{border: 1px solid #525558; background: #FFFFFF; border-left: 0;}
+/*xs*/
+@media only screen and (min-width: 545px) and (max-width: 768px){
+  .wrapper{padding: 20px;}
+  .file-explorer-options .form-btn{width: 100%; margin-bottom: 10px;}
+
+  .file-explorer-upload .form-wrapper{padding: 0;}
+  .file-explorer-upload .form-wrapper .form-container{padding: 20px;}
+  .crm-upload-btn{width: 100%; float: none;}
+}
+/*sm*/
+@media only screen and (min-width: 769px) and (max-width: 922px){}
+/*md*/
+@media only screen and (min-width: 923px) and (max-width: 1024px){}
+@media only screen and (min-width: 1024px) and (max-width: 1200px){} 
+@media only screen and (min-width: 923px) and (max-width: 1200px){}
+@media only screen and (min-width: 992px) and (max-width: 1200px){}
+/*lg*/
+@media only screen and (min-width: 1201px) and (max-width: 1440px){}

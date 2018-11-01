@@ -1,0 +1,79 @@
+.scroll::-webkit-scrollbar {width: 7px;}
+.scroll::-webkit-scrollbar-track {background: #EBEBEB; border-radius: 10px;}
+.scroll::-webkit-scrollbar-thumb {background: #D7D7D7; border-radius: 10px; }
+.gradients{background: rgba(237,237,237,0);background: -moz-linear-gradient(top, rgba(237,237,237,0) 0%, rgba(246,246,246,0.01) 1%, rgba(255,255,255,0.08) 8%, rgba(255,255,255,1) 100%);background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(237,237,237,0)), color-stop(1%, rgba(246,246,246,0.01)), color-stop(8%, rgba(255,255,255,0.08)), color-stop(100%, rgba(255,255,255,1)));background: -webkit-linear-gradient(top, rgba(237,237,237,0) 0%, rgba(246,246,246,0.01) 1%, rgba(255,255,255,0.08) 8%, rgba(255,255,255,1) 100%);background: -o-linear-gradient(top, rgba(237,237,237,0) 0%, rgba(246,246,246,0.01) 1%, rgba(255,255,255,0.08) 8%, rgba(255,255,255,1) 100%);background: -ms-linear-gradient(top, rgba(237,237,237,0) 0%, rgba(246,246,246,0.01) 1%, rgba(255,255,255,0.08) 8%, rgba(255,255,255,1) 100%);background: linear-gradient(to bottom, rgba(237,237,237,0) 0%, rgba(246,246,246,0.01) 1%, rgba(255,255,255,0.08) 8%, rgba(255,255,255,1) 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );}
+/*Priority Level Colors*/
+.priority-high{color:#C62828;}
+.priority-medium{color:#EF6C00;}
+.priority-low{color:#2E7D32;}
+/*Task Table*/
+.task-kanban-wrapper table thead tr th{color: #FFF; padding: 0 3px; padding-bottom: 15px;}
+.task-kanban-wrapper table thead tr th .column-header{padding: 10px 15px;}
+.task-kanban-wrapper table thead tr th .column-header .item-count{float: right;}
+.task-kanban-wrapper table thead tr th:nth-child(odd) .column-header{background:#577577;}
+.task-kanban-wrapper table thead tr th:nth-child(even) .column-header{background:#09C8D0;}
+.task-kanban-wrapper table tbody tr td{padding: 0 3px;}
+.task-table-column .column-item-wrapper{height: 670px; overflow-x: hidden; overflow-y: auto; padding: 1px; position: relative;}
+.task-table-column .column-item-wrapper ul li{margin-bottom:15px;}
+.task-table-column .column-item-wrapper ul li:last-child{margin-bottom:60px;}
+.task-table-column .column-item-wrapper .item{height: 130px; width: 100%;display: block;width: 100%; box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16); -o-box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16); -ms-box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16); -moz-box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16); -webkit-box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16);}
+.task-table-column .column-item-wrapper .item .task-content{position: relative; height: 110px; padding:5px 10px; border-bottom: 1px solid #EBEBEB; overflow:hidden;}
+.task-table-column .column-item-wrapper .item .task-content .task-assignee{position: absolute; bottom: 5px; width: 100%;}
+.task-table-column .column-item-wrapper .item .task-details{height: 20px; padding: 0 5px; color: #b2b2b2;}
+.task-table-column .column-item-wrapper .item .task-details .task-avatar-img{height: 15px; width: 15px; border-radius: 50%; margin-left: 2px;}
+.task-table-column .column-item-wrapper .item .task-details .task-avatar-img img{height: 15px; width: 15px; border-radius: 50%;}
+.add-task-wrapper{position: absolute;height: 60px;width: 100%;bottom: 0;}
+.add-task-wrapper .add-btn{height: 30px; width: 30px; border-radius:50%; line-height: 30px; box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16); -o-box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16); -ms-box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16); -moz-box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16); -webkit-box-shadow: 0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.16);}
+.add-task-wrapper .add-btn:hover{background: #09C8D0 !important; color: #FFFFFF !important;}
+  /*Done Column*/
+.done-column .task-content:before{content: "\f05d"; font-family: 'FontAwesome'; color: rgba(9,200,208,0.42); position: absolute; bottom: -35px;right: -25px;font-size: 100px;}
+/*Add Task*/
+.add-task .modal-dialog{margin-top:0; margin-bottom: 0;}
+.add-task .modal-dialog .modal-content{border:0; border-radius:0; border-top: 4px solid #09C8D0; padding: 0 15px;}
+.add-task-form .form-input{background: #FBFBFB; border:1px solid #DBDBDB; border-radius: 0; font-style: normal;}
+.add-task-form .form-input-left{border-right: 0;}
+.add-task-form .form-input-addon{border-left: 0;}
+.add-task-form .form-btn{border-radius: 0; padding: 10px 50px;}
+@media only screen and (max-height: 300px) {
+  .add-task .modal-dialog{margin-top:35%; margin-bottom: 35%;}
+}
+@media only screen and (min-height: 301px) and (max-height: 600px) {
+  .add-task .modal-dialog{margin-top:20%; margin-bottom: 20%;}
+}
+@media only screen and (max-width: 544px) {
+  .task-kanban-wrapper{overflow-x:scroll;}
+  .task-kanban-wrapper table thead tr{display: flex;}
+  .task-kanban-wrapper table thead tr th{display: inline-block; width: 300px;}
+  .task-kanban-wrapper table tbody tr td{display: inline-block; width: 300px;}
+}
+/*xs*/
+@media only screen and (min-width: 545px) and (max-width: 768px){
+  .task-kanban-wrapper{overflow-x:scroll;}
+  .task-kanban-wrapper table thead tr{display: flex;}
+  .task-kanban-wrapper table thead tr th{display: inline-block; width: 300px;}
+  .task-kanban-wrapper table tbody tr td{display: inline-block; width: 300px;}
+}
+/*sm*/
+@media only screen and (min-width: 769px) and (max-width: 922px){
+  .task-kanban-wrapper{overflow-x:scroll;}
+  .task-kanban-wrapper table thead tr{display: flex;}
+  .task-kanban-wrapper table thead tr th{display: inline-block; width: 300px;}
+  .task-kanban-wrapper table tbody tr td{display: inline-block; width: 300px;}
+}
+/*md*/
+@media only screen and (min-width: 923px) and (max-width: 1024px){
+  .task-kanban-wrapper{overflow-x:scroll;}
+  .task-kanban-wrapper table thead tr{display: flex;}
+  .task-kanban-wrapper table thead tr th{display: inline-block; width: 300px;}
+  .task-kanban-wrapper table tbody tr td{display: inline-block; width: 300px;}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1200px){
+  .task-kanban-wrapper{overflow-x:scroll;}
+  .task-kanban-wrapper table thead tr{display: flex;}
+  .task-kanban-wrapper table thead tr th{display: inline-block; width: 300px;}
+  .task-kanban-wrapper table tbody tr td{display: inline-block; width: 300px;}
+} 
+@media only screen and (min-width: 923px) and (max-width: 1200px){}
+@media only screen and (min-width: 992px) and (max-width: 1200px){}
+/*lg*/
+@media only screen and (min-width: 1201px) and (max-width: 1440px){}
