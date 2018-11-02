@@ -12,10 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return redirect('/dashboard');
 });
 
+Route::get('home', function() {
+	return redirect('/dashboard');
+});
 
-Auth::routes();
+Route::get('/dashboard', 'HomeController@index');
+// Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+// Route::get('/agent', 'Agent\AgentController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Global Search
+// Route::get('/global-search', 'HomeController@global_search');
