@@ -1,0 +1,28 @@
+.add-staff-form-wrapper  .profile-image-wrapper {position: relative; overflow: hidden;margin-bottom: 5px;margin: 0 auto 5px auto;}
+.add-staff-form-wrapper  .profile-image-wrapper img{margin: 0 auto;  opacity: 1;display: block;width: 100%;height: auto;transition: .5s ease;backface-visibility: hidden;}
+.add-staff-form-wrapper  .profile-links{  transition: .5s ease;opacity: 0;position: absolute;top: 0;right: 0;background-color: rgba(0, 0, 0, 0.32);height: 100%;width: 100%;}
+.add-staff-form-wrapper  .profile-links a{display: block;width: 85px;    text-decoration: none;margin-bottom: 5px;padding: 8px 10px;color: #fff;background-color: rgba(50, 57, 59, 0.48);font-size: 10px;text-align: center;}
+.add-staff-form-wrapper  .profile-image-wrapper:hover .profile-links {opacity: 1;}
+.add-staff-form-wrapper .btn-wrapper button{width: 100%; margin-bottom: 5px;    background-color: #09c8d0;color: #fff;outline: 0!important;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+.add-staff-form-wrapper  .btn-wrapper  .btn.focus, .btn-wrapper  .btn:focus, .btn-wrapper  .btn:hover {color: #1a5b3e;text-decoration: none;background-color: #5ac4c0;}
+.add-staff-form-wrapper  .btn-wrapper button.upload-btn{width: 100%; margin-bottom: 15px;    background-color: #81f0be;color: #178252;outline: 0!important;text-align: left;}
+
+@media only screen and  (max-width: 640px) {
+.add-staff-form-wrapper  .profile-image-wrapper{height: auto;}
+}
+@media only screen and  (min-width: 400px) and  (max-width: 991px) {
+.add-staff-form-wrapper .profile-image-wrapper {width: 200px;}
+}
+
+/*COURSEENROLMENT with rowspan on header/th table*/
+table#acl-table tbody tr td:first-child, table#acl-table thead tr th:first-child{text-align: left!important;font-size: 14px;}
+table#acl-table tbody tr td p{margin: 0;}
+table#acl-table tbody tr td span.checked:before{font-family: FontAwesome;content: '\f00c';display:block;padding-right: 3px;text-align:center;font-size: 18px;color: #b8b8b8;}
+table#acl-table thead tr th.acl-mainhead{border:0;    padding: 10px!important;}
+table#acl-table thead tr.acl-actions td{background-color: #09c8d0;color: #fff;outline: none; border-color: #99bbbc;  text-align: center;}
+@media only screen and  (max-width: 480px) {
+  table#acl-table thead tr th.acl-mainhead{display: none;}
+}
+@media only screen and  (max-width: 640px) {
+  table#acl-table tbody tr td.checked:before{display: block;}
+}

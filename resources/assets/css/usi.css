@@ -1,0 +1,65 @@
+/*CREATE USI*/
+.create-usi-wrapper input[type=checkbox], .create-usi-wrapper input[type=radio] {display: none!important;}
+.create-usi-wrapper form.form-template label{line-height: 12px;}
+.create-usi-wrapper p{color: #75787a;font-size: 12px;}
+.create-usi-wrapper .information-wrapper{    padding: 15px;background-color: #cef4f5;}
+.create-usi-wrapper .button-wrapper {    margin: 0 auto;display: block;text-align: center;margin-top: 30px;}
+.create-usi-wrapper .button-wrapper  button{    background-color: #0ac8cf;border: 0;color: #fff;width: 200px;padding: 15px;outline: none;    margin: 10px 15px;}
+form.form-template label.not-required:before {display:none;}
+.create-usi-wrapper  .wizard > .steps {position: relative;display: block;width: 103%;}
+.create-usi-wrapper .wizard > .steps .number {display: none;}
+.create-usi-wrapper .wizard > .steps > ul > li {    width: 23%;}
+.create-usi-wrapper .wizard > .steps > ul > li:first-child{    width: 60px;}
+.create-usi-wrapper .wizard > .steps > ul > li a{float: right;}
+.create-usi-wrapper .wizard > .steps .current a, .create-usi-wrapper .wizard > .steps .current a:hover, .create-usi-wrapper .wizard > .steps .current a:active {background: #027b7f;color: #fff;cursor: default;padding: 16px 10px;}
+.create-usi-wrapper .wizard > .steps .done a,.create-usi-wrapper  .wizard > .steps .done a:hover,.create-usi-wrapper  .wizard > .steps .done a:active {background:#0ac8cf;color: #fff;padding: 16px 10px;}
+.create-usi-wrapper .wizard > .steps a, .create-usi-wrapper .wizard > .steps a:hover, .create-usi-wrapper .wizard > .steps a:active {display: block;width: 60px;height: 60px;text-align: center;margin: 0;padding: 12px 10px;text-decoration: none;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 50%;line-height: 15px;}
+.create-usi-wrapper .wizard > .steps .disabled a, .create-usi-wrapper  .wizard > .steps .disabled a:hover, .create-usi-wrapper .wizard > .steps .disabled a:active {background: #fff;color: #0ac8cf;cursor: default;border: solid 3px #0ac8cf;}
+.create-usi-wrapper .wizard > .content {background-color: #eef9f4;padding: 10px 0 20px;margin-top: 25px;}
+.create-usi-wrapper  .wizard > .actions {margin-top: 0; padding: 0 0 30px;background-color: #eef9f4;}
+.create-usi-wrapper form.form-template{ background-color: transparent;padding:0;position:relative;}
+.create-usi-wrapper  .mobile-view-steps span{    color: #0ac8cf;padding: 0 8px;font-size: 20px;display: none;}
+.create-usi-wrapper form.form-template .line{border: solid 2px #0ac8cf; width: 95%;    position: absolute;top: 30px;}
+.create-usi-wrapper .wizard > .content > .body .information-wrapper ul{padding-left: 20px;margin-bottom: 10px;}
+.create-usi-wrapper .wizard > .content > .body .information-wrapper ul li{list-style: disc;color: #75787a;font-size: 12px;}
+.create-usi-wrapper table{margin: 15px 0;table-layout: fixed;}
+.create-usi-wrapper table tr td{color: #75787a;font-size: 12px;padding: 5px 0;  word-wrap: break-word;}
+.create-usi-wrapper ul.personal-info-list li{list-style: none;display: inline-block!important;padding-right: 8px;}
+.create-usi-wrapper ul.personal-info-list li span{    font-size: 11px;color: #75787a;}
+.create-usi-wrapper .wizard>.actions a, .create-usi-wrapper .wizard>.actions a:active, .create-usi-wrapper .wizard>.actions a:hover{border-radius: 0;   background-color: #0ac8cf;border: 0;color: #fff;width: 200px;padding: 15px;outline: none;   }
+.create-usi-wrapper .wizard>.actions .disabled a, .create-usi-wrapper .wizard>.actions .disabled a:active, .create-usi-wrapper .wizard>.actions .disabled a:hover {background: #83dee0;color: #fff;}
+ @media only screen and  (max-width: 1024px) {
+   .create-usi-wrapper  .mobile-view-steps span{display: block;}
+    .create-usi-wrapper  .wizard > .steps, .create-usi-wrapper .line{display: none;}
+}
+
+/*VERIFY USI*/
+.verify-usi-wrapper input[type=checkbox], .verify-usi-wrapper input[type=radio] {display: none!important;}
+.verify-usi-wrapper form.form-template label{line-height: 12px;}
+.verify-usi-wrapper .form-group{position: relative;}
+.verify-usi-wrapper .form-group span.circle-check {color: #0ac8cf;position: absolute;right: -15px;top: 26px;}
+.verify-usi-wrapper p, .verify-usi-wrapper .information-wrapper ul li{color: #75787a;font-size: 12px;}
+.verify-usi-wrapper .information-wrapper ul li{    width: 48%;display: inline-block;}
+.verify-usi-wrapper .information-wrapper{    padding: 15px;background-color: #cef4f5;}
+.verify-usi-wrapper .button-wrapper {    margin: 0 auto;display: block;text-align: center;margin-top: 30px;}
+.verify-usi-wrapper .button-wrapper  button, .verify-usi-wrapper .button-wrapper  a.btn{ border-radius: 0;   background-color: #0ac8cf;border: 0;color: #fff;width: 200px;padding: 15px;outline: none;    margin: 10px 15px;}
+ @media only screen and  (max-width:767px) {
+.verify-usi-wrapper .information-wrapper ul li{width: 100%;}
+
+}
+/*FIND USI*/
+.find-usi-wrapper input[type=checkbox], .find-usi-wrapper input[type=radio] {display: none!important;}
+.find-usi-wrapper form.form-template label{line-height: 12px;}
+.find-usi-wrapper p, .find-usi-wrapper .information-wrapper ul li{color: #75787a;font-size: 12px;}
+.find-usi-wrapper .information-wrapper{    padding: 15px;background-color: #cef4f5;}
+.find-usi-wrapper .button-wrapper {    margin: 0 auto;display: block;text-align: center;margin-top: 30px;}
+.find-usi-wrapper .button-wrapper  button, .find-usi-wrapper .button-wrapper  a.btn{border-radius: 0;    background-color: #0ac8cf;border: 0;color: #fff;width: 200px;padding: 15px;outline: none;    margin: 10px 15px;}
+.find-usi-wrapper table{margin: 15px 0;table-layout: fixed;}
+.find-usi-wrapper table tr td{color: #75787a;font-size: 12px;padding: 5px 0;word-wrap: break-word;}
+ form.form-template label.not-required:before {display:none;}
+
+ @media only screen and  (max-width:540px) {
+ .verify-usi-wrapper .button-wrapper  button, .find-usi-wrapper .button-wrapper  button{width:80%!important;}
+ .create-usi-wrapper .wizard>.actions>ul>li{    width: 100%;margin: 0;}
+ .create-usi-wrapper .wizard>.actions a, .create-usi-wrapper .wizard>.actions a:active, .create-usi-wrapper .wizard>.actions a:hover{width: 100%;margin-bottom: 10px;}
+}

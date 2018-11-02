@@ -1,0 +1,1352 @@
+import toolbar from '../back-end/form-toolbar.js';
+import alertify from 'alertifyjs';
+var apiUser = "";
+var apiPass = "";
+var apiBaseUrl = "";
+var basicAuth;
+(function(window, undefined) {
+	var Deal = {
+		init: function() {
+			/*----------  initialize DOM Elements  ----------*/
+			this._cacheDom();
+
+			/*----------  autoload functions  ----------*/
+			this._autoload();
+
+			/*----------  bind DOM element events  ----------*/
+			this._bindDomEvents();
+		},
+		_cacheDom: function() {
+			/*=======================================
+			=            Form attributes            =
+			=======================================*/
+			
+			// csrf token
+			this.$formToken = $('input[name=_token]');
+
+			// form
+			this.$form = $('form.add-deals-form');
+			this.$deleteForm = $('form[id=delete-form-index]');
+
+			// attachment delete form
+			this.$attachmentDeleteForm = $('form[id=delete-deals-attachment]');
+
+			// 
+			this.$indexDeleteBtn = $('a[id=index-item-delete]');
+			
+			/*=====  End of Form attributes  ======*/
+
+			/*=============================================
+			=            Personal Info Section            =
+			=============================================*/
+			
+			// suburb dom
+			this.$suburb = $('input[id=location_suburb_town]');
+
+			// state
+			this.$state = $('input[id=state_identifier]');
+
+			// state
+			this.$locality = $('input[id=suburb_locality_town]');
+
+			this.$postcode = $('input[id=postcode]');
+			
+			// Verify USI
+			this.$usibtn = $('a.verify_usi');
+
+			
+			/*=====  End of Personal Info Section  ======*/
+
+			/*===========================================
+			=            Leads Scope Section            =
+			===========================================*/
+
+			// lead scope dom
+			this.$statDecChkbx = $('input[name=stat_dec_needed][type=checkbox]');
+
+			// stat dec datetimepicker
+			this.$dobDatepicker = $('div[id=dob-datetimepicker]');
+
+			// stat dec datetimepicker
+			this.$statDecDatepicker = $('div[id=stat-dec-datetimepicker]');
+
+			// aiss check datetimepicker
+			this.$aissDatepicker = $('div[id=aiss-datepicker]');
+
+			// enrolment received datetimepicker
+			this.$enrolDatepicker = $('div[id=enrol-datetimepicker]');
+
+			// course
+			this.$course = $('select[id=course_id]');
+
+			// course fee
+			this.$courseFee = $('input[id=course_fee]');
+
+			// course extra unit fees
+			this.$extraUnitFee = $('input[id=extra_unit_fee]');
+
+			// agent
+			this.$agent = $('select[id=agent_id]');
+
+			// student refferer
+			this.$studReferrer = $('select[id=stud_referrer]');
+
+			// eligible
+			this.$eligible = $('select[id=eligible]');
+			
+			/*=====  End of Leads Scope Section  ======*/
+
+			/*===========================================
+			=            Attachments Section            =
+			===========================================*/
+			
+			// attachment inputs
+			this.$pocAttachment = $('input[name=poc-attachment]');
+
+			this.$poaAttachment = $('input[name=poa-attachment]');
+
+			this.$pondAttachment = $('input[name=pond-attachment]');
+
+			this.$oaAttachment = $('input[name=oa-attachment]');
+
+			this.$poconAttachment = $('input[name=pocon-attachment]');
+
+			this.$bcAttachment = $('input[name=bc-attachment]');
+
+			// attachment preview button
+			this.$previewAttachment = $('a.fileuploader-action-preview');
+			
+			/*=====  End of Attachments Section  ======*/
+
+			/*===========================================
+			=            Opportunity Details            =
+			===========================================*/
+			
+			// closing date piker
+			this.$closingDatepicker = $('div#closing-date-datetimepicker');
+
+			// stage select
+			this.$oppStage = $('input[id=opp_stage_id]');
+			
+			this.$oppStageValue = $('input[id=probability_val]');
+			
+			/*=====  End of Opportunity Details  ======*/
+			
+			/*=============================
+			=            Notes            =
+			=============================*/
+			
+			// note content
+			this.$noteContent = $('textarea[id=notes-content]');
+
+			// convo content
+			this.$convoContent = $('textarea[id=convo-content]');
+
+			// convo id
+			this.$convoId = $('input[id=convo-id]');
+
+			// note submit button
+			this.$submitNoteBtn = $('button[id=submit-note]');
+
+			this.$submitConvoBtn = $('button[id=submit-convo]');
+
+			// note list
+			this.$noteList = $('ul[id=note-list]');
+
+			// convo list
+			this.$convoList = $('ul[id=convo-list]');
+			
+			/*=====  End of Notes  ======*/
+			
+			/*================================
+			=            Avetmiss            =
+			================================*/
+			
+			// opportunity detail
+			this.$oppYearCompleted = $('input[id=year_hs_completed]');
+			
+			// usi
+			this.$usi = $('input[name=uniq_stud_identifier]');
+			this.$usiverified = $('span.usi_verified');
+			/*=====  End of Avetmiss  ======*/
+			
+		},
+		_bindDomEvents: function() {
+
+			// on stat dec toggle true
+			this.$statDecChkbx.on('change', function() {
+				if ( $(this).is(':checked') ) {
+					$('div#stat_dec_date_wrapper').removeClass('hidden');
+				} else {
+					$('div#stat_dec_date_wrapper').addClass('hidden');
+				}
+			});
+
+			// submit form
+			toolbar.saveBtn.on('click', this._submitDealsForm.bind(this));
+
+			// on select state change
+			this.selectizeState.on('change', this._stateChange.bind(this));
+
+			// on select suburb change
+			this.selectizeSuburb.on('change', this._suburbChange.bind(this));
+
+			// on select locality change
+			// this.selectizeLocality.on('change', this._localityChange.bind(this));
+
+			// on select opps staging change
+			this.selectizeOppStage.on('change', this._oppStageChange.bind(this));
+
+			// remove item in index page action menu
+			this.$indexDeleteBtn.on('click', this._deleteItemInIndex.bind(this));
+
+			// attachment preview
+			this.$previewAttachment.on('click', this._previewAttachment.bind(this));
+
+			// notes submit
+			this.$submitNoteBtn.on('click', this._submitNote.bind(this));
+
+			// convo submit
+			this.$submitConvoBtn.on('click', this._submitConvo.bind(this));
+
+			// verify usi
+			this.$usibtn.on('click', this._usibtn.bind(this));
+		},
+		_autoload: function() {
+
+			/*=====================================
+			=            Fileuploaders            =
+			=====================================*/
+			
+			// initialize fileuploader
+			this.$oaAttachment.fileuploader( this._fileuploaderOptions('oa') );
+			this.$pocAttachment.fileuploader( this._fileuploaderOptions('poc') );
+			this.$poaAttachment.fileuploader( this._fileuploaderOptions('poa') );
+			this.$pondAttachment.fileuploader( this._fileuploaderOptions('pond') );
+			this.$poconAttachment.fileuploader( this._fileuploaderOptions('pocon') );
+			this.$bcAttachment.fileuploader( this._fileuploaderOptions('bc') );
+
+			// fileuploader instances
+			this._fileuploaderOaInstance = $.fileuploader.getInstance(this.$oaAttachment);
+			this._fileuploaderPocInstance = $.fileuploader.getInstance(this.$pocAttachment);
+			this._fileuploaderPoaInstance = $.fileuploader.getInstance(this.$poaAttachment);
+			this._fileuploaderPondInstance = $.fileuploader.getInstance(this.$pondAttachment);
+			this._fileuploaderPoconInstance = $.fileuploader.getInstance(this.$poconAttachment);
+			this._fileuploaderBcInstance = $.fileuploader.getInstance(this.$bcAttachment);
+
+			// appended files
+			for ( var file of window.files ) {
+				switch (file.data.input) {
+					case 'poc-attachment':
+						this._fileuploaderPocInstance.append(file);
+						break;
+
+					case 'poa-attachment':
+						this._fileuploaderPoaInstance.append(file);
+						break;
+
+					case 'pond-attachment':
+						this._fileuploaderPondInstance.append(file);
+						break;
+
+					case 'oa-attachment':
+						this._fileuploaderOaInstance.append(file);
+						break;
+					case 'pocon-attachment':
+						this._fileuploaderPoconInstance.append(file);
+						break;
+					case 'bc-attachment':
+						this._fileuploaderBcInstance.append(file);
+						break;
+				}
+			}
+			
+			/*=====  End of Fileuploaders  ======*/
+			
+
+			/*=======================================
+			=            DateTimePickers            =
+			=======================================*/
+				
+			// stat dec
+			this.$statDecDatepicker.datetimepicker({
+				format: 'DD/MM/YYYY'
+			});
+
+			// aiss
+			this.$aissDatepicker.datetimepicker({
+				format: 'DD/MM/YYYY'
+			});
+
+			// enrol
+			this.$enrolDatepicker.datetimepicker({
+				format: 'DD/MM/YYYY'
+			});
+
+			// dob
+			this.$dobDatepicker.datetimepicker({
+				format: 'DD/MM/YYYY'
+			});
+
+			// closing date
+			this.$closingDatepicker.datetimepicker({
+				format: 'DD/MM/YYYY'
+			});
+
+			// hs year
+			this.$oppYearCompleted.datetimepicker({
+				format: 'YYYY'
+			});
+			
+			/*=====  End of DateTimePickers  ======*/
+			
+			/*=================================
+			=            Selectize            =
+			=================================*/
+
+			// agent
+			this.$agent.selectize({
+			    create: false,
+			    sortField: 'text',
+			    persist: false,
+			});
+
+			// student referer
+			this.$studReferrer.selectize({
+			    create: false,
+			    sortField: 'text',
+			    persist: false,
+			    maxOptions: 10,
+			});
+
+			// course
+			this.selectizeCourse = this.$course.selectize({
+			    create: false,
+			    sortField: 'text',
+			    persist: false,
+			});
+
+			// course fee
+			this.selectizeCourseFee = this.$courseFee.selectize({
+			    create: false,
+			    maxItems: 1,
+			    sortField: 'text',
+			    persist: true,
+			    valueField: 'meta_key',
+			    searchField: ['name', 'fee', 'meta_key', 'description'],
+			    options: window.courseFees,
+			    onDropdownOpen: function(e) {
+			    	let instanceCourse = Deal.selectizeCourse[0].selectize;
+			    	let instanceCourseFee = Deal.selectizeCourseFee[0].selectize;
+			    	let instanceExtraUnit = Deal.selectizeExtraUnitFee[0].selectize;
+			    	let eligibleFees = ['concessional', 'non_concessional'];
+
+			    	let fees = $.map(window.courseFees, function(item) {
+			    		if ( Deal.$eligible.val() == 1 ) {
+				    		if ( instanceCourse.getValue() == item.course_id && $.inArray(item.meta_key, eligibleFees) != -1 ) {
+				    			return item;
+				    		}
+			    		} else {
+			    			if ( instanceCourse.getValue() == item.course_id && $.inArray(item.meta_key, eligibleFees) == -1 ) {
+			    				return item;
+			    			}
+			    		}
+			    	});
+
+			    	let extraUnits = $.map(window.extraUnits, function(item) {
+			    		if ( instanceCourse.getValue() == item.course_id ) {
+			    			return item;
+			    		}
+			    	});
+
+
+			    	if ( $.isEmptyObject(extraUnits) ) {
+			    		instanceExtraUnit.clearOptions();
+			    		instanceExtraUnit.disable();
+			    	} else {
+			    		instanceExtraUnit.enable();
+			    		instanceExtraUnit.clearOptions();
+			    		instanceExtraUnit.addOption(extraUnits);
+			    	}
+			    	
+			    	instanceCourseFee.clearOptions();
+			    	instanceCourseFee.addOption(fees);
+			    },
+	    	    render: {
+	                item: function(item, escape) {
+
+	                	if ( item.fee == null ) {
+    	                    return '<div style="pointer-events: none; color: #aaa;" disabled>' + escape(item.name) + '</div>';
+                    	}
+
+                    	return '<div>' +
+    	                        '$' + escape(item.fee) +
+    	                        '<br><small>' +
+    	                        escape(item.name) +
+    	                        '</small>'+
+    	                    '</div>';
+	                },
+	                option: function(item, escape) {
+                    	if ( item.fee == null ) {
+    	                    return '<div style="pointer-events: none; color: #aaa;" disabled>' + escape(item.name) + '</div>';
+                    	}
+
+                    	return '<div>' +
+    	                        '$' + escape(item.fee) +
+    	                        '<br><small>' +
+    	                        escape(item.name) +
+    	                        '</small>'+
+    	                    '</div>';
+	                }
+	            },
+			});
+
+			this.selectizeExtraUnitFee = this.$extraUnitFee.selectize({
+			    create: false,
+			    sortField: 'text',
+			    persist: true,
+			    valueField: 'code',
+			    searchField: ['code', 'description'],
+			    options: window.extraUnits,
+	    	    render: {
+	                item: function(item, escape) {
+
+                    	return '<div>' +
+    	                        escape(item.code) +
+    	                        '<br><small>' +
+    	                        '$' + escape(item.fee) +
+    	                        '</small>'+
+    	                    '</div>';
+	                },
+	                option: function(item, escape) {
+
+                    	return '<div>' +
+    	                        escape(item.code) +
+    	                        '<br><small>' +
+    	                        '$' + escape(item.fee) +
+    	                        '</small>'+
+    	                    '</div>';
+	                }
+	            },
+			});
+
+			// locality
+			this.selectizeLocality = this.$locality.selectize({
+			    create: false,
+	    	    maxItems: 1,
+	    	    valueField: 'id',
+	    	    searchField: ['loc_name', 'postcode'],
+	    	    options: window.locality,
+	    	    render: {
+	                item: function(item, escape) {
+	                    return '<div>' +
+	                        escape(item.loc_name) +
+	                    '</div>';
+	                },
+	                option: function(item, escape) {
+	                    return '<div>' +
+	                        escape(item.loc_name) +
+	                    '</div>';
+	                }
+	            },
+			});
+
+			// suburb
+			this.selectizeSuburb = this.$suburb.selectize({
+	    	    create: false,
+	    	    maxItems: 1,
+	    	    valueField: 'id',
+	    	    searchField: ['post_suburb', 'postcode', 'state'],
+	    	    options: window.postSuburbs,
+	    	    render: {
+	                item: function(item, escape) {
+	                    return '<div>' +
+	                        escape(item.post_suburb) +
+	                    '</div>';
+	                },
+	                option: function(item, escape) {
+	                    return '<div>' +
+	                        escape(item.post_suburb) +
+	                    '</div>';
+	                }
+	            },
+			});
+
+			// state
+			this.selectizeState = this.$state.selectize({
+			    create: false,
+			    maxItems: 1,
+			    valueField: 'id',
+			    searchField: ['state_key', 'state_name'],
+			    options: window.states,
+			    render: {
+		            item: function(item, escape) {
+		                return '<div>' +
+		                    escape(item.state_key) + ' - ' + escape(item.state_name) +
+		                '</div>';
+		            },
+		            option: function(item, escape) {
+		                return '<div>' +
+		                    escape(item.state_key) + ' - ' + escape(item.state_name) +
+		                '</div>';
+		            }
+		        },
+			});
+
+			// opps stage
+			this.selectizeOppStage = this.$oppStage.selectize({
+	    	    create: false,
+	    	    maxItems: 1,
+	    	    valueField: 'id',
+	    	    searchField: ['name'],
+	    	    options: window.opp_stagings,
+	    	    render: {
+	                item: function(item, escape) {
+	                    return '<div>' +
+	                        escape(item.name) +
+	                    '</div>';
+	                },
+	                option: function(item, escape) {
+	                    return '<div>' +
+	                        escape(item.name) +
+	                    '</div>';
+	                }
+	            },
+			});
+
+			// estimated revenue
+			if ( typeof this.selectizeCourseFee[0] != 'undefined' ) {
+
+				// course instance
+				let instanceCourse = this.selectizeCourse[0].selectize;
+				let instanceExtraUnit = this.selectizeExtraUnitFee[0].selectize;
+
+				let courseExtraUnits = $.map(window.extraUnits, function(item) {
+					if ( instanceCourse.getValue() == item.course_id ) {
+						return item;
+					}
+				});
+
+				if ( $.isEmptyObject(courseExtraUnits) ) {
+					instanceExtraUnit.disable();
+				}
+
+				// course fee instance
+				let instanceCourseFee = this.selectizeCourseFee[0].selectize;
+				let eligibleFees = ['concessional', 'non_concessional'];
+				let cfv = instanceCourseFee.getValue();
+
+		    	let fees = $.map(window.courseFees, function(item) {
+		    		if ( Deal.$eligible.val() == 1 ) {
+			    		if ( instanceCourse.getValue() == item.course_id && $.inArray(item.meta_key, eligibleFees) != -1 ) {
+			    			return item;
+			    		}
+		    		} else {
+		    			if ( instanceCourse.getValue() == item.course_id && $.inArray(item.meta_key, eligibleFees) == -1 ) {
+		    				return item;
+		    			}
+		    		}
+		    	});
+
+		    	instanceCourseFee.clearOptions();
+		    	instanceCourseFee.addOption(fees);
+		    	instanceCourseFee.setValue(cfv);
+			}
+
+			// default opp stage
+			if ( typeof this.selectizeOppStage[0] != 'undefined' ) {
+				
+				let instanceOfOppStage = this.selectizeOppStage[0].selectize;
+
+				$.map(window.opp_stagings, function(item) {
+					if ( instanceOfOppStage.getValue() == item.id ) {
+						Deal.$oppStageValue.val(item.probability);
+						return false;
+					}
+				});
+			}
+			
+			/*=====  End of Selectize  ======*/
+
+			// check stat dec check state
+			if ( this.$statDecChkbx.is(':checked') ) {
+				$('div#stat_dec_date_wrapper').removeClass('hidden');
+			}
+
+			$.ajax({ data: "GET",
+		        url: "/usi/getAuth",
+		        async: false,
+		        success : function(data)
+		        {
+		            var r = JSON.parse(data);
+		                apiUser = r.usr;
+		                apiPass = r.pwd;
+		                apiBaseUrl = r.url;
+		        },
+		        error: function() {
+		            alert('Error occured. please check your credentials.');
+		        }
+		    });
+		},
+
+		/*=======================================
+		=            Event Callbacks            =
+		=======================================*/
+		
+		// form submit callback
+		_submitDealsForm: function(e) {
+			this.$form.submit();
+		},
+
+		// * remove item in index page
+		_deleteItemInIndex: function(e) {
+			let url = this.$deleteForm.attr('action');
+
+			alertify.confirm('Delete Entry', 'Are you sure you want to delete this entry?',
+				function(){
+					Deal.$deleteForm.attr('action', url +'/'+ e.target.getAttribute('data-item'));
+
+					Deal.$deleteForm.submit();
+				},
+				function(){ alertify.error('Cancel')});
+		},
+
+		_stateChange: function(e) {
+			// selectize instance
+			let instanceOfState = this.selectizeState[0].selectize;
+			let instanceOfSuburb = this.selectizeSuburb[0].selectize;
+			let instanceOfLocality = this.selectizeLocality[0].selectize;
+
+			// data holders
+			let suburbData = null;
+			let localityData = null;
+			let stateKey = null;
+
+			// get state key
+			$.map(window.states, function(item) {
+				if ( item.id == instanceOfState.getValue() ) {
+					stateKey = item.state_key;
+					return false;
+				}
+			});
+
+			// re-map suburb options
+			suburbData = $.map(window.postSuburbs, function(item) {
+				if ( stateKey == item.state ) {
+					return item;
+				}
+			});
+
+			// re-map locality options
+			localityData = $.map(window.locality, function(item) {
+				if ( stateKey == item.state ) {
+					return item;
+				}
+			});
+
+			/*re-assign new options*/
+			instanceOfSuburb.clearOptions();
+			instanceOfSuburb.addOption(suburbData);
+
+			instanceOfLocality.clearOptions();
+			instanceOfLocality.addOption(localityData);
+		},
+
+		// suburb change callback
+		_suburbChange: function(e) {
+			let instanceOfSuburb = this.selectizeSuburb[0].selectize;
+			let instanceOfState = this.selectizeState[0].selectize;
+
+			let suburbData = null;
+
+			// 
+			$.map(window.postSuburbs, function(item) {
+				if ( instanceOfSuburb.getValue() == item.id ) {
+					Deal.$postcode.val(item.postcode);
+					return false;
+				}
+			});
+		},
+
+		// selectize opportunity stage change
+		_oppStageChange: function(e) {
+
+			let instanceOfOppStage = this.selectizeOppStage[0].selectize;
+
+			$.map(window.opp_stagings, function(item) {
+				if ( instanceOfOppStage.getValue() == item.id ) {
+					Deal.$oppStageValue.val(item.probability);
+					return false;
+				}
+			});
+		},
+
+		// preview attachment
+		_previewAttachment: function(e) {
+			var fileMeta = $(e.currentTarget).closest('li').data('meta');
+		},
+
+		// submit note callback
+		_submitNote: function(e) {
+			var notification = alertify.notify('Submitting your note...', 'warning', 0, null);
+
+			$.ajax({
+				url: window.notesRoute,
+				type: 'POST',
+				data: {'_token': Deal.$formToken.val(), 'remarks': Deal.$noteContent.val()},
+				success: function(response) {
+
+					if ( response.status != 'error' ) {
+						response.content = Deal.$noteContent.val();
+						Deal._appendNote(response);
+
+						Deal.$noteContent.val('');
+						notification.dismiss();
+					} else {
+						alertify.alert('Error', 'There was a problem on the server.<br>Please try again later.');
+					}
+				}
+			});
+		},
+
+		// submit convo callback
+		_submitConvo: function(e) {
+			var notification = alertify.notify('Submitting your conversation...', 'warning', 0, null);
+
+			$.ajax({
+				url: window.notesRoute,
+				type: 'POST',
+				data: {'_token': Deal.$formToken.val(), 'remarks': Deal.$convoContent.val(), 'notes_id': Deal.$convoId.val()},
+				success: function(response) {
+
+					if ( response.status != 'error' ) {
+						response.content = Deal.$convoContent.val();
+						Deal._appendConvo(response);
+
+						Deal.$convoContent.val('');
+						notification.dismiss();
+					} else {
+						alertify.alert('Error', 'There was a problem on the server.<br>Please try again later.');
+					}
+				}
+			});
+		},
+
+		// note append element callback
+		_appendNote: function(data) {
+			var noteItem = '<li>\
+                <div class="position-relative">\
+                    <div class="chatbox-avatar" style="">\
+                        <canvas width="50" height="50" data-jdenticon-value="%userId%"></canvas>\
+                    </div>\
+                    <div class="chatbox-content">\
+                        <h1 class="content-name px-16-font proximanova-bold iris-blue-font-color no-margin line-height-1">%user%</h1>\
+                        <span class="content-date px-10-font dark-grey-font-color">%timeSent%</span>\
+                        <span class="content-timepass px-10-font dark-grey-font-color"><i class="fa fa-clock-o" aria-hidden="true"></i>%timeDiff%</span>\
+                        <div class="content-conversation px-12-font bright-grey-font-color">\
+                            <p>%content%</p>\
+                        </div>\
+                    </div>\
+                </div>\
+            </li>';
+            
+
+            noteItem = noteItem.split('%user%').join(data.userName);
+            noteItem = noteItem.split('%userId%').join(data.userId);
+            noteItem = noteItem.split('%timeSent%').join(data.createdAt);
+            noteItem = noteItem.split('%timeDiff%').join(data.timeDiff);
+            noteItem = noteItem.split('%content%').join(data.content);
+
+            Deal.$noteList.append(noteItem);
+		},
+
+		// note append element callback
+		_appendConvo: function(data) {
+			var noteItem = '<li>\
+                <div class="position-relative">\
+                    <div class="chatbox-avatar" style="">\
+                        <canvas width="50" height="50" data-jdenticon-value="%userId%"></canvas>\
+                    </div>\
+                    <div class="chatbox-content">\
+                        <h1 class="content-name px-16-font proximanova-bold iris-blue-font-color no-margin line-height-1">%user%</h1>\
+                        <span class="content-date px-10-font dark-grey-font-color">%timeSent%</span>\
+                        <span class="content-timepass px-10-font dark-grey-font-color"><i class="fa fa-clock-o" aria-hidden="true"></i>%timeDiff%</span>\
+                        <div class="content-conversation px-12-font bright-grey-font-color">\
+                            <p>%content%</p>\
+                        </div>\
+                    </div>\
+                </div>\
+            </li>';
+            
+
+            noteItem = noteItem.split('%user%').join(data.userName);
+            noteItem = noteItem.split('%userId%').join(data.userId);
+            noteItem = noteItem.split('%timeSent%').join(data.createdAt);
+            noteItem = noteItem.split('%timeDiff%').join(data.timeDiff);
+            noteItem = noteItem.split('%content%').join(data.content);
+
+            Deal.$convoList.append(noteItem);
+		},
+
+
+		// jfiler options
+		_fileuploaderOptions: function(type) {
+			return {
+				// limit of files {null, Number}
+				// also with the appended files
+				// if null - has no limits
+				limit: null,
+				
+				// file's maximal size in MB {null, Number}
+				// also with the appended files
+				// if null - has no limits
+				maxSize: null,
+				
+				// each file's maximal size in MB {null, Number}
+				// if null - has no limits
+				fileMaxSize: null,
+				
+				// allowed extensions or file types {null, Array}
+				extensions: ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx'],
+				
+				// new input {Boolean, String, Function, jQuery Object}
+				changeInput: '<div class="btn-wrapper no-padding">\
+                                <button class="btn upload-btn" type="button" style="width: 100%;margin-bottom: 15px;background-color: #81f0be;color: #178252;outline: 0!important;text-align: left;"><span>Upload</span><span class="pull-right"><i class="fa fa-upload" aria-hidden="true"></i></span></button>\
+                            </div>',
+				
+				// add brackets at the end of the input name by multiple files {Boolean}
+				// specially for PHP
+				inputNameBrackets: false,
+				
+				// fileuploader theme {null, String}
+				// it will be only a class name in fileuploader parent element
+				// the class name will be: fileuploader-theme-default
+				theme: null,
+				
+				// enable thumbnails for files {null, Object}
+				// set on null to disable the thumbnails
+				thumbnails: {
+					// thumbnails list HTML {String, Function}
+					box: '<div class="upload-list-wrapper fileuploader-items">\
+							<ul class="fileuploader-items-list upload-list"></ul>\
+						</div>',
+
+					// append thumbnails list to selector {null, String, jQuery Object}
+					boxAppendTo: $('div#'+type+'-box-wrapper'),
+					
+					// thumbnails item HTML {String, Function}
+					item: '<li class="fileuploader-item">\
+								<div class="col-sm-1 no-padding">\
+				                    <span>${icon}</span>\
+				                </div>\
+				                <div class="col-sm-11" id="detail-holder">\
+				                    <div class="upload-status">\
+				                        <span class="filename">${name}</span>\
+				                        <span class="column-actions pull-right"></span>\
+				                        <div class="progress no-margin position-relative">\
+				                        	${progressBar}\
+				                        </div>\
+				                        <span>${size2}</span>\
+				                        <div class="clearfix"></div>\
+				                    </div>\
+				                </div>\
+				                <div class="clearfix"></div>\
+							</li>',
+					
+					// thumbnails appended item HTML {String, Function}
+					item2: '<li class="fileuploader-item">\
+								<div class="col-sm-1 no-padding">\
+				                    <span>${icon}</span>\
+				                </div>\
+				                <div class="col-sm-11" id="detail-holder">\
+				                    <div class="upload-status">\
+				                        <span class="filename">${name}</span>\
+				                        <span class="column-actions pull-right">\
+				                        	<a class="fileuploader-action fileuploader-action-preview"><i class="fa fa-eye"></i></a>\
+				                        	<a class="fileuploader-action fileuploader-action-remove"><i class="fa fa-times"></i></a>\
+				                        </span>\
+				                        <span>${size2}</span>\
+				                        <div class="clearfix"></div>\
+				                    </div>\
+				                </div>\
+				                <div class="clearfix"></div>\
+							</li>',
+						
+					// insert the thumbnail's item at the beginning of the list? {Boolean}
+					itemPrepend: false,
+					
+					// show a confirmation dialog by removing a file? {Boolean}
+					// it will not be shown in upload mode by canceling an upload
+					removeConfirmation: true,
+					
+					// render the image thumbnail? {Boolean}
+					// if it will be false, it will generate an icon(you can also hide it with css)
+					// if it will be false, you can use the API method (item.renderImage()) to render it (check thumbnails example)
+					startImageRenderer: false,
+					
+					// render the images synchron {Boolean}
+					// made to improve the browser speed
+					synchronImages: true,
+					
+					// render the image in a canvas element {Boolea, Object}
+					// if it will be true, it will generate an image with the css sizes from the parent element (.column-thumbnail)
+					// you can also set the width and the height in the object
+					// by default - true
+					canvasImage: {
+						width: null,
+						height: null
+					},
+					
+					// thumbnails selectors
+					_selectors: {
+						list: '.fileuploader-items-list',
+						item: '.fileuploader-item',
+						start: '.fileuploader-action-start',
+						retry: '.fileuploader-action-retry',
+						remove: '.fileuploader-action-remove'
+					},
+
+					// Callback fired after adding the item element
+					onItemShow: function(item, listEl, parentEl, newInputEl, inputEl) {
+
+						var $preview = item.html.find('a.fileuploader-action-preview');
+
+						if ( typeof item.data.meta != 'undefined' ) {
+
+							// add file meta value
+							item.html.attr('data-meta', item.data.meta);
+							
+							$preview.attr('href', '/deals/attachment/preview/'+item.data.meta);
+							$preview.attr('target', '_blank');
+
+
+							/*==========================================
+							=            Preview Attachment            =
+							==========================================*/
+
+							// base64 preview
+							/*$.ajax({
+								url: '/deals/attachment/preview/' + item.data.meta,
+								type: 'POST',
+								data: {"_token" : Deal.$formToken.val()},
+								success: function(r) {
+									// 
+									$preview.attr('href', r.source);
+
+									// attachment preview
+									$(document).ready(function() {
+
+										$preview.magnificPopup({
+											type: r.type,
+											mainClass: 'mfp-fade',
+											removalDelay: 300,
+											ajax: {
+												cursor: 'mfp-ajax-cur',
+												tError: '<a href="%url%">The content</a> could not be loaded.'
+											}
+										});
+									});
+								}
+							});*/
+
+							// add event attachment preview
+							// $preview.on('click', Deal._previewAttachment.bind(Deal));
+							
+							/*=====  End of Preview Attachment  ======*/
+							
+						}
+					},
+					
+					// Callback fired after removing the item element
+					// by default we will animate the removing action
+					onItemRemove: function(itemEl, listEl, parentEl, newInputEl, inputEl) {
+
+						// post delete
+						Deal.$attachmentDeleteForm.find('input[name=_meta]').val( itemEl.data('meta') );
+
+						$.ajax({
+							url: Deal.$attachmentDeleteForm.attr('action'),
+							type: 'POST',
+							data: Deal.$attachmentDeleteForm.serialize(),
+							success: function(response) {
+								if (response.status == 'success') {
+
+									itemEl.children().animate({'opacity': 0}, 200, function() {
+										setTimeout(function() {
+											itemEl.slideUp(200, function() {
+												itemEl.remove();
+											});
+										}, 100);
+									});
+									
+									alertify.alert('Success', response.message);
+								} else {
+									alertify.alert('Error', response.message);
+								}
+							}
+						});
+
+					},
+				},
+				
+				// enable the upload mode {null, Object}
+				// each file will be separately uploaded to server
+				// if you want to send all files, you don't even need this option. Just use the standard HTML <form> to do this.
+				// by default - null
+				upload: {
+					// upload URL {String}
+					url: window.attachmentRoute,
+					
+					// upload data {null, Object}
+					// you can also change this Object in beforeSend callback
+					// example: { option_1: 'yes', option_2: 'ok' }
+					data: {
+						"_token" : Deal.$formToken.val(),
+					},
+					
+					// upload type {String}
+					// for more details http://api.jquery.com/jquery.ajax/
+					type: 'POST',
+					
+					// upload enctype {String}
+					// for more details http://api.jquery.com/jquery.ajax/
+					enctype: 'multipart/form-data',
+					
+					// auto-start file uploading {Boolean}
+					// if it will be false, you can use the API method - api.getChoosedFiles()[i].upload.send(), cancel(), retry() to trigger uploading for each file
+					// if it will be false, you can use the upload button - check the options example
+					start: true,
+					
+					// upload the files synchron {Boolean}
+					synchron: true,
+					
+					// Callback fired before uploading a file
+					// by returning false, you can prevent the upload
+					beforeSend: function(item, listEl, parentEl, newInputEl, inputEl) {
+						// example:
+						// here you can extend the uploading data
+
+						return true;
+					},
+					
+					// Callback fired if the uploading succeeds
+					// by default we will add a success icon and fadeOut the progressbar
+					// Remember that if you want so show the PHP errors, you will need to process them also here. To prevent it you will need to respond on the upload url with error code in header.
+					onSuccess: function(data, item, listEl, parentEl, newInputEl, inputEl, textStatus, jqXHR) {
+
+						var response = JSON.parse(jqXHR.responseText);
+
+						item.html.find('.column-actions').html(
+							'<a href="'+response.preview.source+'" class="mfp-'+response.preview.type+' fileuploader-action fileuploader-action-preview" target="_blank" title="Preview"><i class="fa fa-eye"></i></a>'+
+							'<a class="fileuploader-action fileuploader-action-remove" title="Remove"><i class="fa fa-times"></i></a>'
+						);
+
+						// add success status string
+						item.html.find('#detail-holder').append(
+							'<span class="file">Success</span>'
+						);
+
+						// add file meta value
+						item.html.attr('data-meta', response.meta);
+
+						setTimeout(function() {
+							item.html.find('.progress').fadeOut(400);
+						}, 400);
+
+					},
+					
+					// Callback fired if the uploading failed
+					// by default we will set the progressbar to 0% and if it wasn't cancelled, we will add a retry button
+					// Remember that the PHP errors will be sent in the onSuccess function. To prevent this you will need to respond on the upload url with error code in header.
+					onError: function(item, listEl, parentEl, newInputEl, inputEl, jqXHR, textStatus, errorThrown) {
+						var errors = JSON.parse(jqXHR.responseText)['errors'];
+
+						var progressBar = item.html.find('.progress');
+
+						if(progressBar.length > 0) {
+							progressBar.find('span').html(0 + "%");
+							progressBar.find('.fileuploader-progressbar .bar').width(0 + "%");
+							item.html.find('.progress').fadeOut(400);
+						}
+
+						item.upload.status != 'cancelled' && item.html.find('.fileuploader-action-retry').length == 0 ? item.html.find('.column-actions').prepend(
+							'<span class="pull-right"><a class="fileuploader-action fileuploader-action-retry" title="Retry"><i class="fa fa-refresh"></i></a></span>'
+						) : null;
+
+						item.html.find('#detail-holder').append(
+							'<div class="clearfix"></div>\
+							<span class="">'+textStatus+'<br>'
+								+ errors +
+							'</span>'
+						);
+					},
+					
+					// Callback fired while uploading the file
+					// by default we will set the progressbar width and percentage
+					/*data = {
+						loaded: ...,
+						loadedInFormat: ...,
+						total: ...,
+						totalInFormat: ...,
+						percentage: ...,
+						secondsElapsed: ...,
+						secondsElapsedInFormat:...,
+						bytesPerSecond: ...,
+						bytesPerSecondInFormat: ...,
+						remainingBytes: ...,
+						remainingBytesInFormat: ...,
+						secondsRemaining: ...,
+						secondsRemainingInFormat: ...
+					}*/
+					onProgress: function(data, item, listEl, parentEl, newInputEl, inputEl) {
+						var progressBar = item.html.find('.progress');
+
+						if(progressBar.length > 0) {
+							progressBar.show();
+							progressBar.find('span').html(data.percentage + "%");
+							progressBar.find('.fileuploader-progressbar .bar').width(data.percentage + "%");
+						}
+					},
+					
+					// Callback fired after all files were uploaded
+					onComplete: function(listEl, parentEl, newInputEl, inputEl, jqXHR, textStatus) {
+						// callback will go here
+					},
+				},
+				
+				// enable the drag&drop feature {Boolean, Object}
+				// this feature is available only in upload mode
+				// by default - true
+				dragDrop: {
+					// set drag&drop container {null, String, jQuery Object}
+					// example: 'body'
+					// example: $('body')
+					container: $('div#'+type+'-drag-files'),
+					
+					// Callback fired on entering with dragged files the drop container
+					onDragEnter: function(event, listEl, parentEl, newInputEl, inputEl) {
+						// callback will go here
+					},
+					
+					// Callback fired on leaving with dragged files the drop container
+					onDragLeave: function(event, listEl, parentEl, newInputEl, inputEl) {
+						// callback will go here
+					},
+					
+					// Callback fired on dropping the dragged files in drop container
+					onDrop: function(event, listEl, parentEl, newInputEl, inputEl) {
+						// callback will go here
+					},
+
+				},
+				
+				// enable the addMore mode {Boolean}
+				// choose more files from different folders; can be used in the standard HTML <form>
+				addMore: true,
+				
+				// appended files {null, Array of Objects}
+				// useful for REST API in javascript
+				// please follow this structure for each file:
+				/*{
+					name: 'filename1.txt',
+					size: 1024,
+					type: 'text/plain',
+					file: 'uploads/filename1.txt',
+					data: {
+						url: 'http://your_link.com/',
+						another_attribute: 'ok',
+						you_can_use_it_later: 'hehe',
+						also_in_templates: 'perfect'
+					}
+				}*/
+				files: null,
+				
+				// upload an image from clipboard {Boolean, Number in ms}
+				// the input should be completely into view by pasting
+				// this feature is available only in upload mode
+				// compatible only for Chrome
+				clipboardPaste: 2000,
+				
+				// input with the listed files {Boolean, String}
+				// this list is an input[type="hidden"]
+				// this list will be generated from each choosed/appended file name in a JSON format. You can use the onListInput callback to mainpulate this list
+				// files in this list that are "0://file_name.ext" are showing to PHP that they are choosed and should be uploaded
+				// if you've appended some files on the server-side, PHP will check if each appended file is in this list, if not, PHP will set it as removed. Also, it is very important if you have appended files
+				// example: true
+				// example: 'custom_listInput_name'
+				listInput: true,
+				
+				// enable API methods {Boolean}
+				// if it will be true, you can use API methods like writing this code:
+				// var api = $.fileuploader.getInstance(input_element); (check api example to see all available methods)
+				enableApi: true,
+				
+				// standard input events {null, Object}
+				// bind standard Javascript input events
+				// example: 
+				/*{
+					click: function(event) {
+						// input was clicked
+					}
+				}*/
+				listeners: null,
+				
+				// dialogs
+				// made to let you customizing the standard Javascript dialogs
+				// this dialogs are used by showing a file warning or confirming a file removing
+				dialogs: {
+				
+					// alert dialog
+					alert: function(text) {
+						// return alert(text);
+						return alertify.alert(text);
+					},
+					
+					// confirm dialog
+					confirm: function(text, callback) {
+						confirm(text) ? callback() : null;
+						// alertify.confirm('Warning!', text, callback(), null) ;;
+					}
+				},
+				
+				// captions
+				captions: {
+					button: function(options) { return 'Choose ' + (options.limit == 1 ? 'File' : 'Files'); },
+					feedback: function(options) { return 'Choose ' + (options.limit == 1 ? 'file' : 'files') + ' to upload'; },
+					feedback2: function(options) { return options.length + ' ' + (options.length > 1 ? ' files were' : ' file was') + ' chosen'; },
+					drop: 'Drop the files here to Upload',
+					paste: '<div class="fileuploader-pending-loader"><div class="left-half" style="animation-duration: ${ms}s"></div><div class="spinner" style="animation-duration: ${ms}s"></div><div class="right-half" style="animation-duration: ${ms}s"></div></div> Pasting a file, click here to cancel.',
+					removeConfirmation: 'Are you sure you want to remove this file?',
+					errors: {
+						filesLimit: 'Only ${limit} files are allowed to be uploaded.',
+						filesType: 'Only ${extensions} files are allowed to be uploaded.',
+						fileSize: '${name} is too large! Please choose a file up to ${fileMaxSize}MB.',
+						filesSizeAll: 'Files that you choosed are too large! Please upload files up to ${maxSize} MB.',
+						fileName: 'File with the name ${name} is already selected.',
+						folderUpload: 'You are not allowed to upload folders.'
+					}
+				}
+			};
+		},
+		getAuth:function(e) {
+		    // if (!basicAuth)
+		        basicAuth = 'Basic ' + btoa(apiUser + ":" + apiPass);
+		    return basicAuth;
+		},
+		showResult:function(req, res) {
+		    /*$("#requestDataTxt").html(JSON.stringify(req, null, 4));*/
+		    /*$("#responseDataTxt").html(JSON.stringify(res, null, 4));*/
+
+		            console.log(res);
+		            $("li#usistatus").html('USI ' + ' is ' + res["usistatus"]);
+		            $("li#firstname").html('Firstname is ' + JSON.stringify(res["firstName"]));
+		            $("li#lastname").html('Lastname is ' + JSON.stringify(res["familyName"]));
+		            $("li#dobirth").html('Date of Birth is ' + JSON.stringify(res["dateOfBirth"]));
+		            $("#erorInfo").html('Error : ' + JSON.stringify(res)); /*["errorInfo"]["message"]));*/
+		            $('#verification_modal').modal('show');
+
+		},
+		showAlert: function(msg, flashKind = "success", msgTitle = "", autoClose = true) {
+		    /*Go To top of page*/
+		    $('html, body').animate({ scrollTop: 0 }, 'fast');
+
+		    var myAlertMsg = "<div id='alertMsgDiv' class='alert alert-" + flashKind + "' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>" + msgTitle + "</strong>&nbsp;&nbsp;" + msg + "</div>";
+
+		    $("#alertMsg").html(myAlertMsg);
+		    if (autoClose) {
+		        window.setTimeout(function() {
+		            $("#alertMsgDiv").fadeTo(500, 0).slideUp(500, function() {
+		                $(this).remove();
+		            });
+		        }, 4000);
+		    }
+		},
+		_usibtn: function(e){
+			$('input[name=usi]').val(this.$usi.val());
+			console.log($('input[name=usi]').val());
+			var formdata = $("#verify").serializeJSON();
+			var verifyresult;
+			var _usi         = this.$usi.val();
+		    var _student_id  = $('input[name=student_id]').val();
+		    var _token       = $('input[name=_token]').val();  
+		     
+		     if(this.$usiverified.data('verified_use') == 1){
+		     	alertify.confirm('Validation', 'Are you sure you want to undergo a re-validation process?',
+					function(){ 
+						$("div#divLoading").addClass('show');
+						 $.ajax({
+				            type: 'POST',
+				            url: apiBaseUrl + 'verify',
+				            contentType: "application/json;charset=utf-8",
+				            data: JSON.stringify(formdata),
+				            success:function(formdata){ },
+				            beforeSend: function(xhr) {
+				                xhr.setRequestHeader('Authorization', Deal.getAuth());
+				            }
+				        }).then(function(data, status, jqxhr) {
+				            console.log("RESPONSE:", data);
+				            
+				            verifyresult = data["usistatus"];
+				                if(verifyresult == 'Valid'){
+				                    $.ajax({
+				                        url:window.verify,
+				                        type:'POST',
+				                        data:{student_id:_student_id,usi:_usi,_token:_token},
+				                        success:function(ress){
+				                            console.log(ress);
+				                        }
+				                    });
+				                }
+				                Deal.showResult(formdata, data);
+				                $("div#divLoading").removeClass();
+				            
+				        }, function(data) {
+				            $("#responseDataTxt").html(JSON.stringify(data.responseJSON, null, 4));
+				        });
+					},
+					function(){ alertify.error('Cancel')});
+		     }else{
+		     	$("div#divLoading").addClass('show');
+		     	 $.ajax({
+				            type: 'POST',
+				            url: apiBaseUrl + 'verify',
+				            contentType: "application/json;charset=utf-8",
+				            data: JSON.stringify(formdata),
+				            success:function(formdata){ },
+				            beforeSend: function(xhr) {
+				                xhr.setRequestHeader('Authorization', Deal.getAuth());
+				            }
+				        }).then(function(data, status, jqxhr) {
+				            console.log("RESPONSE:", data);
+				            
+				            verifyresult = data["usistatus"];
+				                if(verifyresult == 'Valid'){
+				                    $.ajax({
+				                        url:window.verify,
+				                        type:'POST',
+				                        data:{student_id:_student_id,usi:_usi,_token:_token},
+				                        success:function(ress){
+				                            console.log(ress);
+				                        }
+				                    });
+				                }
+				                Deal.showResult(formdata, data);
+				                $("div#divLoading").removeClass();
+				            
+				        }, function(data) {
+				            $("#responseDataTxt").html(JSON.stringify(data.responseJSON, null, 4));
+				        });
+		     }
+		     
+
+			console.log(formdata);
+			
+		},
+		
+		/*=====  End of Event Callbacks  ======*/
+		
+	}
+
+	// initialize
+	Deal.init();
+})(window)

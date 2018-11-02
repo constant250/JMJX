@@ -1,0 +1,11 @@
+/*Import Data Alertify Modal*/
+.ajs-modal .ajs-body{margin: 0;padding: 15px 30px;}
+ .ajs-modal .ajs-body #import_csv_file_form .uploadbtn{margin-top: 10px;background-color: #0ac8cf;border: none;color: #fff;border-radius: 3px;padding: 5px 15px;outline: none;}
+ /*File upload input*/
+ .ajs-modal .ajs-body #import_csv_file_form .import_csv_file {padding-left: 15px;outline: 0;width: 100%;border: solid 1px #0ac8cf;}
+ .ajs-modal .ajs-body #import_csv_file_form .import_csv_file::-webkit-file-upload-button {visibility: hidden;}
+ .ajs-modal .ajs-body #import_csv_file_form .import_csv_file::before {margin-left: -15px;content: 'Choose File';color: #fff;display: inline-block;background-color: #0ac8cf;padding: 5px 8px;outline: none;white-space: nowrap;-webkit-user-select: none;cursor: pointer;text-shadow: 1px 1px #fff;font-size: 10pt;}
+ .ajs-modal .ajs-body #import_csv_file_form .import_csv_file:hover::before {border-color: black;}
+ .ajs-modal .ajs-body #import_csv_file_form .import_csv_file:active, .import_csv_file:focus{outline: 0!important;}
+ .ajs-modal .ajs-body #import_csv_file_form .import_csv_file:active::before {background-color: #0ac8cf;}
+.ajs-modal .ajs-body #import_csv_file_form label{display: block;text-align: center;}

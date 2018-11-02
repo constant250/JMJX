@@ -1,0 +1,18 @@
+
+/*COURSEENROLMENT with rowspan on header/th table*/
+table#course-enrolment-table tbody tr td p{margin: 0;text-align: left;}
+table#course-enrolment-table thead tr th.fees-mainhead{border:0;    padding: 10px!important;}
+table#course-enrolment-table thead tr.fees td{background-color: #09c8d0;color: #fff;outline: none; border-color: #99bbbc;  text-align: center;}
+@media only screen and  (max-width: 640px) {
+   table#course-enrolment-table thead tr.fees td {padding: 40px 10px;}
+  table#course-enrolment-table thead tr th.fees-mainhead{display: none;}
+}
+/*COURSE ENROLMENT FORM STYLES*/
+.course-enrolment-wrapper .form-wrapper{padding: 40px;border-radius: 20px;}
+.course-enrolment-wrapper  form.form-template label:before{ display: none!important; }
+.course-enrolment-wrapper .form-wrapper form button{background-color: #11c7ca;width: 230px;margin: 20px auto;display: block;outline: 0!important;color: #fff;border-radius: 0;    height: 40px;}
+.course-enrolment-wrapper .form-wrapper form  .btn.focus, .form-wrapper form  .btn:focus, .form-wrapper form  .btn:hover {color: #1a5b3e;text-decoration: none;background-color: #5ac4c0;}
+@media only screen and  (max-width: 767px) {
+.course-enrolment-wrapper .form-wrapper{padding: 0;}
+.course-enrolment-wrapper .form-wrapper form{padding: 15px;}
+}

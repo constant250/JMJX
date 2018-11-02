@@ -1,0 +1,35 @@
+    /*EMAIL PROCESS*/
+.email-process-wrapper .heading h1{background-color: #0ac8cf;font-size: 20px;color: #fff;padding: 10px 20px;margin: 0;}
+.email-process-wrapper .upload-files-wrapper .drag-files{height: 165px;border: 2px dashed #7debba;padding:25px;margin-bottom: 20px;}
+.email-process-wrapper .upload-files-wrapper .drag-files a{color: rgba(23, 130, 82, 0.62);font-size: 12px;text-decoration: none;text-align: center;}
+.email-process-wrapper .upload-files-wrapper .drag-files a span{display: block;}
+.email-process-wrapper .upload-files-wrapper   .btn-wrapper button.upload-btn{width: 100%; margin-bottom: 15px;    background-color: #81f0be;color: #178252;outline: 0!important;text-align: left;}
+.email-process-wrapper .upload-files-wrapper  h1{    color: #57aa85;font-size: 18px;margin-top: 0;}
+.email-process-wrapper .upload-list-wrapper{max-height: 800px;overflow-y: auto;padding-right: 8px;}
+.email-process-wrapper .upload-list-wrapper .upload-list{padding: 0;}
+.email-process-wrapper .upload-list-wrapper .upload-list li, .upload-list-wrapper .upload-list li span a{list-style: none;font-size: 12px;color: #cecece;    padding-bottom: 45px;}
+.email-process-wrapper .upload-list-wrapper .upload-list li span.filename{color: #75787a;    white-space: nowrap;width: 130px;display: inline-block;overflow: hidden;text-overflow: ellipsis;}
+.email-process-wrapper .upload-list-wrapper .upload-list li span i{color: #cecece;display: block;text-align: center;    font-size: 40px;}
+.email-process-wrapper .upload-list-wrapper .upload-list li  .progress{border-radius: 5px;height: 10px;}
+.email-process-wrapper .upload-list-wrapper .upload-list li  .progress .progress-bar{ background-color: #7debba;   background-image: none;border-radius: 5px;}
+.email-process-wrapper .border-right{border-right: 1px solid #ccc;margin-top: 20px;}
+@media only screen and  (max-width: 1199px) {
+.email-process-wrapper .border-right{border-right: 0;}
+}
+
+ .mce-notification,  .mce-branding-powered-by{display: none!important;}
+.email-process-wrapper .mce-container{    margin-bottom: 4px!important}
+/*.email-process-wrapper .mce-container-body{background-color: #fff!important;}*/
+.email-process-wrapper .mce-container-body .mce-widget{margin: 0!important;border:0;    box-shadow: 0 2px 2px #ccc;}
+.email-process-wrapper .mce-container-body button{background-color: #f8f8f8;border: 1px solid #e6e6e6;padding: 5px 7px!important;}
+.email-process-wrapper .mce-container-body button i{color: #828282;}
+.email-process-wrapper .mce-btn-group:not(:first-child){border:0!important;padding-left: 5px!important;}
+.email-process-wrapper .mce-panel{background-color: #fff!important;}
+.email-process-wrapper div.mce-edit-area {padding: 0 0 0 20px ;}
+.email-process-wrapper .mce-wordcount{box-shadow: 0 0 0 #ccc!important;}
+.email-process-wrapper .mce-statusbar{margin-bottom: 0!important;}
+.email-process-wrapper .text-editor-wrapper .btn-wrapper{text-align: center;padding: 50px 0 20px;}
+.email-process-wrapper .text-editor-wrapper .btn-wrapper button{    background-color: #59c493;color: #fff;width: 150px;margin-bottom: 10px;}
+.email-process-wrapper .text-editor-wrapper .btn-wrapper button:hover, .text-editor-wrapper .btn-wrapper button:focus{background-color: #59c4c0;outline: 0;}
+/* theme jfiler */
+.fileuploader-theme-dragdrop {padding:0!important;background-color:transparent!important;}

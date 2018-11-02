@@ -1,0 +1,30 @@
+.toobar-wrapper .toolbar-left-aside{float: left;}
+.toobar-wrapper .toolbar-right-aside{float:right;}
+
+.main-option-wrapper{display:inline-block;}
+
+
+@media only screen and (max-width: 544px) {
+	.toobar-wrapper .toolbar-left-aside{float: none; width:100%;}
+	.toobar-wrapper .toolbar-right-aside{float: none; width:100%;}
+	.toobar-wrapper .toolbar-left-aside a{width:100%;}
+	.main-option-wrapper{display: block; margin:15px 0;}
+	.main-option-wrapper ul{display: table; margin: 0 auto;}
+}
+/*xs*/
+@media only screen and (min-width: 545px) and (max-width: 768px){
+	.toobar-wrapper .toolbar-left-aside{float: none; width:100%;}
+	.toobar-wrapper .toolbar-right-aside{float: none; width:100%;}
+	.toobar-wrapper .toolbar-left-aside a{width:100%;}
+	.main-option-wrapper{display: block; margin:15px 0;}
+	.main-option-wrapper ul{display: table; margin: 0 auto;}
+}
+/*sm*/
+@media only screen and (min-width: 769px) and (max-width: 922px){}
+/*md*/
+@media only screen and (min-width: 923px) and (max-width: 1024px){}
+@media only screen and (min-width: 1024px) and (max-width: 1200px){} 
+@media only screen and (min-width: 923px) and (max-width: 1200px){}
+@media only screen and (min-width: 992px) and (max-width: 1200px){}
+/*lg*/
+@media only screen and (min-width: 1201px) and (max-width: 1440px){}

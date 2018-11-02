@@ -1,0 +1,40 @@
+.inner-content-header{position: sticky;position: -webkit-sticky;top: 80px;background-color: #FFFFFF;padding: 15px 10px 5px !important;z-index: 99;}
+
+.toobar-wrapper .toolbar-left-aside{float: left;}
+.toobar-wrapper .toolbar-right-aside{float:right;}
+
+.main-option-wrapper{display:inline-block;}
+.main-option-wrapper ul li button,
+.main-option-wrapper ul li input[type="button"],
+.main-option-wrapper ul li input[type="submit"]{background: transparent; border:none; outline:none;}
+
+.main-option-wrapper.inverted-btns li{padding:0 2px;}
+.main-option-wrapper.inverted-btns li a{padding: 9px 10px;color: #FFFFFF !important;background: #0AC8CF;border-radius: 4px; display: block;}
+.main-option-wrapper.inverted-btns li button{padding: 9px 10px;color: #FFFFFF !important;background: #0AC8CF;border-radius: 4px; display: block;}
+.main-option-wrapper.inverted-btns li a:hover,
+.main-option-wrapper.inverted-btns li button:hover{color: #FFFFFF !important;}
+
+@media only screen and (max-width: 544px) {
+	.toobar-wrapper .toolbar-left-aside{float: none; width:100%;}
+	.toobar-wrapper .toolbar-right-aside{float: none; width:100%;}
+	.toobar-wrapper .toolbar-left-aside a{width:100%;}
+	.main-option-wrapper{display: block; margin:15px 0;}
+	.main-option-wrapper ul{display: table; margin: 0 auto;}
+}
+/*xs*/
+@media only screen and (min-width: 545px) and (max-width: 768px){
+	.toobar-wrapper .toolbar-left-aside{float: none; width:100%;}
+	.toobar-wrapper .toolbar-right-aside{float: none; width:100%;}
+	.toobar-wrapper .toolbar-left-aside a{width:100%;}
+	.main-option-wrapper{display: block; margin:15px 0;}
+	.main-option-wrapper ul{display: table; margin: 0 auto;}
+}
+/*sm*/
+@media only screen and (min-width: 769px) and (max-width: 922px){}
+/*md*/
+@media only screen and (min-width: 923px) and (max-width: 1024px){}
+@media only screen and (min-width: 1024px) and (max-width: 1200px){} 
+@media only screen and (min-width: 923px) and (max-width: 1200px){}
+@media only screen and (min-width: 992px) and (max-width: 1200px){}
+/*lg*/
+@media only screen and (min-width: 1201px) and (max-width: 1440px){}

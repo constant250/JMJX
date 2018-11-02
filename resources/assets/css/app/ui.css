@@ -1,0 +1,56 @@
+/*Tabs*/
+	/*Main Style*/
+		/*Tabs*/
+.crm-nav-tabs{border-bottom: 1px solid #fff!important; margin-bottom: -1px;}
+.crm-nav-tabs>li>a {font-size: 12px;padding: 7px 14px;border-color: :#fff!important;border-radius: 4px;text-align: center;margin-right: 3px;border-bottom-left-radius: 0!important;border-bottom-right-radius: 0!important;}
+.crm-nav-tabs>li.active>a, 
+.crm-nav-tabs>li.active>a:focus, 
+.crm-nav-tabs>li.active>a:hover, 
+.crm-nav-tabs>li>a:focus, 
+.crm-nav-tabs>li>a:hover {border-color: #fff!important;border-bottom: 1px solid #fff!important;box-shadow: -2px -5px 6px rgba(204, 204, 204, 0.42);color: #59c393;background-color: #fff!important;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+		/*Content*/
+.inner-main-content .tabs .tab-content{padding: 40px;border-radius: 20px;border-top-left-radius: 0!important;box-shadow: 0 0px 10px #ccc;}
+.crm-tabs-content{padding: 40px;border-radius: 20px;border-top-left-radius: 0!important;box-shadow: 0 0px 10px #ccc;}
+.crm-tabs-content .template-list-wrapper{box-shadow: 0px 0px 4.9px 0.1px rgba(87, 116, 119, 0.31); -o-box-shadow: 0px 0px 4.9px 0.1px rgba(87, 116, 119, 0.31); -moz-box-shadow: 0px 0px 4.9px 0.1px rgba(87, 116, 119, 0.31); -webkit-box-shadow: 0px 0px 4.9px 0.1px rgba(87, 116, 119, 0.31); padding: 35px 45px; border-radius: 20px;}		
+	/*Color Scheme*/
+		/*Dark Tabs*/
+.dark-tabs>li>a{color: #59c393!important;background-color: #525558!important;}
+.crm-nav-tabs>li.active>a, 
+.crm-nav-tabs>li.active>a:focus, 
+.crm-nav-tabs>li.active>a:hover, 
+.crm-nav-tabs>li>a:focus, 
+.crm-nav-tabs>li>a:hover {border-color: #fff!important;border-bottom: 1px solid #fff!important;color: #59c393;background-color: #fff!important;}
+
+.tab-spacer {width: 100%;height: 35px;}
+.dark-tabs-wrapper .nav-tabs>li, .crm-nav-tabs>li { width: 16%;}
+.tab-content .nav-tabs>li {width: auto!important;}
+@media only screen and (min-width: 545px) and (max-width: 1199px) {
+.dark-tabs-wrapper .nav-tabs>li, .crm-nav-tabs>li { width: 24%;}
+}
+
+	/*media Queries*/
+@media only screen and  (max-width: 420px) {
+	.crm-nav-tabs>li{width: 100%;}
+	.crm-nav-tabs>li>a{margin-right: 0;}
+}
+
+/*Dropdown*/
+
+.dropdown-light-blue{padding:0;}
+.dropdown-light-blue li{display: list-item !important;}
+.dropdown-light-blue li:hover{background:#59C4C0 !important;}
+.dropdown-light-blue li:hover .form-btn{color:#FFFFFF !important;}
+.dropdown-light-blue li .form-btn{width: 100% !important; background: transparent !important; color: #363636 !important; font-size:12px !important; text-align:left; padding:8px 25px; border:none;}
+
+/*Datetime Picker*/
+.bootstrap-datetimepicker-widget{z-index: 9;}
+
+/*Accordion*/
+
+/*Buttons*/
+
+/*Checkbox*/
+
+/*Radio Buttons*/
+
+/*Progress Bar*/

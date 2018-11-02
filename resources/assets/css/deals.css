@@ -1,0 +1,54 @@
+.crm-kanban-task-wrapper {overflow-y: hidden;white-space: nowrap;width: 100%;border: 1px solid #ded5d5;display: table;margin: 0 auto;border-right: 0}
+.crm-kanban-task-wrapper .crm-column-wrapper {border-left: 1px solid #ded5d5;width: 24.9%}
+.crm-kanban-task-wrapper .crm-column-wrapper:first-child {border-left: 0}
+.crm-kanban-task-wrapper .crm-column-wrapper:last-child {border-right: 1px solid #ded5d5}
+.crm-kanban-task-wrapper .crm-column-wrapper .crm-column-header {width: 100%;min-width: 100%;max-width: 100%;color: #fff;height: 60px;text-align: center;position: relative}
+.crm-kanban-task-wrapper .crm-column-wrapper .crm-column-header:before {content: "";position: absolute;top: -8px;right: -36px;border-color: transparent #e8edf1;border-width: 38px 0 38px 36px;border-style: solid;z-index: 9}
+.crm-kanban-task-wrapper .crm-column-wrapper:nth-child(odd) .crm-column-header {background: #577477}
+.crm-kanban-task-wrapper .crm-column-wrapper:nth-child(odd) .crm-column-header:after {content: "";position: absolute;top: 0;right: -30px;border-color: transparent #577477;border-width: 30px 0 30px 30px;border-style: solid;z-index: 9}
+.crm-kanban-task-wrapper .crm-column-wrapper:nth-child(even) .crm-column-header {background: #0ac8cf}
+.crm-kanban-task-wrapper .crm-column-wrapper:nth-child(even) .crm-column-header:after {content: "";position: absolute;top: 0;right: -30px;border-color: transparent #0ac8cf;border-width: 30px 0 30px 30px;border-style: solid;z-index: 9}
+.crm-kanban-task-wrapper .crm-column-wrapper:last-child .crm-column-header:after,
+.crm-kanban-task-wrapper .crm-column-wrapper:last-child .crm-column-header:before {content: "";display: none}
+.crm-kanban-task-wrapper .crm-column-wrapper .crm-task-column {width: 100%;display: inline-block;height: 610px;overflow-y: auto;overflow-x: hidden}
+.crm-task-wrapper {height: 600px;min-height: 600px;max-height: 600px}
+.individual-task-wrapper {height: 140px;background: #fff;border-radius: 5px;margin: 7px 7px 14px;box-shadow: 0 0 6px 2px rgba(106, 106, 106, .27);-o-box-shadow: 0 0 6px 2px rgba(106, 106, 106, .27);-moz-box-shadow: 0 0 6px 2px rgba(106, 106, 106, .27);-webkit-box-shadow: 0 0 6px 2px rgba(106, 106, 106, .27)}
+.task-content-wrapper {padding: 15px 0 10px}
+.task-profile-initial {background: #0ac8cf;height: 40px;width: 40px;border-radius: 50%;position: relative;display: inline-block;margin-top: 12px;overflow: hidden;}
+.left-aside,
+.right-aside {height: 90%;float: left;position: relative}
+.task-profile-details {display: inline-block;width: 62%;margin-left: 15px;white-space: initial}
+.task-details-wrapper {padding: 0 10px 10px}
+.left-aside {width: 10%}
+.right-aside {width: 90%;padding: 0 15px}
+
+@media only screen and (max-width:544px) {
+    .crm-kanban-task-wrapper {display: block;margin: 0 auto}
+    .crm-kanban-task-wrapper .crm-column-wrapper {width: 300px}
+}
+
+@media only screen and (min-width:545px) and (max-width:768px) {
+    .crm-kanban-task-wrapper {display: block;margin: 0 auto}
+    .crm-kanban-task-wrapper .crm-column-wrapper {width: 300px}
+}
+
+@media only screen and (min-width:769px) and (max-width:922px) {
+    .crm-kanban-task-wrapper {display: block;margin: 0 auto}
+    .crm-kanban-task-wrapper .crm-column-wrapper {width: 300px}
+}
+
+@media only screen and (min-width:923px) and (max-width:1024px) {
+    .crm-kanban-task-wrapper {display: block;margin: 0 auto}
+    .crm-kanban-task-wrapper .crm-column-wrapper {width: 300px}
+    .individual-task-wrapper {height: 150px}
+    .task-profile-details {margin-left: 5px}
+    .right-aside {padding: 0 10px}
+}
+
+@media only screen and (min-width:1024px) and (max-width:1200px) {
+    .crm-kanban-task-wrapper {display: block;margin: 0 auto}
+    .crm-kanban-task-wrapper .crm-column-wrapper {width: 300px}
+    .individual-task-wrapper {height: 150px}
+    .task-profile-details {margin-left: 5px; }
+    .right-aside {padding: 0 10px;}
+}

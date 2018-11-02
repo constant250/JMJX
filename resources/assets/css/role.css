@@ -1,0 +1,9 @@
+
+/*ADD ROLE STYLES*/
+#acl-table thead, #acl-table tbody{display: block;}
+#acl-table tbody{height: 320px; overflow: auto;display: block;}
+#acl-table tbody tr {width: 100%;display: inline-table;}
+#acl-table tbody tr td{width: 200px;}
+#acl-table thead tr th.module-rowspan{width: 180px!important;}
+#acl-table thead tr th.acl-mainhead{    width: 770px!important;}
+#acl-table tbody tr td span.dtr-data {display: block;text-align: center!important;}

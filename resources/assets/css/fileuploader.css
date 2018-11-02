@@ -1,0 +1,65 @@
+/**/
+
+.fileuploader-item{
+    width: 100%;
+}
+.fileuploader-action-preview i{
+    color: #0ac8cf !important;
+}
+.fileuploader-action-remove i{
+    color: #D32F2F !important;
+}
+.fileuploader-item .column-actions{
+     position: absolute;
+     right: 0;
+     top: 0;
+     margin-top: 0;
+}
+.upload-list-wrapper .upload-list li span a i {
+    display: block;
+    color: #FFF;
+    text-align: center;
+    font-size: 18px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.fileuploader-item .column-actions{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 0;
+}
+.fileuploader-action-remove {
+    background: transparent!important;
+    border: 1px solid transparent!important;
+}
+.fileuploader-action-remove i:before{
+    background-color: transparent !important;
+    font-family: 'FontAwesome';
+    content: "\f00d";
+    position:inherit;
+    top: 0;
+    left: 0;
+    width:auto;
+    height:auto;
+    transform: none;
+    -webkit-transform: none;
+}
+.fileuploader-action-remove i:after{
+    display: none;
+}
+
+
+
+.personalinfo-form-wrapper .personalinfo-form .steps {display: none;}
+.personalinfo-form-wrapper , .student-identification-wrapper{background-color: #eef9f4;}
+.upload-files-wrapper .drag-files{height: 165px;border: 2px dashed #7debba;padding:25px;margin-bottom: 20px;}
+.upload-files-wrapper .drag-files a{color: rgba(23, 130, 82, 0.62);font-size: 12px;text-decoration: none;text-align: center;}
+.upload-files-wrapper .drag-files a span{display: block;}
+.upload-list-wrapper .upload-list{padding: 0;}
+.upload-list-wrapper .upload-list li, .upload-list-wrapper .upload-list li span a{list-style: none;font-size: 12px;color: #cecece;    padding-bottom: 45px;}
+.upload-list-wrapper .upload-list li span.filename{color: #75787a;}
+.upload-list-wrapper .upload-list li span i{display: block;color: #FFF;text-align: center;font-size: 18px;height: 45px;line-height: 45px;}
+.upload-list-wrapper .upload-list li  .progress{border-radius: 5px;height: 10px;}
+.upload-list-wrapper .upload-list li  .progress .progress-bar{ background-color: #7debba;   background-image: none;border-radius: 5px;}
