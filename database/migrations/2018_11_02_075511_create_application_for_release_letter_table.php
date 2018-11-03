@@ -13,7 +13,7 @@ class CreateApplicationForReleaseLetterTable extends Migration
      */
     public function up()
     {
-        Schema::create('application_for_release_letter', function (Blueprint $table) {
+        Schema::create('application_for_release_letters', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('party_id');
             $table->text('student_declaration');
@@ -37,6 +37,6 @@ class CreateApplicationForReleaseLetterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('application_for_release_letter');
+        Schema::dropIfExists('application_for_release_letters');
     }
 }

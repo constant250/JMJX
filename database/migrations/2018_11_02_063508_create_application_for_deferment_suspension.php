@@ -13,7 +13,7 @@ class CreateApplicationForDefermentSuspension extends Migration
      */
     public function up()
     {
-        Schema::create('application_for_deferment_suspension', function (Blueprint $table) {
+        Schema::create('application_for_deferment_suspensions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('party_id');
             $table->string('reason_for_request', 50);
@@ -43,6 +43,6 @@ class CreateApplicationForDefermentSuspension extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('application_for_deferment_suspension');
+        Schema::dropIfExists('application_for_deferment_suspensions');
     }
 }
