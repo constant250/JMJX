@@ -15,7 +15,7 @@ class CreateParrallelEnrolmentVerificationForm extends Migration
     {
         Schema::create('parrallel_enrolment_verification_form', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('student_id')->unsigned();
+            $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->string('name_of_training_prov');
             $table->string('studentid');
