@@ -20,6 +20,9 @@ Route::get('home', function() {
 });
 
 Route::get('/dashboard', 'HomeController@index');
+
+
+Route::get('/sample','HomeController@TestPage');
 // Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 // Route::get('/agent', 'Agent\AgentController@index');
 

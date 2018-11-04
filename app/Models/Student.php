@@ -10,6 +10,7 @@ class Student extends Model
     //
 
 	use Metable;
+
 	protected $metaTable = 'students_meta';
 
     public function party(){
@@ -18,5 +19,25 @@ class Student extends Model
 
     public function details(){
     	return $this->hasMany(StudentDetail::class);
+    }
+
+    public function parrallel_enrolment_verification_form(){
+    	return $this->hasOne(ParallelEnrlmentVerificationForm::class);
+    }
+
+    public function declaration(){
+    	return $this->hasMany(DeclarationByStudent::class);
+    }
+
+    public function payment_autorization(){
+    	return $this->hasMany(PaymentAuthorization::class);
+    }
+
+    public function qualificatin_request(){
+        return $this->hasOne(QualificationRequest::class);
+    }
+
+    public function student_qualification_request(){
+        return $this->hasMany(StudentQualificationRequest::class);
     }
 }

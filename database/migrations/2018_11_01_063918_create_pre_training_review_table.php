@@ -36,7 +36,29 @@ class CreatePreTrainingReviewTable extends Migration
             $table->string('if_yes_education_attainment')->nullable();
             $table->boolean('current_working_industry_training');
             $table->string('position_title')->nullable();
-
+            $table->string('learning_styles')->nullable();
+            $table->string('additional_support_to_complete')->nullable();
+            $table->string('eligible_for_goverment_funding');
+            $table->string('required_to_participate_in_ncver_or_funding_department_survey');
+            $table->string('aware_of_any_fee_including_refun_policy');
+            $table->string('aware_complaints_appeals_policy');
+            $table->string('aware_course_attendance_requirements');
+            $table->string('not_eligible_for_funding');
+            $table->string('student_signature');
+            $table->datetime('date_received');
+            $table->boolean('assesment_req_career_objective_and_aspiration');
+            $table->boolean('assesment_req_attendance_req_training_assesment_training_req');
+            $table->boolean('assesment_req_rights_obligation_funding_training_place');
+            $table->boolean('assesment_req_identified_support_identified_during_process');
+            $table->boolean('assesment_req_student_learning_style');
+            $table->boolean('assesment_req_carrer_history_experience_future_goals_objective');
+            $table->boolean('assesment_req_rpl_ct_arrangement_application_process');
+            $table->boolean('authorized_person_subject_lln_funding_eligibility_criteria');
+            $table->text('authorized_person_declaration_comments');
+            $table->string('authorized_person_name');
+            $table->string('authorized_person_signature');
+            $table->string('authorized_person_position');
+            $table->string('authorized_person_date_received');
             $table->timestamps();
         });
     }
