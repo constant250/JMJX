@@ -40,4 +40,8 @@ class Student extends Model
     public function student_qualification_request(){
         return $this->hasMany(StudentQualificationRequest::class);
     }
+
+    public function refund_request(){
+        return $this->hasMany(RefundRequest::class);
+    }
 }
