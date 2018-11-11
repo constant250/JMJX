@@ -15,15 +15,14 @@ class CreateInternationalStudentEnrolmentFormsTable extends Migration
     {
         Schema::create('international_student_enrolment_forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id');
-            $table->date('preferred_intake_month');
-            $table->integer('party_id');
-            $table->string('passsport_number');
-            $table->date('expiry_date');
-            $table->string('permanent_residency_or_current_australian_visa');
-            $table->string('visa_type');
-            $table->date('visa_expiry_date');
-            $table->string('visa_type');
+            $table->integer('student_id')->nullable();
+            $table->date('preferred_intake_month')->nullable();
+            $table->integer('party_id')->nullable();
+            $table->string('passsport_number')->nullable();
+            $table->date('expiry_date')->nullable();
+            $table->string('permanent_residency_or_current_australian_visa')->nullable();
+            $table->string('visa_type')->nullable();
+            $table->date('visa_expiry_date')->nullable();
             $table->string('contact_person_name')->nullable();
             $table->string('contact_person_relationship')->nullable();
             $table->string('contact_person_email')->nullable();
@@ -35,10 +34,10 @@ class CreateInternationalStudentEnrolmentFormsTable extends Migration
             $table->string('english_secondary_level', 5)->nullable();
             $table->string('english_origin')->nullable();
             $table->string('english_language_score')->nullable();
-            $table->integer('english_language_exam')->nullable()
+            $table->integer('english_language_exam')->nullable();
             $table->integer('english_band_score')->nullable();
             $table->integer('english_test_data')->nullable();
-            $table->integer('english_apply_language_course',5)->nullable();
+            $table->string('english_apply_language_course', 5)->nullable();
             $table->text('list_down_previous_education')->nullable();
             $table->text('best_describe_current_employment')->nullable();
             $table->text('list_down_job_experiences')->nullable();
