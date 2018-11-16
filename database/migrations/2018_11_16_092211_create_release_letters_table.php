@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApplicationForReleaseLetterTable extends Migration
+class CreateReleaseLettersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateApplicationForReleaseLetterTable extends Migration
      */
     public function up()
     {
-        Schema::create('application_for_release_letters', function (Blueprint $table) {
+        Schema::create('release_letters', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('party_id');
             $table->text('student_declaration');
@@ -37,6 +37,6 @@ class CreateApplicationForReleaseLetterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('application_for_release_letters');
+        Schema::dropIfExists('release_letters');
     }
 }

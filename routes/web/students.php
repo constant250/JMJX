@@ -6,10 +6,10 @@ Route::prefix('student')->group( function() {
 	route::resource('detail','StudentsController');
 
 	//application for release letter
-	route::resource('application-for-release-letter','ApplicationForReleaseLetterController');
+	route::resource('release-letter','ReleaseLetterController');
 
-	//application for deferment suspension cancellation withdrawal form
-	route::resource('application-for-deferment-suspension','ApplicationForDefermentSuspensionController');
+	// application for deferment suspension cancellation withdrawal form
+	route::resource('deferment-suspension','DefermentSuspensionController');
 
 	//parrallel enrolment verification
 	route::resource('parrallel-enrolment-verification','ParallelEnrolmentVerificationController');
