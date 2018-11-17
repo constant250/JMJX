@@ -29,7 +29,7 @@ class HomeController extends Controller
         // return view('home');
         // return view('dashboard', compact('active_schedule', 'activity', 'announcements','deal_count','average','dealrate'));
 
-        
+        // dd(Auth::user()->party->name);
 
         $students =  Student::with(['parrallel_enrolment_verification_form','declaration','payment_autorization','qualificatin_request','student_qualification_request','party'])->whereHas('party', function($q){$q->where('party_id', Auth::user()->party_id);})->first();
 

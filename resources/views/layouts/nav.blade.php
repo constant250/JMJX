@@ -24,7 +24,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img src="{{ asset('images/avatars/default.png') }}" alt="" class="profile-avatar img-fluid">
-                  <span class="profile-name ml-2">Student, {{\Auth::user->party->name}}</span>
+                  <span class="profile-name ml-2">Student, {{\Auth::user()->party->name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">My Profile</a>
