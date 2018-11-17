@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/default.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -65,7 +65,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="{{ route('viewEmail') }}">Email</a></li>
+                            <li><a href="{-- route('viewEmail') --}">Email</a></li>
                         @endif
                     </ul>
                 </div>
@@ -76,6 +76,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/default.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

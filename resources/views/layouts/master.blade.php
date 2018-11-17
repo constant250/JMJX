@@ -40,5 +40,6 @@
 
 	<!-- custom page scripts -->
 	@yield ('custom-page-scripts')
+	
   </body>
 </html>
