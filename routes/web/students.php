@@ -40,6 +40,9 @@ Route::prefix('student')->group( function() {
 
 	//refund form
 	route::resource('refund-request','RefundRequestController');
+
+	// lln
+	route::resource('lln-from','LlnFormController');
 } );
 
 

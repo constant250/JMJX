@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ApplicationForDefermentSuspensionController extends Controller
+class ReleaseLetterController extends Controller
 {
     /**
      * Display a listing of the resource.

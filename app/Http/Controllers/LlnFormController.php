@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ApplicationForReleaseLetterController extends Controller
+class LlnFormController extends Controller
 {
     /**
      * Display a listing of the resource.

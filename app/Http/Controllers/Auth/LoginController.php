@@ -34,6 +34,52 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest', ['except' => ['logout', 'userLogout']]);
     }
+
+    // public function redirectTo()
+    // {
+    //     return $this->redirectTo;
+    // }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'username';
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    // protected function credentials(Request $request)
+    // {
+    //     // dd($request);
+    //     return ['username'=>$request->username, 'password'=>$request->password, 'is_active'=>true];
+    // }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    // protected function authenticated(Request $request, $user)
+    // {
+    //     //
+    // }
+
+    // public function userLogout()
+    // {
+        
+    //     Auth::guard('web')->logout();
+    //     return redirect('/login');
+    // }
 }
