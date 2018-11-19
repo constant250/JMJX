@@ -214,6 +214,22 @@ h1, h2, h3, h4, h5, h6, p{line-height: 1.5;}
  @media only screen and (min-width: 992px) and (max-width: 1200px){}
  /*lg*/
  @media only screen and (min-width: 1201px) and (max-width: 1440px){}
+
+/* LOGIN */
+.student-portal-login{background-color: var(--primary);}
+.student-portal-login .logo-header img{width: 200px;}
+.student-portal-login .form-wrapper{background-color: #FFFFFF;padding: 20px;}
+.student-portal-login .form-dheckbox{vertical-align: middle;}
+.student-portal-login .form-dheckbox > input{display: none;}
+.student-portal-login .form-dheckbox > label{position: relative; height: 15px; width: 15px; border: 1px solid  #ced4da;}
+.student-portal-login .form-dheckbox > input:checked + label{border-color:#000000;}
+.student-portal-login .form-dheckbox > input:checked + label:before{content: "\f00c";font-family: "Font Awesome 5 Free";font-weight: 900;font-size: 12px; position: absolute; top: 1px; line-height: 1;}
+.student-portal-login .form-group .form-label{background-color: #FFFFFF; padding: 2px 5px; position: absolute; font-weight: bold; font-size: 12px; top: 9px; left: 10px; pointer-events: none;-khtml-user-select: none;-o-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;user-drag: none;user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;         -webkit-transition: 0.2s ease; transition: 0.2s ease;}
+.student-portal-login .form-group .form-control{border-radius: 0; font-size: 14px; padding: 8px 10px;}
+.student-portal-login .form-group .form-control:focus ~ .form-label,
+.student-portal-login .form-group .form-control:valid ~ .form-label{top: -12px;}
+
+ 
 /*MAIN CONTENT*/
 .student-portal .main-content{padding-bottom: 50px;}
 .student-portal .inner-content-container{padding: 15px 0;}
