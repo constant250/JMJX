@@ -14,7 +14,7 @@ class LlnFormController extends Controller
     public function index()
     {
         //
-        return view('lln-form,index');
+        return view('lln-form.index');
     }
 
     /**
