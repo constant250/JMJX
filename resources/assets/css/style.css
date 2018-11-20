@@ -1,3 +1,30 @@
+	/*Fonts*/
+		/*Bree*/
+.bree-regular{font-family: 'Bree-Regular' !important;}
+@font-face {font-family: 'Bree-Regular';src: url('../fonts/bree/Bree-Regular.otf')  format('opentype')}
+		/*Europa*/
+.europa-regular{font-family: 'Europa-Regular' !important;}
+@font-face {font-family: 'Europa-Regular';src: url('../fonts/europa/Europa-Regular.otf')  format('opentype')}
+		/*Montserrat*/
+.montserrat-regular{font-family: 'Montserrat-Regular' !important;}
+@font-face {font-family: 'Montserrat-Regular';src: url('../fonts/montserrat/Montserrat-Regular.otf')  format('opentype')}
+.montserrat-semibold{font-family: 'Montserrat-Semibold' !important;}
+@font-face {font-family: 'Montserrat-Semibold';src: url('../fonts/montserrat/Montserrat-SemiBold.otf')  format('opentype')}
+.montserrat-bold{font-family: 'Montserrat-Bold' !important;}
+@font-face {font-family: 'Montserrat-Bold';src: url('../fonts/montserrat/Montserrat-Bold.otf')  format('opentype')}
+		/*ProximaNova*/
+.proximanova-light{font-family: 'ProximaNova-Light' !important;}
+@font-face {font-family: 'ProximaNova-Light';src: url('../fonts/proximanova/ProximaNova-Light.otf')  format('opentype')}
+.proximanova-regular{font-family: 'ProximaNova-Regular' !important;}
+@font-face {font-family: 'ProximaNova-Regular';src: url('../fonts/proximanova/ProximaNova-Regular.otf')  format('opentype')}
+.proximanova-semibold{font-family: 'ProximaNova-SemiBold' !important;}
+@font-face {font-family: 'ProximaNova-SemiBold';src: url('../fonts/proximanova/ProximaNova-Semibold.otf')  format('opentype')}
+.proximanova-bold{font-family: 'ProximaNova-Bold' !important;}
+@font-face {font-family: 'ProximaNova-Bold';src: url('../fonts/proximanova/ProximaNova-Bold.otf')  format('opentype')}	
+
+/*Added styles*/
+/*-------------------------------------*/
+
 *, html, body{-webkit-transition: all .25s ease;-moz-transition: all .25s ease;-ms-transition: all .25s ease;-o-transition: all .25s ease;transition: all .25s ease;}
 html, body{position: relative;height:100%;min-height: 100%;}
 body{/*font-family: 'ProximaNova-Regular' !important;*/ overflow-x: hidden !important;/*line-height: inherit !important;*/}
@@ -163,6 +190,13 @@ h1, h2, h3, h4, h5, h6, p{line-height: 1.5;}
 .secondary-font-color, .secondary-font-color a, .secondary-font-color li, .secondary-font-color li a, 
 .secondary-font-color:hover, .secondary-font-color a:hover, .secondary-font-color li:hover, .secondary-font-color li a:hover, 
 .secondary-font-color:focus, .secondary-font-color a:focus, .secondary-font-color li:focus, .secondary-font-color li a:focus{color: #252525 !important;}
+	/*Grey*/
+.bright-grey-font-color, .bright-grey-font-color a, .bright-grey-font-color li, .bright-grey-font-color li a, 
+.bright-grey-font-color:hover, .bright-grey-font-color a:hover, .bright-grey-font-color li:hover, .bright-grey-font-color li a:hover, 
+.bright-grey-font-color:focus, .bright-grey-font-color a:focus, .bright-grey-font-color li:focus, .bright-grey-font-color li a:focus{color: #525558 !important;}
+.box-shadow-none, .box-shadow-none:focus, .box-shadow-none:hover{box-shadow: none !important; -webkit-box-shadow:none !important;}
+.box-shadow-dark-grey{box-shadow: 0px 0px 6px 2px rgba(106, 106, 106, 0.27); -o-box-shadow: 0px 0px 6px 2px rgba(106, 106, 106, 0.27); -moz-box-shadow: 0px 0px 6px 2px rgba(106, 106, 106, 0.27); -webkit-box-shadow: 0px 0px 6px 2px rgba(106, 106, 106, 0.27);}
+.box-shadow{box-shadow: 0 0px 10px #ccc;}
 	/*Background Colodeep-sky*/
 .transparent-bg-color{background-color: transparent !important;}
 .white-bg-color{background-color: #FFFFFF !important;}
