@@ -14,6 +14,7 @@ class CriticalIncidentReportController extends Controller
     public function index()
     {
         //
+        return view('critical-incident.index');
     }
 
     /**

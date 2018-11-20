@@ -14,6 +14,7 @@ class ChangeOfPersonalDetailsController extends Controller
     public function index()
     {
         //
+        return view('change-of-personal-details.index');
     }
 
     /**

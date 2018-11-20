@@ -43,6 +43,12 @@ Route::prefix('student')->group( function() {
 
 	// lln
 	route::resource('lln-form','LlnFormController');
+
+	// credit card payment authorisation
+	route::resource('credit-card-authorisation','CreditCardPaymentAuthorisationController');
+
+	// representative application
+	route::resource('representative-application','RepresentativeApplicationController');
 } );
 
 
