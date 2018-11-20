@@ -14,6 +14,7 @@ class RefundRequestController extends Controller
     public function index()
     {
         //
+        return view('refund-request.index');
     }
 
     /**

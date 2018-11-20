@@ -14,6 +14,7 @@ class StudentsFeedbackController extends Controller
     public function index()
     {
         //
+        return view('feedback.index');
     }
 
     /**

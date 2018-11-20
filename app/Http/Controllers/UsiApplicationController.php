@@ -14,6 +14,7 @@ class UsiApplicationController extends Controller
     public function index()
     {
         //
+        return view('usi-application.index');
     }
 
     /**

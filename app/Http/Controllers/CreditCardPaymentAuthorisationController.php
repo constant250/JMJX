@@ -14,6 +14,7 @@ class CreditCardPaymentAuthorisationController extends Controller
     public function index()
     {
         //
+        return view('credit-card-authorisation.index');
     }
 
     /**
