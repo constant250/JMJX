@@ -4,22 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\LlnForm;
-use App\Models\Student;
-
-class LlnFormController extends Controller
+class PreTrainingReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Student $student)
+    public function index()
     {
-        dd($student);
         //
-        return view('lln-form.index');
-        
     }
 
     /**
@@ -60,11 +54,9 @@ class LlnFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(LlnForm $student, $id)
+    public function edit($id)
     {
-        dd($student);
         //
-        return view('lln-form.index');
     }
 
     /**
