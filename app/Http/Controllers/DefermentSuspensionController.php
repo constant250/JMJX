@@ -14,6 +14,7 @@ class DefermentSuspensionController extends Controller
     public function index()
     {
         //
+        return view('deferment-suspension.index');
     }
 
     /**
