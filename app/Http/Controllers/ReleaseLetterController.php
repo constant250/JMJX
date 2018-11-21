@@ -14,6 +14,7 @@ class ReleaseLetterController extends Controller
     public function index()
     {
         //
+        return view('release-letter.index');
     }
 
     /**
