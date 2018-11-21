@@ -14,6 +14,7 @@ class CreditTransferApplicationController extends Controller
     public function index()
     {
         //
+        return view('credit-transfer.index');
     }
 
     /**

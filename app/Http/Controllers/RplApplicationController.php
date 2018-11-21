@@ -14,6 +14,7 @@ class RplApplicationController extends Controller
     public function index()
     {
         //
+        return view('RPL-application.index');
     }
 
     /**
