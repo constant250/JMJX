@@ -14,6 +14,7 @@ class DeclarationByTheStudentController extends Controller
     public function index()
     {
         //
+        return view('declaration.index');
     }
 
     /**

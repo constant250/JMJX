@@ -14,6 +14,7 @@ class QualificationRequestController extends Controller
     public function index()
     {
         //
+        return view('qualification-request.index');
     }
 
     /**

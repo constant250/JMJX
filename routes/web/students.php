@@ -42,7 +42,13 @@ Route::prefix('student')->group( function() {
 	route::resource('refund-request','RefundRequestController');
 
 	// lln
-	route::resource('lln-from','LlnFormController');
+	route::resource('lln-form','LlnFormController');
+
+	// credit card payment authorisation
+	route::resource('credit-card-authorisation','CreditCardPaymentAuthorisationController');
+
+	// representative application
+	route::resource('representative-application','RepresentativeApplicationController');
 } );
 
 

@@ -14,6 +14,7 @@ class RepresentativeApplicationController extends Controller
     public function index()
     {
         //
+        return view('representative-application.index');
     }
 
     /**

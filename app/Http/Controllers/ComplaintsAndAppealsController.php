@@ -14,6 +14,7 @@ class ComplaintsAndAppealsController extends Controller
     public function index()
     {
         //
+        return view('complaints-and-appeals.index');
     }
 
     /**

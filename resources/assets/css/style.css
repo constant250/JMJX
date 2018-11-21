@@ -1,3 +1,30 @@
+	/*Fonts*/
+		/*Bree*/
+.bree-regular{font-family: 'Bree-Regular' !important;}
+@font-face {font-family: 'Bree-Regular';src: url('../fonts/bree/Bree-Regular.otf')  format('opentype')}
+		/*Europa*/
+.europa-regular{font-family: 'Europa-Regular' !important;}
+@font-face {font-family: 'Europa-Regular';src: url('../fonts/europa/Europa-Regular.otf')  format('opentype')}
+		/*Montserrat*/
+.montserrat-regular{font-family: 'Montserrat-Regular' !important;}
+@font-face {font-family: 'Montserrat-Regular';src: url('../fonts/montserrat/Montserrat-Regular.otf')  format('opentype')}
+.montserrat-semibold{font-family: 'Montserrat-Semibold' !important;}
+@font-face {font-family: 'Montserrat-Semibold';src: url('../fonts/montserrat/Montserrat-SemiBold.otf')  format('opentype')}
+.montserrat-bold{font-family: 'Montserrat-Bold' !important;}
+@font-face {font-family: 'Montserrat-Bold';src: url('../fonts/montserrat/Montserrat-Bold.otf')  format('opentype')}
+		/*ProximaNova*/
+.proximanova-light{font-family: 'ProximaNova-Light' !important;}
+@font-face {font-family: 'ProximaNova-Light';src: url('../fonts/proximanova/ProximaNova-Light.otf')  format('opentype')}
+.proximanova-regular{font-family: 'ProximaNova-Regular' !important;}
+@font-face {font-family: 'ProximaNova-Regular';src: url('../fonts/proximanova/ProximaNova-Regular.otf')  format('opentype')}
+.proximanova-semibold{font-family: 'ProximaNova-SemiBold' !important;}
+@font-face {font-family: 'ProximaNova-SemiBold';src: url('../fonts/proximanova/ProximaNova-Semibold.otf')  format('opentype')}
+.proximanova-bold{font-family: 'ProximaNova-Bold' !important;}
+@font-face {font-family: 'ProximaNova-Bold';src: url('../fonts/proximanova/ProximaNova-Bold.otf')  format('opentype')}	
+
+/*Added styles*/
+/*-------------------------------------*/
+
 *, html, body{-webkit-transition: all .25s ease;-moz-transition: all .25s ease;-ms-transition: all .25s ease;-o-transition: all .25s ease;transition: all .25s ease;}
 html, body{position: relative;height:100%;min-height: 100%;}
 body{/*font-family: 'ProximaNova-Regular' !important;*/ overflow-x: hidden !important;/*line-height: inherit !important;*/}
@@ -163,6 +190,13 @@ h1, h2, h3, h4, h5, h6, p{line-height: 1.5;}
 .secondary-font-color, .secondary-font-color a, .secondary-font-color li, .secondary-font-color li a, 
 .secondary-font-color:hover, .secondary-font-color a:hover, .secondary-font-color li:hover, .secondary-font-color li a:hover, 
 .secondary-font-color:focus, .secondary-font-color a:focus, .secondary-font-color li:focus, .secondary-font-color li a:focus{color: #252525 !important;}
+	/*Grey*/
+.bright-grey-font-color, .bright-grey-font-color a, .bright-grey-font-color li, .bright-grey-font-color li a, 
+.bright-grey-font-color:hover, .bright-grey-font-color a:hover, .bright-grey-font-color li:hover, .bright-grey-font-color li a:hover, 
+.bright-grey-font-color:focus, .bright-grey-font-color a:focus, .bright-grey-font-color li:focus, .bright-grey-font-color li a:focus{color: #525558 !important;}
+.box-shadow-none, .box-shadow-none:focus, .box-shadow-none:hover{box-shadow: none !important; -webkit-box-shadow:none !important;}
+.box-shadow-dark-grey{box-shadow: 0px 0px 6px 2px rgba(106, 106, 106, 0.27); -o-box-shadow: 0px 0px 6px 2px rgba(106, 106, 106, 0.27); -moz-box-shadow: 0px 0px 6px 2px rgba(106, 106, 106, 0.27); -webkit-box-shadow: 0px 0px 6px 2px rgba(106, 106, 106, 0.27);}
+.box-shadow{box-shadow: 0 0px 10px #ccc;}
 	/*Background Colodeep-sky*/
 .transparent-bg-color{background-color: transparent !important;}
 .white-bg-color{background-color: #FFFFFF !important;}
@@ -176,6 +210,11 @@ h1, h2, h3, h4, h5, h6, p{line-height: 1.5;}
 .px-8-font{font-size:8px}.px-10-font{font-size:10px}.px-12-font{font-size:12px}.px-14-font{font-size:14px}.px-16-font{font-size:16px}.px-18-font{font-size:18px}.px-20-font{font-size:20px}.px-22-font{font-size:22px}.px-24-font{font-size:24px}.px-26-font{font-size:26px}.px-28-font{font-size:28px}.px-30-font{font-size:30px}.px-32-font{font-size:32px}.px-34-font{font-size:34px}.px-36-font{font-size:36px}.px-38-font{font-size:38px}.px-40-font{font-size:40px}.px-42-font{font-size:42px}.px-44-font{font-size:44px}.px-46-font{font-size:46px}.px-48-font{font-size:48px}.px-50-font{font-size:50px}.px-52-font{font-size:52px}.px-54-font{font-size:54px}.px-56-font{font-size:56px}.px-58-font{font-size:58px}.px-60-font{font-size:60px}.px-62-font{font-size:62px}.px-64-font{font-size:64px}.px-66-font{font-size:66px}.px-68-font{font-size:68px}.px-70-font{font-size:70px}.px-72-font{font-size:72px}.px-94-font{font-size: 94px;}@media (min-width:992px) and (max-width:1199px){.px-18-font{font-size:13px}.px-20-font{font-size:15px}.px-22-font{font-size:17px}.px-24-font{font-size:19px}.px-26-font{font-size:21px}.px-28-font{font-size:23px}.px-30-font{font-size:25px}.px-32-font{font-size:27px}.px-34-font{font-size:29px}.px-36-font{font-size:31px}.px-38-font{font-size:33px}.px-40-font{font-size:35px}.px-42-font{font-size:37px}.px-44-font{font-size:39px}.px-46-font{font-size:41px}.px-48-font{font-size:43px}.px-50-font{font-size:45px}.px-52-font{font-size:47px}.px-54-font{font-size:49px}.px-56-font{font-size:51px}.px-58-font{font-size:53px}.px-60-font{font-size:55px}.px-62-font{font-size:57px}.px-64-font{font-size:59px}.px-66-font{font-size:61px}.px-68-font{font-size:63px}.px-70-font{font-size:65px}.px-72-font{font-size:67px}}@media (min-width:768px) and (max-width:991px){.px-18-font{font-size:13px}.px-20-font,.px-22-font,.px-24-font,.px-26-font{font-size:15px}.px-28-font{font-size:13px}.px-30-font{font-size:15px}.px-32-font{font-size:17px}.px-34-font{font-size:19px}.px-36-font{font-size:21px}.px-38-font{font-size:23px}.px-40-font{font-size:25px}.px-42-font{font-size:27px}.px-44-font{font-size:29px}.px-46-font{font-size:31px}.px-48-font{font-size:33px}.px-50-font{font-size:35px}.px-52-font{font-size:37px}.px-54-font{font-size:39px}.px-56-font{font-size:41px}.px-58-font{font-size:43px}.px-60-font{font-size:45px}.px-62-font{font-size:47px}.px-64-font{font-size:49px}.px-66-font{font-size:51px}.px-68-font{font-size:53px}.px-70-font{font-size:55px}.px-72-font{font-size:57px}}@media (max-width:767px){.px-18-font{font-size:13px}.px-20-font,.px-22-font,.px-24-font,.px-26-font{font-size:15px}.px-28-font{font-size:13px}.px-30-font{font-size:15px}.px-32-font{font-size:17px}.px-34-font{font-size:19px}.px-36-font{font-size:21px}.px-38-font{font-size:23px}.px-40-font{font-size:25px}.px-42-font{font-size:27px}.px-44-font{font-size:29px}.px-46-font{font-size:21px}.px-48-font{font-size:23px}.px-50-font{font-size:25px}.px-52-font{font-size:27px}.px-54-font{font-size:29px}.px-56-font{font-size:31px}.px-58-font{font-size:33px}.px-60-font{font-size:35px}.px-62-font{font-size:37px}.px-64-font{font-size:39px}.px-66-font{font-size:41px}.px-68-font{font-size:43px}.px-70-font{font-size:45px}.px-72-font{font-size:47px}}@media (max-width:480px){.px-18-font{font-size:13px}.px-20-font,.px-22-font,.px-24-font,.px-26-font{font-size:15px}.px-28-font{font-size:13px}.px-30-font{font-size:15px}.px-32-font{font-size:17px}.px-34-font{font-size:19px}.px-36-font{font-size:21px}.px-38-font{font-size:23px}.px-40-font{font-size:25px}.px-42-font{font-size:27px}.px-44-font{font-size:29px}.px-46-font{font-size:21px}.px-48-font{font-size:23px}.px-50-font{font-size:25px}.px-52-font{font-size:27px}.px-54-font{font-size:29px}.px-56-font{font-size:21px}.px-58-font{font-size:23px}.px-60-font{font-size:25px}.px-62-font{font-size:27px}.px-64-font{font-size:29px}.px-66-font{font-size:31px}.px-68-font{font-size:33px}.px-70-font{font-size:35px}.px-72-font{font-size:37px}}
 .back-to-top{position:fixed;bottom:70px;right:0;width:40px;height:40px;line-height: 40px; text-align:center;font-size:20px;z-index: 99; display:none;margin-right:20px;cursor: pointer; background: rgba(0,0,0,0.3); color: #F1F1F1;}
 .back-to-top:hover{background:rgba(0,104,55,1); color:#FFFFFF;}
+
+/* Global Styles */
+	/* Dynamic Table Styles */
+.add-col-btn{background-color: transparent;color: #FFFFFF;cursor: pointer;border: none;width: 100%;height: 71px;}
+.add-col-btn:focus{outline: none;}
 
 /*HEADER*/
 .header .navbar{padding: .2rem 1rem;}

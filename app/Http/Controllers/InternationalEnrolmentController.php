@@ -14,6 +14,7 @@ class InternationalEnrolmentController extends Controller
     public function index()
     {
         //
+        return view('int-enrolment.index');
     }
 
     /**

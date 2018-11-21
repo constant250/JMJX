@@ -32,17 +32,20 @@
 .datatable-wrapper {padding: 10px 0;background-color: #f8f8f8;position: relative;}
 .datatable-wrapper table.dataTable.no-footer {border-bottom:0;}
 
-.datatable-wrapper table.non-custom-datatable thead tr th:nth-child(odd) {background: #09c8d0;}
+/*.datatable-wrapper table.non-custom-datatable thead tr th:nth-child(odd) {background: #09c8d0;}
 .datatable-wrapper table.non-custom-datatable thead tr th:nth-child(even) {background: #577577;}
 .datatable-wrapper table.custom-datatable thead tr th:nth-child(odd) {background: #09c8d0!important;}
-.datatable-wrapper table.custom-datatable thead tr th:nth-child(even) {background: #577577!important;}
+.datatable-wrapper table.custom-datatable thead tr th:nth-child(even) {background: #577577!important;}*/
 
-.datatable-wrapper table.non-custom-datatable thead tr th,.datatable-wrapper table.custom-datatable thead tr th {  font-weight: normal;padding: 20px 10px!important;text-align: center!important;outline: 0!important;    border-color: #99bbbc;color: #fff;white-space: normal;}
-.datatable-wrapper table.non-custom-datatable tbody tr td,.datatable-wrapper table.custom-datatable tbody tr td{padding: 15px 10px;outline: 0!important;text-align: center;font-size: 11px;white-space: normal;position: relative;}
+.datatable-wrapper table.non-custom-datatable thead tr th,.datatable-wrapper table.custom-datatable thead tr th {  font-weight: normal;padding: 30px 10px!important;text-align: center!important;outline: 0!important;    border-color: #99bbbc;color: #fff;white-space: normal;    background-color: #525558;border: 1px solid #868686;font-size: 12px;}
+.datatable-wrapper table.non-custom-datatable tbody tr td,.datatable-wrapper table.custom-datatable tbody tr td{padding: 30px 10px;outline: 0!important;text-align: center;font-size: 11px;white-space: normal;position: relative;}
 .datatable-wrapper table.non-custom-datatable tbody tr td span,.datatable-wrapper table.custom-datatable tbody tr td span{display: block;text-align: left;}
 .datatable-wrapper table.non-custom-datatable tbody tr td .units-count,.datatable-wrapper table.custom-datatable tbody tr td .units-count{height: 30px; width: 30px; display: block; margin: 0 auto; line-height: 28px;border: 1px solid #09c8d0; border-radius: 50%; color:#09c8d0;}
 .datatable-wrapper table.non-custom-datatable tbody tr td .units-count:hover,.datatable-wrapper table.custom-datatable tbody tr td .units-count:hover{border:1px solid #577577; color:#577577;}
 .datatable-wrapper table.non-custom-datatable tbody tr td .units-count span,.datatable-wrapper table.custom-datatable tbody tr td .units-count span{text-align: center;}
+
+
+
 /*Column name with profile image */
 .datatable-wrapper table.non-custom-datatable tbody tr td .profile-image,.datatable-wrapper table.custom-datatable tbody tr td .profile-image{margin-right: 5px;}
 .datatable-wrapper  table.non-custom-datatable tbody tr td.profile-wrapper span,.datatable-wrapper  table.custom-datatable tbody tr td.profile-wrapper span{display: inline-block!important;}
@@ -108,8 +111,8 @@
 
 .datatable-wrapper table.api-datatable thead tr th:nth-child(odd) {background: #09c8d0!important;}
 .datatable-wrapper table.api-datatable thead tr th:nth-child(even) {background: #577577!important;}
-.datatable-wrapper table.api-datatable thead tr th {  font-weight: normal;padding: 20px 10px !important;text-align: center!important;outline: 0!important;    border-color: #99bbbc;color: #fff;white-space: normal;}
-.datatable-wrapper table.api-datatable tbody tr td{padding: 15px 10px; outline: 0!important;text-align: center;font-size: 11px;white-space: normal;}
+.datatable-wrapper table.api-datatable thead tr th {  font-weight: normal;padding: 10px !important;text-align: center!important;outline: 0!important;    border-color: #99bbbc;color: #fff;white-space: normal;}
+.datatable-wrapper table.api-datatable tbody tr td{padding: 10px; outline: 0!important;text-align: center;font-size: 11px;white-space: normal;}
 .datatable-wrapper table.table-striped tbody tr:nth-child(even) {background: #FFFFFF!important;}
 .datatable-wrapper table.api-datatable tbody tr td span{display: block;text-align: left;}
 .datatable-wrapper table.api-datatable tbody tr td .units-count{height: 30px; width: 30px; display: block; margin: 0 auto; line-height: 28px;border: 1px solid #09c8d0; border-radius: 50%; color:#09c8d0;}
@@ -144,3 +147,4 @@
 .datatable-wrapper  table.api-datatable tbody tr td.profile-wrapper span{text-align: center;display: block;}
 .datatable-wrapper  table.api-datatable tbody tr td .progressbar-percent{text-align: center;float: none!important;}
 }
+
