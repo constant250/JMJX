@@ -14,6 +14,7 @@ class ParallelEnrolmentVerificationController extends Controller
     public function index()
     {
         //
+        return view('parrallel-enrolment-verification.index');
     }
 
     /**
