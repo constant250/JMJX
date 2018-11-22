@@ -8,7 +8,7 @@
                   </div>
                   <div class="col-sm-6 no-padding">
                     <div class="toolbar-right-aside">
-                  <a href="#" class="btn display-inlineblock btn-toolbar white-font-color px-12-font"><i class="fa fa-save" aria-hidden="true"></i> Save</a>
+                  <a  id="btn-save" href="#" class="btn display-inlineblock btn-toolbar white-font-color px-12-font"><i class="fa fa-save" aria-hidden="true"></i> Save</a>
               </div>
                   </div>
                 </div>

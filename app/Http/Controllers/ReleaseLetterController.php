@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReleaseLetterController extends Controller
@@ -14,7 +16,10 @@ class ReleaseLetterController extends Controller
     public function index()
     {
         //
-        return view('release-letter.index');
+        $student = User::with(['party.person','party.student.details.course'])->where('id',Auth::user()->id)->first();
+        // dd($student->party->student->details);
+        // return $student->party->person;
+        return view('release-letter.index',compact('student'));
     }
 
     /**
@@ -36,6 +41,7 @@ class ReleaseLetterController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
     }
 
     /**

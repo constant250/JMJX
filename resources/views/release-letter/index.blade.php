@@ -20,7 +20,7 @@
       <div class="clearfix" style="height: 10px;"></div>
         <!-- Form -->
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
+          <form id="ReleaseLetter"  action="{{ route('release-letter.store') }}" method="post" class="form-template no-padding">
             <div class="crm-form-wrapper">
               <section>
               <div class="clearfix" style="height: 20px;"></div>
@@ -33,33 +33,33 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="" class="not-required">Full Name:</label>
-                      <input type="text" class="form-control" id="" value="" name="stud_fullname">
+                      <input type="text" class="form-control" id="" value=" {{ $student->party->name }} " name="stud_fullname">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="" class="not-required">Student DOB/ETI Student ID:</label>
-                      <input type="text" class="form-control" id="" value="" name="stud_dob_id">
+                      <input type="text" class="form-control" id="" value="{{ $student->party->person->dob }}" name="stud_dob_id">
                     </div>
                   </div>
                   <div class="clearfix"></div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="" class="not-required">Email:</label>
-                      <input type="text" class="form-control" id="" value="" name="email">
+                      <input type="text" class="form-control" id="" value=" {{ $student->party->person->email }} " name="email">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="" class="not-required">Contact No:</label>
-                      <input type="text" class="form-control" id="" value="" name="lmobile">
+                      <input type="text" class="form-control" id="" value=" {{ $student->party->person->mobile_number }} " name="lmobile">
                     </div>
                   </div>
                   <div class="clearfix"></div>
                   <div class="col-md-12">
                    <div class="form-group">
                     <label for="">Address:</label>
-                    <input type="text" class="form-control" id="" value="" name="stud_fulladdress">
+                    <input type="text" class="form-control" id="" value="{{ $student->party->person->address }}" name="stud_fulladdress">
                    </div>
                   </div>
                   <div class="clearfix"></div>
@@ -71,42 +71,49 @@
                 </div>
                 <div class="form-padding-left-right form-template">
                 	<div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="" class="not-required">Course code and Name:</label>
-                      <select class="form-control" name="course_code_name">
-                        <option></option>
-                        <option>(CPC30211) Certificate III in Carpentry</option>
-                        <option>(CPC30211) Certificate III in Carpentry</option>
-                        <option>(CPC30211) Certificate III in Carpentry</option>
-                        <option>(CPC30211) Certificate III in Carpentry</option>
-                        <option>(CPC30211) Certificate III in Carpentry</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="" class="not-required">Course start date:</label>
-                      <div class='input-group date generic-datepicker'>
-                        <input type='text' class="form-control"/>
-                        <span class="input-group-addon">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                        </span>
+
+                  @foreach ( $student->party->student->details  as $course_detail )
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="" class="not-required">Course code and Name:</label>
+                        <input type="text" class="form-control" name="course_code_name" value=" {{ $course_detail->course->code }} {{ $course_detail->course->name }} " >
+                        {{-- <select class="form-control" name="course_code_name">
+                          <option></option>
+                          <option>(CPC30211) Certificate III in Carpentry</option>
+                          <option>(CPC30211) Certificate III in Carpentry</option>
+                          <option>(CPC30211) Certificate III in Carpentry</option>
+                          <option>(CPC30211) Certificate III in Carpentry</option>
+                          <option>(CPC30211) Certificate III in Carpentry</option>
+                        </select> --}}
                       </div>
                     </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="" class="not-required">Release effective from:</label>
-                      <div class='input-group date generic-datepicker'>
-                        <input type='text' class="form-control"/>
-                        <span class="input-group-addon">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                        </span>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="" class="not-required">Course start date:</label>
+                        <div class='input-group date generic-datepicker'>
+                          <input type='text' class="form-control" value="{{ ($course_detail->course_start_date != null ) ? \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $course_detail->course_start_date)->format('d-MMMM-Y') : '' }}" />
+                          <span class="input-group-addon">
+                              <i class="fa fa-calendar" aria-hidden="true"></i>
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="clearfix"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="" class="not-required">Release effective from:</label>
+                        <div class='input-group date generic-datepicker'>
+                          <input type='text' class="form-control"/>
+                          <span class="input-group-addon">
+                              <i class="fa fa-calendar" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                  @endforeach
+                  
                 	</div>
                 </div>
 
@@ -303,6 +310,7 @@
               </section>
               <div class="clearfix" style="height: 20px;"></div>
             </div>
+             {{ csrf_field() }}
           </form>
         </div>
         <!-- End Form -->
@@ -343,5 +351,14 @@ $(document).ready(function () {
             format: 'DD-MMMM-YYYY'
         });
    });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#btn-save').on('click', function(e) {
+      e.preventDefault();
+      $('#ReleaseLetter').submit();
+    })
+  })
 </script>
 @endsection

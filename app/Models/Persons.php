@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Kodeine\Metable\Metable;
 use Illuminate\Database\Eloquent\Model;
 
 class Persons extends Model
 {
     //
     // protected $table = 'persons'
+   use Metable;
 
     protected $fillable = [
     						'prefix',

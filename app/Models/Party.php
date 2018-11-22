@@ -21,4 +21,8 @@ class Party extends Model
     public function student(){
     	return $this->hasOne(Student::class);
     }
+
+    public function person(){
+        return $this->hasOne(Persons::class);
+    }
 }
