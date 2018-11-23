@@ -25,4 +25,8 @@ class Party extends Model
     public function person(){
         return $this->hasOne(Persons::class);
     }
+
+    public function releaseletter(){
+        return $this->hasOne(ReleaseLetter::class);
+    }
 }

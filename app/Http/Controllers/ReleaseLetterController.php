@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use App\Models\ReleaseLetter;
 use App\Models\User;
+use Auth;
+use DB;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReleaseLetterController extends Controller
@@ -16,8 +19,12 @@ class ReleaseLetterController extends Controller
     public function index()
     {
         //
-        $student = User::with(['party.person','party.student.details.course'])->where('id',Auth::user()->id)->first();
-        // dd($student->party->student->details);
+        $student = User::with(['party.person','party.student.details.course','party.releaseletter'])->where('id',Auth::user()->id)->first();
+        if($student->party->releaseletter != null) {
+            $declaration = json_decode($student->party->releaseletter->student_declaration, true);
+            $student->party->releaseletter->student_declaration = $declaration;
+        }
+        // dd($student->party->releaseletter);
         // return $student->party->person;
         return view('release-letter.index',compact('student'));
     }
@@ -41,7 +48,32 @@ class ReleaseLetterController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
+        try {
+            DB::beginTransaction();
+            $declaration = json_encode($request->declaration);
+            // dump($declaration);
+            // dd($request->all());
+            $releaseletter = ReleaseLetter::updateOrCreate(
+                [
+                    'party_id' => Auth::user()->party->id
+                ],
+                [
+                    'student_declaration' => $declaration,
+                    'signature'           => $request->signature,
+                    'signature_date'      => ( $request->signature_date == '' ) ? Carbon::now() : Carbon::parse($request->signature_date)->format('Y-m-d'),
+                    'created_at'          => Carbon::now(),
+                ]
+            );
+
+            // dump($releaseletter);
+            DB::commit();
+            return redirect()->route('release-letter.index')->with('message','Update Success');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        
+
     }
 
     /**

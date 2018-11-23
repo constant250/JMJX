@@ -20,6 +20,14 @@
       <div class="clearfix" style="height: 10px;"></div>
         <!-- Form -->
         <div class="crm-form-container no-padding">
+          @if (session('message'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> You have updated successfully.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @endif
           <form id="ReleaseLetter"  action="{{ route('release-letter.store') }}" method="post" class="form-template no-padding">
             <div class="crm-form-wrapper">
               <section>
@@ -77,7 +85,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="" class="not-required">Course code and Name:</label>
-                        <input type="text" class="form-control" name="course_code_name" value=" {{ $course_detail->course->code }} {{ $course_detail->course->name }} " >
+                        <input type="text" class="form-control" name="course_code_name[]" value=" {{ $course_detail->course->code }} - {{ $course_detail->course->name }} " >
                         {{-- <select class="form-control" name="course_code_name">
                           <option></option>
                           <option>(CPC30211) Certificate III in Carpentry</option>
@@ -92,7 +100,7 @@
                       <div class="form-group">
                         <label for="" class="not-required">Course start date:</label>
                         <div class='input-group date generic-datepicker'>
-                          <input type='text' class="form-control" value="{{ ($course_detail->course_start_date != null ) ? \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $course_detail->course_start_date)->format('d-MMMM-Y') : '' }}" />
+                          <input type='text' class="form-control" name="course_start_date[]"  value="{{ ($course_detail->course_start_date != null ) ? \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $course_detail->course_start_date)->format('d-MMMM-Y') : '' }}" />
                           <span class="input-group-addon">
                               <i class="fa fa-calendar" aria-hidden="true"></i>
                           </span>
@@ -103,7 +111,7 @@
                       <div class="form-group">
                         <label for="" class="not-required">Release effective from:</label>
                         <div class='input-group date generic-datepicker'>
-                          <input type='text' class="form-control"/>
+                          <input type='text' name="release_effective[]" class="form-control"/>
                           <span class="input-group-addon">
                               <i class="fa fa-calendar" aria-hidden="true"></i>
                           </span>
@@ -125,7 +133,11 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-1" name="stud_declaration_1">
+                        @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_1']) ? '<input type="checkbox" checked class=""  id="declaration-1" name="declaration[stud_declaration_1]">' : '<input type="checkbox" class=""  id="declaration-1" name="declaration[stud_declaration_1]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-1" name="declaration[stud_declaration_1]">
+                        @endif
                         <label class="checkbox-input" for="declaration-1"></label>
                       </div>
                     </div>
@@ -140,7 +152,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-2" name="stud_declaration_2">
+                        @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_2']) ? '<input type="checkbox" checked class=""  id="declaration-2" name="declaration[stud_declaration_2]">' : '<input type="checkbox" class=""  id="declaration-2" name="declaration[stud_declaration_2]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-2" name="declaration[stud_declaration_2]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-2" name="declaration[stud_declaration_2]"> --}}
                         <label class="checkbox-input" for="declaration-2"></label>
                       </div>
                     </div>
@@ -155,7 +172,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-3" name="stud_declaration_3">
+                         @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_3']) ? '<input type="checkbox" checked class=""  id="declaration-3" name="declaration[stud_declaration_3]">' : '<input type="checkbox" class=""  id="declaration-3" name="declaration[stud_declaration_3]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-3" name="declaration[stud_declaration_3]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-3" name="declaration[stud_declaration_3]"> --}}
                         <label class="checkbox-input" for="declaration-3"></label>
                       </div>
                     </div>
@@ -170,7 +192,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-4" name="stud_declaration_4">
+                        @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_4']) ? '<input type="checkbox" checked class=""  id="declaration-4" name="declaration[stud_declaration_4]">' : '<input type="checkbox" class=""  id="declaration-4" name="declaration[stud_declaration_4]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-4" name="declaration[stud_declaration_4]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-4" name="declaration[stud_declaration_4]"> --}}
                         <label class="checkbox-input" for="declaration-4"></label>
                       </div>
                     </div>
@@ -185,7 +212,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-5" name="stud_declaration_5">
+                         @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_5']) ? '<input type="checkbox" checked class=""  id="declaration-5" name="declaration[stud_declaration_5]">' : '<input type="checkbox" class=""  id="declaration-5" name="declaration[stud_declaration_5]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-5" name="declaration[stud_declaration_5]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-5" name="declaration[stud_declaration_5]"> --}}
                         <label class="checkbox-input" for="declaration-5"></label>
                       </div>
                     </div>
@@ -200,7 +232,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-6" name="stud_declaration_6">
+                        @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_6']) ? '<input type="checkbox" checked class=""  id="declaration-6" name="declaration[stud_declaration_6]">' : '<input type="checkbox" class=""  id="declaration-6" name="declaration[stud_declaration_6]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-6" name="declaration[stud_declaration_6]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-6" name="declaration[stud_declaration_6]"> --}}
                         <label class="checkbox-input" for="declaration-6"></label>
                       </div>
                     </div>
@@ -215,7 +252,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-7" name="stud_declaration_7">
+                        @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_7']) ? '<input type="checkbox" checked class=""  id="declaration-7" name="declaration[stud_declaration_7]">' : '<input type="checkbox" class=""  id="declaration-7" name="declaration[stud_declaration_7]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-7" name="declaration[stud_declaration_7]">
+                        @endif
+                        {{-- <input type="checkbox" class="" checked="checked" id="declaration-7" name="declaration[stud_declaration_7]"> --}}
                         <label class="checkbox-input" for="declaration-7"></label>
                       </div>
                     </div>
@@ -230,7 +272,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-8" name="stud_declaration_8">
+                        @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_8']) ? '<input type="checkbox" checked class=""  id="declaration-8 name="declaration[stud_declaration_8]">' : '<input type="checkbox" class=""  id="declaration-8" name="declaration[stud_declaration_8]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-8" name="declaration[stud_declaration_8]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-8" name="declaration[stud_declaration_8]"> --}}
                         <label class="checkbox-input" for="declaration-8"></label>
                       </div>
                     </div>
@@ -245,7 +292,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-9" name="stud_declaration_9">
+                        @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_9']) ? '<input type="checkbox" checked class=""  id="declaration-9" name="declaration[stud_declaration_9]">' : '<input type="checkbox" class=""  id="declaration-9" name="declaration[stud_declaration_9]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-9" name="declaration[stud_declaration_9]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-9" name="declaration[stud_declaration_9]"> --}}
                         <label class="checkbox-input" for="declaration-9"></label>
                       </div>
                     </div>
@@ -260,7 +312,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-10" name="stud_declaration_10">
+                         @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_10']) ? '<input type="checkbox" checked class=""  id="declaration-10" name="declaration[stud_declaration_10]">' : '<input type="checkbox" class=""  id="declaration-10" name="declaration[stud_declaration_10]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-10" name="declaration[stud_declaration_10]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-10" name="declaration[stud_declaration_10]"> --}}
                         <label class="checkbox-input" for="declaration-10"></label>
                       </div>
                     </div>
@@ -275,7 +332,12 @@
                   <div class="col-md-1">
                     <div class="form-group">
                       <div class="crm-form-checkbox position-relative center-block">
-                        <input type="checkbox" class="" id="declaration-11" name="stud_declaration_11">
+                         @if( $student->party->releaseletter )
+                          {!! isset($student->party->releaseletter->student_declaration['stud_declaration_11']) ? '<input type="checkbox" checked class=""  id="declaration-11" name="declaration[stud_declaration_11]">' : '<input type="checkbox" class=""  id="declaration-11" name="declaration[stud_declaration_11]">' !!}
+                        @else
+                          <input type="checkbox" class=""  id="declaration-11" name="declaration[stud_declaration_11]">
+                        @endif
+                        {{-- <input type="checkbox" class="" id="declaration-11" name="declaration[stud_declaration_11]"> --}}
                         <label class="checkbox-input" for="declaration-11"></label>
                       </div>
                     </div>
@@ -289,14 +351,14 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="" class="not-required">Signature:</label>
-                      <input type="text" class="form-control" id="" value="" name="ct_signature">
+                      <input type="text" class="form-control" id="" value="{{ $student->party->releaseletter != null ? $student->party->releaseletter->signature : '' }}" name="signature">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="" class="not-required">Date:</label>
                       <div class='input-group date generic-datepicker'>
-                        <input type='text' class="form-control" class="ct_declaration_date" />
+                        <input type='text' class="form-control" name="signature_date" value="{{ $student->party->releaseletter != null ? $student->party->releaseletter->signature_date : ''}}" class="signature_da" />
                         <span class="input-group-addon">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                         </span>
