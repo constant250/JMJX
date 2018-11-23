@@ -30,12 +30,14 @@
           </li>
         </ul>
         <!-- Tab panes -->
+        <form action="{{route('representative-application.store')}}" id="application_reference" method="post" class="form-template no-padding">
+          {{ csrf_field() }}
         <div class="tab-content crm-tabs-content">
-     
+      
+
         <div role="tabpanel" class="tab-pane active" id="contact-details">
                     <!-- Form -->
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
             <div class="crm-form-wrapper">
               <section>
               <div class="clearfix" style="height: 20px;"></div>
@@ -48,61 +50,61 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Contact Name:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="contact_name">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Company Name:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="company_name">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Position:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="position">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Australian Business Number (ABN) if applicable:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="abn_number">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Migration Agent Registration Authority Number (MARN) if applicable:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="marn_number">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Address:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="address">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Phone:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="phone">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Mobile:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="mobile">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Fax:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="fax">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Email:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="email">
                         </div>
                       </div>
                     </div>
@@ -118,31 +120,31 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="" style="line-height: 1.5;">How long has been your business operating?</label>
-                          <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                          <textarea id="" class="form-control" cols="30" rows="10" name="how_long_business_operating"></textarea>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="" style="line-height: 1.5;">Number of international students recruited for study in Australia each year:</label>
-                          <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                          <textarea  id="" class="form-control" cols="30" rows="10" name="number_of_int_students_ea_yr"></textarea>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="" style="line-height: 1.5;">List of other institutions you are currently representing in Australia:</label>
-                          <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                          <textarea id="" class="form-control" cols="30" rows="10" name="list_of_institution"></textarea>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="" style="line-height: 1.5;">List the courses you promote enrol students into:</label>
-                          <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                          <textarea name="list_of_courses" id="" class="form-control" cols="30" rows="10" ></textarea>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="" style="line-height: 1.5;">List of countries you operate from:</label>
-                          <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                          <textarea name="list_of_countries" id="" class="form-control" cols="30" rows="10"></textarea>
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -150,29 +152,29 @@
                           <label for=""> Services provided to students (Please check in appropriate circle)</label>
                           <div class="clearfix"></div>
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checkbox-1">
+                            <input type="checkbox" class="" id="checkbox-1" name="services[student_counselling]">
                             <label class="checkbox-input" for="checkbox-1"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checkbox-1">Student Counselling </label>
 
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checkbox-2">
+                            <input type="checkbox" class="" id="checkbox-2" name="services['visa_application']">
                             <label class="checkbox-input" for="checkbox-2"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checkbox-2">Visa Application</label>
 
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checkbox-3">
+                            <input type="checkbox" class="" id="checkbox-3" name="services['pre-departure']">
                             <label class="checkbox-input" for="checkbox-3"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checkbox-3">Pre-departure </label>
 
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checkbox-4">
+                            <input type="checkbox" class="" id="checkbox-4" name="services['follow_up_with_parents']">
                             <label class="checkbox-input" for="checkbox-4"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checkbox-4">Briefing Follow up with parents</label>
 
                         </div>
                         <div class="form-group">
                           <label for="" style="line-height: 1.5;">Other services (Please Specify):</label>
-                          <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                          <textarea name="others" id="" class="form-control" cols="30" rows="10"></textarea>
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -180,12 +182,12 @@
                           <label for=""> Do you charge students additional fees for the above services?</label>
                           <div class="clearfix"></div>
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="yes-checkbox">
+                            <input type="checkbox" class="" id="yes-checkbox" name="charge_student_additional_fee" value='1'>
                             <label class="checkbox-input" for="yes-checkbox"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-checkbox">Yes</label>
 
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="no-checkbox">
+                            <input type="checkbox" class="" id="no-checkbox" name="charge_student_additional_fee" value='0'>
                             <label class="checkbox-input" for="no-checkbox"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-checkbox">No</label>
                         </div>
@@ -193,7 +195,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="" style="line-height: 1.5;">How do you promote international education and how will you promote ELITE TRAINING INSTITUTE?</label>
-                          <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                          <textarea name="promote_eti" id="" class="form-control" cols="30" rows="10"></textarea>
                         </div>
                       </div>
                     </div>
@@ -203,14 +205,14 @@
               </section>
               <div class="clearfix" style="height: 20px;"></div>
             </div>
-          </form>
+          {{-- </form> --}}
         </div>
         <!-- End Form -->
           </div>
           <div role="tabpanel" class="tab-pane" id="referee">
                       <!-- Form -->
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
+          {{-- <form action="" class="form-template no-padding"> --}}
             <div class="crm-form-wrapper">
               <section>
               <div class="clearfix" style="height: 20px;"></div>
@@ -229,43 +231,43 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Organization Name:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[one][organization_name]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Contact Person:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[one][contact_person]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Position:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[one][position]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Telephone:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[one][telephone]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Email:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[one][email]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Fax:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[one][fax]">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="">Address:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[one][address]">
                         </div>
                         <div class="clearfix"></div>
                       </div>
@@ -277,44 +279,45 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Organization Name:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[two][organization_name]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Contact Person:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[two][contact_person]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Position:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[two][position]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Telephone:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[two][telephone]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Email:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[two][email]">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Fax:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[two][fax]">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="">Address:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="reference[two][address]">
                         </div>
+                        <div class="clearfix"></div>
                       </div>
                     </div>
                   </div>
@@ -414,11 +417,11 @@
               </section>
               <div class="clearfix" style="height: 20px;"></div>
             </div>
-          </form>
         </div>
         <!-- End Form -->
           </div>
         </div>
+          </form>
       </div>
       </div>
     </div>
@@ -434,5 +437,14 @@
             format: 'DD-MMMM-YYYY'
         });
    });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#btn-save').on('click', function(e) {
+      e.preventDefault();
+      $('#application_reference').submit();
+    })
+  })
 </script>
 @endsection
