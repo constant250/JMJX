@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PartyTableSeeder::class);
         $this->call(PersonTypeTableSeeder::class);
+        $this->call(PersonSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(StateIdentifierSeeder::class);
         $this->call(AnzscoIdentifier::class);
@@ -57,6 +58,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CourseDetailSeeder::class);
         $this->call(CourseCourseLocationsSeeder::class);
         $this->call(StudentTypesSeeder::class);
+        $this->call(StudentSeeder::class);
+        $this->call(StudentDetailSeeder::class);
+       
        /* $files_arr = scandir( dirname(__FILE__) ); //store filenames into $files_array
         foreach ($files_arr as $key => $file){
             if ($file !== 'DatabaseSeeder.php' && $file[0] !== "." ){

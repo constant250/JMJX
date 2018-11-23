@@ -53,14 +53,14 @@ Route::prefix('student')->group( function() {
 
 	// pre-training review
 	route::resource('pre-training-review','PreTrainingReviewController');
-} );
+// } );
 
 	// RPL Application
 	route::resource('rpl-application','RplApplicationController');
-} );
+// } );
 
 	// RPL Application
 	route::resource('credit-transfer','CreditTransferApplicationController');
-} );
+// } );
 
 ?>
