@@ -52,7 +52,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="" class="not-required">Contact No:</label>
-                      <input type="text" class="form-control" id="" value=" {{ $student->party->person->mobile_number }} " name="lmobile">
+                      <input type="text" class="form-control" id="" value=" {{ $student->party->person->mobile }} " name="lmobile">
                     </div>
                   </div>
                   <div class="clearfix"></div>
