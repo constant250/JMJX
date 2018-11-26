@@ -29,13 +29,23 @@
             <a href="#parallel-enrolment-part-b" aria-controls="parallel-enrolment-part-b" role="tab" data-toggle="tab">Part B</a>
           </li>
         </ul>
+         @if (session('message'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> You have updated successfully.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @endif
         <!-- Tab panes -->
+        <form action="{{ route('parrallel-enrolment-verification.store') }}" id="parallel-form" method="post" class="form-template no-padding">
+        	{{ csrf_field() }}
         <div class="tab-content crm-tabs-content">
 
           <div role="tabpanel" class="tab-pane active" id="parallel-enrolment-part-a">
             <!-- Form -->
               <div class="crm-form-container no-padding">
-                <form action="" class="form-template no-padding">
+                
                   <div class="crm-form-wrapper">
                     <section>
                     <div class="clearfix" style="height: 20px;"></div>
@@ -48,26 +58,26 @@
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="">Given Name(s):</label>
-				                      <input type="text" class="form-control" id="" value="" name="givenname">
+				                      <input type="text" class="form-control" id="" value="{{ $student->party->person->firstname }}" name="firstname">
 				                    </div>
 				                  </div>
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="">Family Name:</label>
-				                      <input type="text" class="form-control" id="" value="" name="familyname">
+				                      <input type="text" class="form-control" id="" value="{{ $student->party->person->lastname }}" name="lastname">
 				                    </div>
 				                  </div>
 				                  <div class="clearfix"></div>
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="" class="not-required">DOB:</label>
-				                      <input type="text" class="form-control" id="" value="" name="dob">
+				                      <input type="text" class="form-control" id="" value="{{ $student->party->person->dob }}" name="dob">
 				                    </div>
 				                  </div>
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="" class="not-required">Contact No:</label>
-				                      <input type="text" class="form-control" id="" value="" name="lmobile">
+				                      <input type="text" class="form-control" id="" value="{{ $student->party->person->mobile }}" name="mobile">
 				                    </div>
 				                  </div>
 				                  <div class="clearfix"></div>
@@ -82,20 +92,20 @@
 				                  <div class="col-md-12">
 				                    <div class="form-group">
 				                      <label for="">Name of Training Provider:</label>
-				                      <input type="text" class="form-control" id="" value="" name="training_provider">
+				                      <input type="text" class="form-control" id="" value=" {{ $student->party->student->parrallel_enrolment_verification_form != null ?  $student->party->student->parrallel_enrolment_verification_form->name_of_training_prov : '' }} " name="name_of_training_prov">
 				                    </div>
 				                  </div>
 				                  <div class="clearfix"></div>
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="">Student ID:</label>
-				                      <input type="text" class="form-control" id="" value="" name="stud_id">
+				                      <input type="text" class="form-control" id="" value="{{ $student->party->student->parrallel_enrolment_verification_form != null ?  $student->party->student->parrallel_enrolment_verification_form->studentid : '' }}" name="studentid">
 				                    </div>
 				                  </div>
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="">Course of Enrolment:</label>
-				                      <input type="text" class="form-control" id="" value="" name="course_enrolment">
+				                      <input type="text" class="form-control" id="" value="{{ implode(',',array_column($student->party->student->details->toarray(),'course_code')) }}" name="course_code">
 				                    </div>
 				                  </div>
 				                  <div class="clearfix"></div>
@@ -103,7 +113,11 @@
 				                    <div class="form-group">
 				                      <label for="" class="not-required">Course Start Date:</label>
 				                      <div class='input-group date generic-datepicker'>
-				                        <input type='text' class="form-control" class="course_start_date" />
+				                      	@if($student->party->student->parrallel_enrolment_verification_form != null)
+				                      	 <input type='text' class="form-control" value="{{ $student->party->student->parrallel_enrolment_verification_form->course_start_date != '' ? Carbon\Carbon::parse($student->party->student->parrallel_enrolment_verification_form->course_start_date)->format('d-M-Y') : '' }}" name="course_start_date" />
+				                      	@else
+				                        <input type='text' class="form-control" value="" name="course_start_date" />
+				                      	@endif
 				                        <span class="input-group-addon">
 				                            <i class="fa fa-calendar" aria-hidden="true"></i>
 				                        </span>
@@ -114,7 +128,11 @@
 				                    <div class="form-group">
 				                      <label for="" class="not-required">Course End Date:</label>
 				                      <div class='input-group date generic-datepicker'>
-				                        <input type='text' class="form-control" class="course_end_date" />
+				                      	@if($student->party->student->parrallel_enrolment_verification_form != null)
+				                      	 <input type='text' class="form-control" value="{{ $student->party->student->parrallel_enrolment_verification_form->course_end_date != '' ? Carbon\Carbon::parse($student->party->student->parrallel_enrolment_verification_form->course_end_date)->format('d-M-Y') : '' }}" name="course_end_date" />
+				                      	@else
+				                        <input type='text' class="form-control" value="" name="course_end_date" />
+				                      	@endif
 				                        <span class="input-group-addon">
 				                            <i class="fa fa-calendar" aria-hidden="true"></i>
 				                        </span>
@@ -133,14 +151,14 @@
 				                  <div class="col-md-4">
 				                    <div class="form-group">
 				                      <label for="">Days:</label>
-				                      <input type="number" class="form-control" id="" value="" name="days">
+				                      <input type="number" class="form-control" id="" value="{{ $student->party->student->parrallel_enrolment_verification_form != null ?  $student->party->student->parrallel_enrolment_verification_form->timetable_days : '' }}" name="timetable_days">
 				                    </div>
 				                  </div>
 				                  <div class="col-md-4">
 				                    <div class="form-group">
 				                      <label for="" class="not-required">Start Time:</label>
 				                      <div class='input-group date generic-timepicker'>
-				                        <input type='text' class="form-control" class="start_time" />
+				                        <input type='text' class="form-control" value="{{ $student->party->student->parrallel_enrolment_verification_form != null ?  $student->party->student->parrallel_enrolment_verification_form->timetable_start_time : '' }}"  name="timetable_start_time" />
 				                        <span class="input-group-addon">
 				                            <i class="fa fa-clock" aria-hidden="true"></i>
 				                        </span>
@@ -151,7 +169,7 @@
 				                    <div class="form-group">
 				                      <label for="" class="not-required">Finish Time:</label>
 				                      <div class='input-group date generic-timepicker'>
-				                        <input type='text' class="form-control" class="finish_time" />
+				                        <input type='text' class="form-control"  value="{{ $student->party->student->parrallel_enrolment_verification_form != null ?  $student->party->student->parrallel_enrolment_verification_form->timetable_finish_time : '' }}" name="timetable_finish_time" />
 				                        <span class="input-group-addon">
 				                            <i class="fa fa-clock" aria-hidden="true"></i>
 				                        </span>
@@ -165,7 +183,7 @@
                     </section>
                     <div class="clearfix" style="height: 20px;"></div>
                   </div>
-                </form>
+                {{-- </form> --}}
               </div>
         <!-- End Form -->
           </div>
@@ -173,7 +191,7 @@
           <div role="tabpanel" class="tab-pane" id="parallel-enrolment-part-b">
             <!-- Form -->
               <div class="crm-form-container no-padding">
-                <form action="" class="form-template no-padding">
+                {{-- <form action="" class="form-template no-padding"> --}}
                   <div class="crm-form-wrapper">
                     <section>
                     <div class="clearfix" style="height: 20px;"></div>
@@ -187,13 +205,13 @@
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="">Name:</label>
-				                      <input type="text" class="form-control" id="" value="" name="contact_person_name">
+				                      <input type="text" class="form-control" id="" value=" {{ $student->party->student->parrallel_enrolment_verification_form != null ?  $student->party->student->parrallel_enrolment_verification_form->contact_name : '' }} " name="contact_name">
 				                    </div>
 				                  </div>
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="">Position:</label>
-				                      <input type="text" class="form-control" id="" value="" name="contact_person_position">
+				                      <input type="text" class="form-control" id="" value="{{ $student->party->student->parrallel_enrolment_verification_form != null ?  $student->party->student->parrallel_enrolment_verification_form->contact_position : '' }}" name="contact_position">
 				                    </div>
 				                  </div>
 				                  <div class="clearfix"></div>
@@ -203,17 +221,31 @@
 				                      <div class="clearfix"></div>
 
 				                      <div class="crm-form-checkbox position-relative display-inlineblock">
-				                        <input type="checkbox" class="" id="confirm-1" name="confirm_correct">
+				                      	@if($student->party->student->parrallel_enrolment_verification_form != null)
+				                        <input type="checkbox" class="" {{ $student->party->student->parrallel_enrolment_verification_form->confirm_course_of_enrolment ? 'checked' : '' }} id="confirm-1" value="1" name="confirm_course_of_enrolment">
+				                      	@else
+				                        <input type="checkbox" class="" id="confirm-1" value="1" name="confirm_course_of_enrolment">
+				                        @endif
 				                        <label class="checkbox-input" for="confirm-1"></label>
 				                      </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="confirm-1">Course of Enrolment</label>
 
 				                      <div class="crm-form-checkbox position-relative display-inlineblock">
-				                        <input type="checkbox" class="" id="confirm-2" name="confirm_correct">
+				                      	@if($student->party->student->parrallel_enrolment_verification_form != null)
+				                        <input type="checkbox" class="" {{ $student->party->student->parrallel_enrolment_verification_form->confirm_course_start_and_end_dates ? 'checked' : '' }} id="confirm-2" value="1" name="confirm_course_start_and_end_dates">
+				                      	@else
+				                        <input type="checkbox" class="" id="confirm-2" value="1" name="confirm_course_start_and_end_dates">
+				                        @endif
+				                        {{-- <input type="checkbox" class="" id="confirm-2" value="1" name="confirm_course_start_and_end_dates"> --}}
 				                        <label class="checkbox-input" for="confirm-2"></label>
 				                      </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="confirm-2">Course Start & End Dates</label>
 
 				                      <div class="crm-form-checkbox position-relative display-inlineblock">
-				                        <input type="checkbox" class="" id="confirm-3" name="confirm_correct">
+				                      	@if($student->party->student->parrallel_enrolment_verification_form != null)
+				                        <input type="checkbox" class="" {{ $student->party->student->parrallel_enrolment_verification_form->confirm_course_start_and_end_dates ? 'checked' : '' }} id="confirm-3" value="1" name="confirm_timetable_details">
+				                      	@else
+				                        <input type="checkbox" class="" id="confirm-3" value="1" name="confirm_timetable_details">
+				                        @endif
+				                        {{-- <input type="checkbox" class="" id="confirm-3" value="1" name="confirm_timetable_details"> --}}
 				                        <label class="checkbox-input" for="confirm-3"></label>
 				                      </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="confirm-3">Timetable Details</label>
 
@@ -223,14 +255,19 @@
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="">Signed:</label>
-				                      <input type="text" class="form-control" id="" value="" name="signature">
+				                      <input type="text" class="form-control" id="" value=" {{ $student->party->student->parrallel_enrolment_verification_form != null ?  $student->party->student->parrallel_enrolment_verification_form->signed : '' }} " name="signed">
 				                    </div>
 				                  </div>
 				                  <div class="col-md-6">
 				                    <div class="form-group">
 				                      <label for="">Date:</label>
 				                      <div class='input-group date generic-datepicker'>
-				                        <input type='text' class="form-control" class="date" />
+				                      	@if($student->party->student->parrallel_enrolment_verification_form != null)
+				                      	 <input type='text' class="form-control" value="{{ $student->party->student->parrallel_enrolment_verification_form->date_received != '' ? Carbon\Carbon::parse($student->party->student->parrallel_enrolment_verification_form->date_received)->format('d-M-Y') : '' }}" name="date_received" />
+				                      	@else
+				                        <input type='text' class="form-control" value="" name="date_received" />
+				                      	@endif
+				                        {{-- <input type='text' class="form-control"  name="date_received" /> --}}
 				                        <span class="input-group-addon">
 				                            <i class="fa fa-calendar" aria-hidden="true"></i>
 				                        </span>
@@ -244,12 +281,13 @@
                     </section>
                     <div class="clearfix" style="height: 20px;"></div>
                   </div>
-                </form>
+                
               </div>
         <!-- End Form -->
           </div>
 
         </div>
+    </form>
       </div>
       </div>
     </div>
@@ -273,5 +311,13 @@
             format: 'LT'
         });
    });
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#btn-save').on('click', function(e) {
+      e.preventDefault();
+      $('#parallel-form').submit();
+    })
+  })
 </script>
 @endsection

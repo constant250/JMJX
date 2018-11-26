@@ -19,8 +19,8 @@ class CreateParrallelEnrolmentVerificationForm extends Migration
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->string('name_of_training_prov');
             $table->string('studentid');
-            $table->string('course_code')->index();
-            $table->foreign('course_code')->references('code')->on('courses')->onDelete('cascade');
+            $table->string('course_code');
+            // $table->foreign('course_code')->references('code')->on('courses')->onDelete('cascade');
             $table->datetime('course_start_date');
             $table->datetime('course_end_date');
             $table->integer('timetable_days');
@@ -28,9 +28,9 @@ class CreateParrallelEnrolmentVerificationForm extends Migration
             $table->time('timetable_finish_time');
             $table->string('contact_name');
             $table->string('contact_position');
-            $table->boolean('confirm_course_of_enrolment');
-            $table->boolean('confirm_course_start_and_end_dates');
-            $table->boolean('confirm_timetable_details');
+            $table->boolean('confirm_course_of_enrolment')->default(0);
+            $table->boolean('confirm_course_start_and_end_dates')->default(0);
+            $table->boolean('confirm_timetable_details')->default(0);
             $table->string('signed');
             $table->datetime('date_received');
             $table->timestamps();

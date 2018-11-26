@@ -20,7 +20,17 @@
       <div class="clearfix" style="height: 10px;"></div>
         <!-- Form -->
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
+          
+          @if (session('message'))
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Created Successfully!.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            @endif
+          <form  id="rpl-application" action="{{ route('rpl-application.store')}}" method="post" class="form-template no-padding">
+            {{ csrf_field() }}
             <div class="crm-form-wrapper">
               <section>
               <div class="clearfix" style="height: 20px;"></div>
@@ -156,31 +166,32 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Title:</label>
-                        <select class="form-control" name="title">
+                        {{-- <select class="form-control" name="title">
                           <option></option>
                           <option>Mr.</option>
                           <option>Ms.</option>
                           <option>Mrs.</option>
-                        </select>
+                        </select> --}}
+                        <input class="form-control" type="text" value="{{ $student->party->person->prefix }}" name="title"></input>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">First Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="fname">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->firstname }}" name="fname">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Middle Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="mname">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->middlename }}" name="mname">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Last Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="lname">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->lastname }}" name="lname">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -188,7 +199,7 @@
                      <div class="form-group">
                        <label for="">Date of Birth:</label>
                        <div class='input-group date generic-datepicker'>
-                         <input type='text' class="form-control" name="dob" />
+                         <input type='text' class="form-control" name="dob" value="{{ Carbon\Carbon::parse( $student->party->person->dob )->format('d-M-Y') }}" />
                          <span class="input-group-addon">
                              <i class="fa fa-calendar" aria-hidden="true"></i>
                          </span>
@@ -199,12 +210,15 @@
                        <div class="form-group">
                         <label for="">Country of Birth:</label>
                         <select class="form-control" name="country_birth">
-                          <option></option>
+                          @foreach($countries as $country)
+                            <option value="{{ $country->identifier }}">{{ $country->full_name }}</option>
+                          @endforeach
+                          {{-- <option></option>
                           <option>Australia</option>
                           <option>Australia</option>
                           <option>Australia</option>
                           <option>Australia</option>
-                          <option>Australia</option>
+                          <option>Australia</option> --}}
                         </select>
                        </div>
                       </div>
@@ -212,11 +226,12 @@
                       <div class="col-md-6">
                        <div class="form-group">
                         <label for="">Gender:</label>
-                        <select class="form-control" name="gender">
+                        <input class="form-control" type="text" name="gender" value="{{ ($student->party->person->prefix == 'Mr') ? 'Male' : 'Female'  }}" ></input>
+                       {{--  <select class="form-control" name="gender">
                           <option></option>
                           <option>Male</option>
                           <option>Female</option>
-                        </select>
+                        </select> --}}
                        </div>
                       </div>
                       <div class="col-md-6">
@@ -236,14 +251,14 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Passport Number:</label>
-                          <input type="text" class="form-control" id="" value="" name="passport_num">
+                          <input type="text" class="form-control" id="" value="{{ $student->party->person->passport_num }}" name="passport_num">
                         </div>
                       </div>
                       <div class="col-md-6">
                        <div class="form-group">
                          <label for="">Expiry Date:</label>
                          <div class='input-group date generic-datepicker'>
-                           <input type='text' class="form-control" name="passport_expiry" />
+                           <input type='text' class="form-control" value="{{ $student->party->person->passport_expiry }}"  name="passport_expiry" />
                            <span class="input-group-addon">
                                <i class="fa fa-calendar" aria-hidden="true"></i>
                            </span>
@@ -256,12 +271,12 @@
                          <label for="">Do you hold permanent residency or a current Australian visa?</label>
                          <br>
                           <div class="crm-form-radio position-relative display-inlineblock">
-                            <input type="radio" class="" id="residency-yes" name="australian_residency">
+                            <input type="radio" class="" id="residency-yes" value="yes" name="australian_residency">
                             <label class="radio-input" for="residency-yes"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="residency-yes">Yes</label>
 
                           <div class="crm-form-radio position-relative display-inlineblock">
-                            <input type="radio" class="" id="residency-no" name="australian_residency">
+                            <input type="radio" class="" id="residency-no" value="no" name="australian_residency">
                             <label class="radio-input" for="residency-no"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="residency-no">No</label>
 
@@ -272,14 +287,14 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Visa Type:</label>
-                          <input type="text" class="form-control" id="" value="" name="visa_type">
+                          <input type="text" class="form-control" id="" value="{{ $student->party->person->visa_type }}" name="visa_type">
                         </div>
                       </div>
                       <div class="col-md-6">
                        <div class="form-group">
                          <label for="">Visa Expiry Date:</label>
                          <div class='input-group date generic-datepicker'>
-                           <input type='text' class="form-control" name="visa_expiry" />
+                           <input type='text' class="form-control"  value="{{ $student->party->person->visa_expiry }}" name="visa_expiry" />
                            <span class="input-group-addon">
                                <i class="fa fa-calendar" aria-hidden="true"></i>
                            </span>
@@ -298,13 +313,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Phone Number:</label>
-                        <input type="text" class="form-control" id="" value="" name="phone">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->phone }}" name="phone">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Mobile Number:</label>
-                        <input type="text" class="form-control" id="" value="" name="mobile">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->mobile }}" name="mobile">
                       </div>
                     </div>
 
@@ -312,20 +327,20 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Work Phone Number: (Optional)</label>
-                        <input type="text" class="form-control" id="" value="" name="wphone">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->wphone }}" name="wphone">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Work Mobile Number: (Optional)</label>
-                        <input type="text" class="form-control" id="" value="" name="wmobile">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->wmobile }}" name="wmobile">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="" class="not-required">Email Address</label>
-                        <input type="email" class="form-control" id="" value="" name="email">
+                        <input type="email" class="form-control" id="" value="{{ $student->party->person->email }}" name="email">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -341,10 +356,13 @@
                       <div class="form-group">
                         <label for="">State:</label>
                         <select class="form-control" name="current_state">
-                          <option></option>
+                          @foreach( $states as $state )
+                            <option value="{{ $state->value }}" > {{ $state->state_name }} </option>
+                          @endforeach
+                          {{-- <option></option>
                           <option>NSW - New South Wales</option>
                           <option>QLD - Queensland</option>
-                          <option>VIC - Victoria</option>
+                          <option>VIC - Victoria</option> --}}
                         </select>
                       </div>
                     </div>
@@ -352,12 +370,15 @@
                       <div class="form-group">
                         <label for="">Suburb:</label>
                         <select class="form-control" name="current_suburb">
-                          <option></option>
+                          @foreach( $suburbs as $suburb )
+                            <option value="{{ $suburb->city }}"> {{ $suburb->city }} </option>
+                          @endforeach
+                          {{-- <option></option>
                           <option>1001 - SYDNEY</option>
                           <option>1001 - SYDNEY</option>
                           <option>1001 - SYDNEY</option>
                           <option>1001 - SYDNEY</option>
-                          <option>1001 - SYDNEY</option>
+                          <option>1001 - SYDNEY</option> --}}
                         </select>
                       </div>
                     </div>
@@ -366,52 +387,55 @@
                       <div class="form-group">
                         <label for="">Locality:</label>
                         <select class="form-control" name="current_locality">
-                          <option></option>
+                          @foreach( $localities as $locality )
+                            <option value="{{ $locality->id }}"> {{ $locality->loc_name }} </option>
+                          @endforeach
+                          {{-- <option></option>
                           <option>Aberdeen, NSW</option>
                           <option>Aberdeen, NSW</option>
                           <option>Aberdeen, NSW</option>
                           <option>Aberdeen, NSW</option>
-                          <option>Aberdeen, NSW</option>
+                          <option>Aberdeen, NSW</option> --}}
                         </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Postcode:</label>
-                        <input type="text" class="form-control" id="" value="" name="current_postcode">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->current_postcode }}" name="current_postcode">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Building Property Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="current_bldg_name">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->current_bldg_name }}" name="current_bldg_name">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Flat Unit:</label>
-                        <input type="text" class="form-control" id="" value="" name="current_flat_unit">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->current_flat_unit }}" name="current_flat_unit">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Street Number:</label>
-                        <input type="text" class="form-control" id="" value="" name="current_st_num">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->current_st_num }}" name="current_st_num">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Street Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="current_st_name">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->current_st_name }}" name="current_st_name">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="" class="not-required">Postal Delivery Box:</label>
-                        <input type="text" class="form-control" id="" value="" name="current_postal_box">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->current_postal_box }}" name="current_postal_box">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -427,10 +451,13 @@
                       <div class="form-group">
                         <label for="">State:</label>
                         <select class="form-control" name="home_state">
-                          <option></option>
+                          @foreach( $states as $state )
+                            <option value="{{ $state->value }}" > {{ $state->state_name }} </option>
+                          @endforeach
+                          {{-- <option></option>
                           <option>NSW - New South Wales</option>
                           <option>QLD - Queensland</option>
-                          <option>VIC - Victoria</option>
+                          <option>VIC - Victoria</option> --}}
                         </select>
                       </div>
                     </div>
@@ -438,12 +465,15 @@
                       <div class="form-group">
                         <label for="">Suburb:</label>
                         <select class="form-control" name="home_suburb">
-                          <option></option>
+                          @foreach( $suburbs as $suburb )
+                            <option value="{{ $suburb->city }}"> {{ $suburb->city }} </option>
+                          @endforeach
+                         {{--  <option></option>
                           <option>1001 - SYDNEY</option>
                           <option>1001 - SYDNEY</option>
                           <option>1001 - SYDNEY</option>
                           <option>1001 - SYDNEY</option>
-                          <option>1001 - SYDNEY</option>
+                          <option>1001 - SYDNEY</option> --}}
                         </select>
                       </div>
                     </div>
@@ -452,52 +482,55 @@
                       <div class="form-group">
                         <label for="">Locality:</label>
                         <select class="form-control" name="home_locality">
-                          <option></option>
+                          @foreach( $localities as $locality )
+                            <option value="{{ $locality->id }}"> {{ $locality->loc_name }} </option>
+                          @endforeach
+                          {{-- <option></option>
                           <option>Aberdeen, NSW</option>
                           <option>Aberdeen, NSW</option>
                           <option>Aberdeen, NSW</option>
                           <option>Aberdeen, NSW</option>
-                          <option>Aberdeen, NSW</option>
+                          <option>Aberdeen, NSW</option> --}}
                         </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Postcode:</label>
-                        <input type="text" class="form-control" id="" value="" name="home_postcode">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->home_postcode }}" name="home_postcode">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Building Property Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="home_bldg_name">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->home_bldg_name }}" name="home_bldg_name">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Flat Unit:</label>
-                        <input type="text" class="form-control" id="" value="" name="home_flat_unit">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->home_flat_unit }}" name="home_flat_unit">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Street Number:</label>
-                        <input type="text" class="form-control" id="" value="" name="home_st_num">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->home_st_num }}" name="home_st_num">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="" class="not-required">Street Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="home_st_name">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->home_st_name }}" name="home_st_name">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="" class="not-required">Postal Delivery Box:</label>
-                        <input type="text" class="form-control" id="" value="" name="home_postal_box">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->home_postal_box }}" name="home_postal_box">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -512,40 +545,40 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="emergency_name">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->emergency_name }}" name="emergency_name">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Relationship:</label>
-                        <input type="text" class="form-control" id="" value="" name="emergency_relationship">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->emergency_relationship }}" name="emergency_relationship">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Email:</label>
-                        <input type="email" class="form-control" id="" value="" name="emergency_email">
+                        <input type="email" class="form-control" id="" value="{{ $student->party->person->emergency_email }}" name="emergency_email">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Address:</label>
-                        <input type="text" class="form-control" id="" value="" name="emergency_address">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->emergency_address }}" name="emergency_address">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Mobile:</label>
-                        <input type="text" class="form-control" id="" value="" name="emergency_mobile">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->emergency_mobile }}" name="emergency_mobile">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Telephone:</label>
-                        <input type="text" class="form-control" id="" value="" name="emergency_telephone">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->person->emergency_telephone }}" name="emergency_telephone">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -564,11 +597,11 @@
                        <br>
                        <div class="clearfix" style="height: 10px;"></div>
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="employed-yes" name="currently_employed">
+                          <input type="radio" class="" id="employed-yes" value="1" name="current_employment">
                           <label class="radio-input" for="employed-yes"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="employed-yes">Yes</label>
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="employed-no" name="currently_employed">
+                          <input type="radio" class="" id="employed-no" value="0" name="current_employment">
                           <label class="radio-input" for="employed-no"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="employed-no">No</label>
                       </div>
@@ -579,11 +612,11 @@
                        <br>
                        <div class="clearfix" style="height: 10px;"></div>
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="rpl-yes" name="seeking_rpl">
+                          <input type="radio" class="" id="rpl-yes" value="1" name="if_yes">
                           <label class="radio-input" for="rpl-yes"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="rpl-yes">Yes</label>
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="rpl-no" name="seeking_rpl">
+                          <input type="radio" class="" id="rpl-no" value="0" name="if_yes">
                           <label class="radio-input" for="rpl-no"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="rpl-no">No</label>
                       </div>
@@ -592,7 +625,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                        <label for="">What is the name of your employer?</label>
-                       <input type="text" class="form-control" id="" value="" name="employer_name">
+                       <input type="text" class="form-control" id="" value="" name="employers_name">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -602,11 +635,11 @@
                        <br>
                        <div class="clearfix" style="height: 10px;"></div>
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="workplace-yes" name="workplace_assessed">
+                          <input type="radio" class="" id="workplace-yes" name="if_no_question_one">
                           <label class="radio-input" for="workplace-yes"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="workplace-yes">Yes</label>
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="workplace-no" name="workplace_assessed">
+                          <input type="radio" class="" id="workplace-no" value="1" name="if_no_question_one">
                           <label class="radio-input" for="workplace-no"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="workplace-no">No</label>
                       </div>
@@ -615,7 +648,7 @@
                       <div class="form-group">
                        <label for="">Please provide details of the workplace</label>
                        <div class="clearfix" style="height: 15px;"></div>
-                       <input type="text" class="form-control" id="" value="" name="employer_name">
+                       <input type="text" class="form-control" id="" value="" name="details_of_workplace">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -634,11 +667,11 @@
                        <br>
                        <div class="clearfix" style="height: 10px;"></div>
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="recognition-yes" name="seeking_recognition">
+                          <input type="radio" class="" id="recognition-yes" value="1" name="undertaken_any_qualification">
                           <label class="radio-input" for="recognition-yes"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="recognition-yes">Yes</label>
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="recognition-no" name="seeking_recognition">
+                          <input type="radio" class="" id="recognition-no" value="0" name="undertaken_any_qualification">
                           <label class="radio-input" for="recognition-no"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="recognition-no">No</label>
                       </div>
@@ -647,19 +680,22 @@
                     <div class="col-md-6">
                       <div class="form-group">
                        <label for="">If yes, training completion date (month, year):</label>
-                       <input type="text" class="form-control" id="" value="" name="completion_date">
+                       <input type="text" class="form-control" id="" value="" name="if_yes_training_completion">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                        <label for="">Country:</label>
-                       <select name="" id="" class="form-control">
-                         <option value=""></option>
+                       <select name="country" id="" class="form-control">
+                         @foreach($countries as $country)
+                         <option value="{{ $country->identifier }}"> {{ $country->full_name }} </option>
+                         @endforeach
+                         {{-- <option value=""></option>
                          <option value="">Australia</option>
                          <option value="">Australia</option>
                          <option value="">Australia</option>
                          <option value="">Australia</option>
-                         <option value="">Australia</option>
+                         <option value="">Australia</option> --}}
                        </select>
                       </div>
                     </div>
@@ -688,7 +724,7 @@
                                       <div class="form-group">
                                         <label for="" class="">Name:</label>
                                         <div class="clearfix" style="height: 5px;"></div>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="prof_ref[1][name]">
                                       </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -696,21 +732,21 @@
                                       <div class="form-group">
                                         <label for="" class="">Position:</label>
                                         <div class="clearfix" style="height: 5px;"></div>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="prof_ref[1][position]">
                                       </div>
                                     </div>
                                     <div class="col-md-6">
                                       <div class="form-group">
                                         <label for="" class="">Organisation:</label>
                                         <div class="clearfix" style="height: 5px;"></div>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="prof_ref[1][organisation]">
                                       </div>
                                     </div>
                                     <div class="clearfix"></div>
                                     <div class="col-md-6">
                                       <div class="form-group">
                                         <label for="" class="">Relationship to you:</label>
-                                        <div class="clearfix" style="height: 5px;"></div>
+                                        <div class="clearfix" style="height: 5px;" name="prof_ref[1][relationship]"></div>
                                         <input type="text" class="form-control">
                                       </div>
                                     </div>
@@ -718,7 +754,7 @@
                                       <div class="form-group">
                                         <label for="" class="">Email Address:</label>
                                         <div class="clearfix" style="height: 5px;"></div>
-                                        <input type="email" class="form-control">
+                                        <input type="email" class="form-control" name="prof_ref[1][email]">
                                       </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -726,14 +762,14 @@
                                       <div class="form-group">
                                         <label for="" class="">Phone Number:</label>
                                         <div class="clearfix" style="height: 5px;"></div>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="prof_ref[1][phone_number]">
                                       </div>
                                     </div>
                                     <div class="col-md-6">
                                       <div class="form-group">
                                         <label for="" class="">Mobile Number:</label>
-                                        <div class="clearfix" style="height: 5px;"></div>
-                                        <input type="text" class="form-control">
+                                        <div class="clearfix" style="height: 5px;" ></div>
+                                        <input type="text" class="form-control" name="prof_ref[1][mobile_number]">
                                       </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -777,10 +813,10 @@
                             <tbody>
                               <tr>
                                 <td>1</td>
-                                <td><input type='text' class="form-control" name="employers_details" /></td>
+                                <td><input type='text' class="form-control" name="prev_emp[1][employers_details]" /></td>
                                 <td>
                                   <div class='input-group date generic-datepicker'>
-                                    <input type='text' class="form-control" name="period_to" />
+                                    <input type='text' class="form-control" name="prev_emp[1][period_to]" />
                                     <span class="input-group-addon">
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                     </span>
@@ -788,15 +824,15 @@
                                 </td>
                                 <td>
                                   <div class='input-group date generic-datepicker'>
-                                    <input type='text' class="form-control" name="period_from" />
+                                    <input type='text' class="form-control" name="prev_emp[1][period_from]" />
                                     <span class="input-group-addon">
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                     </span>
                                   </div>
                                 </td>
-                                <td><input type='text' class="form-control" name="position_held" /></td>
-                                <td><input type='text' class="form-control" name="ft_pt_cas" /></td>
-                                <td><input type='text' class="form-control" name="desc_mjr_duties" /> </td>
+                                <td><input type='text' class="form-control" name="prev_emp[1][position_held]" /></td>
+                                <td><input type='text' class="form-control" name="prev_emp[1][ft_pt_cas]" /></td>
+                                <td><input type='text' class="form-control" name="prev_emp[1][desc_mjr_duties]" /> </td>
                                 <td><button class="btnDelHistory btn btn-link outline-none" type="button"><i class="fa fa-trash text-danger" aria-hidden="true"></i></button></td>
                               </tr>
                             </tbody>
@@ -830,7 +866,7 @@
                                 <td class="text-left">Your current and detailed CV</td>
                                 <td>
                                   <div class="crm-form-checkbox position-relative center-block">
-                                    <input type="checkbox" class="" id="docu-desc-1" name="select_course">
+                                    <input type="checkbox" class="" id="docu-desc-1" value="1" name="current_detailed_cv">
                                     <label class="checkbox-input" for="docu-desc-1"></label>
                                   </div> 
                                 </td>
@@ -840,7 +876,7 @@
                                 <td class="text-left">Copies of Certificates of any formal and informal training you have participated in.</td>
                                 <td>
                                   <div class="crm-form-checkbox position-relative center-block">
-                                    <input type="checkbox" class="" id="docu-desc-2" name="select_course">
+                                    <input type="checkbox" class="" id="docu-desc-2" value="1" name="copies_of_cert">
                                     <label class="checkbox-input" for="docu-desc-2"></label>
                                   </div> 
                                 </td>
@@ -850,7 +886,7 @@
                                 <td class="text-left">Current and previous (within the last 5 years) position descriptions and performance reviews (if available).</td>
                                 <td>
                                   <div class="crm-form-checkbox position-relative center-block">
-                                    <input type="checkbox" class="" id="docu-desc-3" name="select_course">
+                                    <input type="checkbox" class="" id="docu-desc-3" value="1" name="current_and_prev_position">
                                     <label class="checkbox-input" for="docu-desc-3"></label>
                                   </div> 
                                 </td>
@@ -860,7 +896,7 @@
                                 <td class="text-left">Copies of qualifications you have completed.</td>
                                 <td>
                                   <div class="crm-form-checkbox position-relative center-block">
-                                    <input type="checkbox" class="" id="docu-desc-4" name="select_course">
+                                    <input type="checkbox" class="" id="docu-desc-4" value="1" name="copies_of_qualification">
                                     <label class="checkbox-input" for="docu-desc-4"></label>
                                   </div> 
                                 </td>
@@ -870,7 +906,7 @@
                                 <td class="text-left">Any letters of support from employers or industry contacts (if available).</td>
                                 <td>
                                   <div class="crm-form-checkbox position-relative center-block">
-                                    <input type="checkbox" class="" id="docu-desc-5" name="select_course">
+                                    <input type="checkbox" class="" id="docu-desc-5" value="1" name="letter_of_support">
                                     <label class="checkbox-input" for="docu-desc-5"></label>
                                   </div> 
                                 </td>
@@ -880,7 +916,7 @@
                                 <td class="text-left">Contact details of at least 2 professional referees who have acted in a senior capacity to you in the workplace and who can verify your competency (as above).</td>
                                 <td>
                                   <div class="crm-form-checkbox position-relative center-block">
-                                    <input type="checkbox" class="" id="docu-desc-6" name="select_course">
+                                    <input type="checkbox" class="" id="docu-desc-6" value="1" name="contact_details">
                                     <label class="checkbox-input" for="docu-desc-6"></label>
                                   </div> 
                                 </td>
@@ -890,7 +926,7 @@
                                 <td class="text-left">Qualification Summary</td>
                                 <td>
                                   <div class="crm-form-checkbox position-relative center-block">
-                                    <input type="checkbox" class="" id="docu-desc-7" name="select_course">
+                                    <input type="checkbox" class="" id="docu-desc-7" value="1" name="qualification_summary">
                                     <label class="checkbox-input" for="docu-desc-7"></label>
                                   </div>
                                 </td>
@@ -901,13 +937,13 @@
                                   <div class="form-group">
                                     <label for="" class="not-required" style="line-height: 1.2;">Self-Assessment Checklists</label>
                                     <div class="clearfix" style="height: 13px;"></div>
-                                    <input type="text" class="form-control" id="" value="" name="wmobile">
+                                    <input type="text" class="form-control" id="" name="self_assesment_checklist">
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group">
                                     <label for="" class="not-required" style="line-height: 1.2;">For how many units?</label>
-                                    <input type="number" class="form-control" id="" value="" name="wmobile">
+                                    <input type="number" class="form-control" id="" name="how_many_units">
                                   </div>
                                 </td>
                               </tr>
@@ -935,11 +971,11 @@
                           </tr>
                           <tr>
                             <td width="20%" class="iris-blue-bg-color white-font-color">Candidate signature: </td>
-                            <td><input type='text' class="form-control" name="name_applicant" /></td>
+                            <td><input type='text' class="form-control" name="candidate_signature" /></td>
                             <td width="20%" class="iris-blue-bg-color white-font-color">Date: </td>
                             <td>
                               <div class='input-group date generic-datepicker'>
-                                <input type='text' class="form-control" name="declaration_date" />
+                                <input type='text' class="form-control" name="date_received" />
                                 <span class="input-group-addon">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </span>
@@ -948,7 +984,7 @@
                           </tr>
                           <tr>
                             <td width="20%" class="iris-blue-bg-color white-font-color">Printed name:</td>
-                            <td colspan="3"><input type='text' class="form-control" name="declaration_printed_name" /></td>
+                            <td colspan="3"><input type='text' class="form-control" name="printed_name" /></td>
                           </tr>
                         </table>
                       </div>
@@ -986,7 +1022,7 @@ $(document).ready(function () {
                           '<div class="form-group">' +
                             '<label for="" class="">Name:</label>'+
                               '<div class="clearfix" style="height: 5px;"></div>'+
-                                '<input type="text" class="form-control">'+
+                                '<input type="text" class="form-control" name="prof_ref['+ rowCounter +'][name]">'+
                               '</div>'+
                             '</div>'+
                             '<div class="clearfix"></div>'+
@@ -994,14 +1030,14 @@ $(document).ready(function () {
                               '<div class="form-group">'+
                                 '<label for="" class="">Position:</label>'+
                                 '<div class="clearfix" style="height: 5px;"></div>'+
-                                '<input type="text" class="form-control">'+
+                                '<input type="text" class="form-control" name="prof_ref['+ rowCounter +'][position]" >'+
                               '</div>'+
                             '</div>'+
                             '<div class="col-md-6">'+
                               '<div class="form-group">'+
                                 '<label for="" class="">Organisation:</label>'+
                                 '<div class="clearfix" style="height: 5px;"></div>'+
-                                '<input type="text" class="form-control">'+
+                                '<input type="text" class="form-control" name="prof_ref['+ rowCounter +'][organisation]" >'+
                               '</div>'+
                             '</div>'+
                             '<div class="clearfix"></div>'+
@@ -1009,14 +1045,14 @@ $(document).ready(function () {
                               '<div class="form-group">'+
                                 '<label for="" class="">Relationship to you:</label>'+
                                 '<div class="clearfix" style="height: 5px;"></div>'+
-                                '<input type="text" class="form-control">'+
+                                '<input type="text" class="form-control" name="prof_ref['+ rowCounter +'][relationship]" >'+
                               '</div>'+
                             '</div>'+
                             '<div class="col-md-6">'+
                               '<div class="form-group">'+
                                 '<label for="" class="">Email Address:</label>'+
                                 '<div class="clearfix" style="height: 5px;"></div>'+
-                                '<input type="email" class="form-control">'+
+                                '<input type="email" class="form-control" name="prof_ref['+ rowCounter +'][email]" >'+
                               '</div>'+
                             '</div>'+
                             '<div class="clearfix"></div>'+
@@ -1024,14 +1060,14 @@ $(document).ready(function () {
                               '<div class="form-group">'+
                                 '<label for="" class="">Phone Number:</label>'+
                                 '<div class="clearfix" style="height: 5px;"></div>'+
-                                '<input type="text" class="form-control">'+
+                                '<input type="text" class="form-control" name="prof_ref['+ rowCounter +'][phone_number]">'+
                               '</div>'+
                             '</div>'+
                             '<div class="col-md-6">'+
                               '<div class="form-group">'+
                                 '<label for="" class="">Mobile Number:</label>'+
                                 '<div class="clearfix" style="height: 5px;"></div>'+
-                                '<input type="text" class="form-control">'+
+                                '<input type="text" class="form-control" name="prof_ref['+ rowCounter +'][mobile_number]" >'+
                               '</div>'+
                             '</div>'+
                             '<div class="clearfix"></div>'+
@@ -1055,10 +1091,10 @@ $(document).ready(function () {
         var cols = "";
         var rowCounter = counter + 2;
         cols += '<td>'+ rowCounter +'</td>';
-        cols += '<td><input type="text" class="form-control" name="employers_details' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control" name="prev_emp['+ rowCounter +'][employers_details]"/></td>';
         cols += '<td>'+
                       '<div class="input-group date generic-datepicker">'+
-                        '<input type="text" class="form-control" name="period_to" />'+
+                        '<input type="text" class="form-control" name="prev_emp['+ rowCounter +'][period_to]" />'+
                         '<span class="input-group-addon">'+
                           '<i class="fa fa-calendar" aria-hidden="true"></i>'+
                         '</span>'+
@@ -1066,15 +1102,15 @@ $(document).ready(function () {
                     '</td>';
         cols += '<td>'+
                       '<div class="input-group date generic-datepicker">'+
-                        '<input type="text" class="form-control" name="period_from" />'+
+                        '<input type="text" class="form-control" name="prev_emp['+ rowCounter +'][period_from]" />'+
                         '<span class="input-group-addon">'+
                           '<i class="fa fa-calendar" aria-hidden="true"></i>'+
                         '</span>'+
                       '</div>'+
                     '</td>';
-        cols += '<td><input type="number" class="form-control" name="position_held' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="ft_pt_cas"' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="desc_mjr_duties"' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control" name="prev_emp['+ rowCounter +'][position_held]"/></td>';
+        cols += '<td><input type="text" class="form-control" name="prev_emp['+ rowCounter +'][ft_pt_cas]"/></td>';
+        cols += '<td><input type="text" class="form-control" name="prev_emp['+ rowCounter +'][desc_mjr_duties]"/></td>';
         cols += '<td><button class="btnDelHistory btn btn-link outline-none" type="button"><i class="fa fa-trash text-danger" aria-hidden="true"></i></button></td>';
         newRow.append(cols);
         $("table.previous-employment-history").append(newRow);
@@ -1093,5 +1129,13 @@ $(document).ready(function () {
             format: 'DD-MMMM-YYYY'
         });
    });
+</script>
+<script type="text/javascript">
+   $(document).ready(function () {
+    $('#btn-save').on('click', function(e) {
+      e.preventDefault();
+      $('#rpl-application').submit();
+    })
+  })
 </script>
 @endsection

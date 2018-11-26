@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ParallelEnrlmentVerificationForm;
+use App\Models\User;
+use Auth;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 
 class ParallelEnrolmentVerificationController extends Controller
@@ -11,10 +16,16 @@ class ParallelEnrolmentVerificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        return $this->middleware('auth');
+    }
     public function index()
     {
         //
-        return view('parrallel-enrolment-verification.index');
+
+        $student = User::with(['party.person','party.student.details.course','party.student.parrallel_enrolment_verification_form','party.releaseletter'])->where('id',Auth::user()->id)->first();
+        return view('parrallel-enrolment-verification.index', compact('student'));
     }
 
     /**
@@ -36,6 +47,40 @@ class ParallelEnrolmentVerificationController extends Controller
     public function store(Request $request)
     {
         //
+        // dump( Auth::user()->party->student->id);
+        try {
+            DB::beginTransaction();
+            $penrol = ParallelEnrlmentVerificationForm::updateOrCreate([
+                'student_id' => Auth::user()->party->student->id
+                ],
+                [
+                    'student_id'                         => Auth::user()->party->student->id,
+                    'studentid'                          => $request->studentid,
+                    'name_of_training_prov'              => $request->name_of_training_prov,
+                    'course_code'                        =>$request->course_code,
+                    'course_start_date'                  => ( $request->course_start_date ) ? Carbon::parse($request->course_start_date)->format('Y-m-d H:i:s') : '',
+                    'course_end_date'                    => ( $request->course_end_date  ) ? Carbon::parse($request->course_end_date)->format('Y-m-d H:i:s') : '',
+                    'timetable_days'                     => $request->timetable_days,
+                    'timetable_start_time'               => $request->timetable_start_time,
+                    'timetable_finish_time'              => $request->timetable_finish_time,
+                    'contact_name'                       => $request->contact_name,
+                    'contact_position'                   => $request->contact_position,
+                    'confirm_course_of_enrolment'        => $request->confirm_course_of_enrolment,
+                    'confirm_course_start_and_end_dates' => $request->confirm_course_start_and_end_dates,
+                    'confirm_timetable_details'          => $request->confirm_timetable_details,
+                    'signed'                             => $request->signed,
+                    'date_received'                      => ( $request->date_received  ) ? Carbon::parse($request->date_received)->format('Y-m-d') : '',
+                    'created_at'                         => Carbon::now(),
+                ]
+            );
+
+
+            DB::commit();
+            return redirect()->route('parrallel-enrolment-verification.index')->with('message','Update Success');
+        } catch (\Exception $e) {
+            DB::rollback();
+            dd($e->getMessage());
+        }
     }
 
     /**
