@@ -30,7 +30,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="" class="not-required">Student Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="stud_fullname">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->name }}">
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -50,7 +50,7 @@
                       <div class="form-group">
                         <label for="" class="not-required">Date of Review:</label>
                         <div class='input-group date generic-datepicker'>
-                          <input type='text' class="form-control" name="review_date" />
+                          <input type='text' class="form-control" value="{{\Carbon\Carbon::now()->format('d-M-Y')}}" name="date_of_review" />
                           <span class="input-group-addon">
                               <i class="fa fa-calendar" aria-hidden="true"></i>
                           </span>
@@ -124,7 +124,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="" class="not-required">What are your aspirations and interests?</label>
-                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="aspirations_interests"></textarea>
+                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="aspiration_interest"></textarea>
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -156,12 +156,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="course-1" name="course_interested">
+                          <input type="radio" class="" id="course-1" value="CHC30113 " name="course_code">
                           <label class="radio-input" for="course-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-1">CHC30113 – Certificate III in Early Childhood Education and Care</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="course-2" name="course_interested">
+                          <input type="radio" class="" id="course-2" value="CHC50113 " name="course_code">
                           <label class="radio-input" for="course-2"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-2">CHC50113 Diploma of Early Childhood Education and Care</label>
 
@@ -176,12 +176,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-familiar-1" name="familiar_learning_strategies">
+                          <input type="radio" class="" id="yes-familiar-1" name="learning_strategies_materials">
                           <label class="radio-input" for="yes-familiar-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-familiar-1">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-familiar-1" name="familiar_learning_strategies">
+                          <input type="radio" class="" id="no-familiar-1" name="learning_strategies_materials">
                           <label class="radio-input" for="no-familiar-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-familiar-1">No</label>
 
@@ -196,12 +196,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-potential" name="potential_learning_strategies">
+                          <input type="radio" class="" id="yes-potential" name="issues_challenge_barriers">
                           <label class="radio-input" for="yes-potential"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-potential">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-potential" name="potential_learning_strategies">
+                          <input type="radio" class="" id="no-potential" name="issues_challenge_barriers">
                           <label class="radio-input" for="no-potential"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-potential">No</label>
 
@@ -210,7 +210,7 @@
                       <div class="form-group">
 
                         <label for="" class="not-required">If yes, please specify:</label>
-                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="yes_potential_specify"></textarea>
+                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="barrier_if_yes_specify"></textarea>
 
                       </div>
                     </div>
@@ -243,12 +243,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-familiar-2" name="familiar_acsf_lvl">
+                          <input type="radio" class="" id="yes-familiar-2" value="1" name="familiar_acsf">
                           <label class="radio-input" for="yes-familiar-2"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-familiar-2">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-familiar-2" name="familiar_acsf_lvl">
+                          <input type="radio" class="" id="no-familiar-2" value="0" name="familiar_acsf">
                           <label class="radio-input" for="no-familiar-2"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-familiar-2">No</label>
 
@@ -263,12 +263,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-scored" name="scored_acsf_lvl">
+                          <input type="radio" class="" id="yes-scored" value="1" name="score_required_acsf">
                           <label class="radio-input" for="yes-scored"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-scored">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-scored" name="scored_acsf_lvl">
+                          <input type="radio" class="" id="no-scored" value="0" name="score_required_acsf">
                           <label class="radio-input" for="no-scored"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-scored">No</label>
 
@@ -305,7 +305,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="get-job" name="briefly_explain">
+                                    <input type="radio" class="" id="get-job" name="study_reason_options_value[briefly_explain]">
                                     <label class="radio-input" for="get-job"></label>
                                   </div>
                                 </td>

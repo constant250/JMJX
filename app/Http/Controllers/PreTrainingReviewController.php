@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PreTrainingReviewController extends Controller
@@ -14,7 +16,8 @@ class PreTrainingReviewController extends Controller
     public function index()
     {
         //
-        return view('pre-training-review.index');
+         $student = User::with(['party.person','party.student.details.course','party.releaseletter'])->where('id',Auth::user()->id)->first();
+        return view('pre-training-review.index',compact('student'));
     }
 
     /**
