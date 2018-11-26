@@ -29,4 +29,9 @@ class Persons extends Model
    	{
    		return $this->belongsTo(PersonType::class);
    	}
+
+    public function lln_form()
+    {
+      return $this->hasOne(LlnForm::class, 'person_id');
+    }
 }

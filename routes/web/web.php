@@ -19,7 +19,7 @@ Route::get('home', function() {
 	return redirect('/dashboard');
 });
 
-Route::get('/dashboard', 'HomeController@index');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 Route::get('/sample','HomeController@TestPage');

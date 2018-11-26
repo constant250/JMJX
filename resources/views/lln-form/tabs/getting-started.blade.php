@@ -1,6 +1,6 @@
-<div role="tabpanel" class="tab-pane active" id="lln-getting-started">
+<div role="tabpanel" class="tab-pane" id="lln-getting-started">
     <div class="crm-form-container no-padding">
-      <form action="" class="form-template no-padding">
+      <!-- <form action="" class="form-template no-padding"> -->
         <div class="crm-form-wrapper">
           <section>
           <div class="clearfix" style="height: 20px;"></div>
@@ -69,6 +69,6 @@
           </section>
           <div class="clearfix" style="height: 20px;"></div>
         </div>
-      </form>
+      <!-- </form> -->
     </div>
 </div>

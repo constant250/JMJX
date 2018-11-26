@@ -1,6 +1,6 @@
 <div role="tabpanel" class="tab-pane " id="lln-partA">
     <div class="crm-form-container no-padding">
-      <form action="" class="form-template no-padding">
+      <!-- <form action="" class="form-template no-padding"> -->
         <div class="crm-form-wrapper">
           <section>
           <div class="clearfix" style="height: 20px;"></div>
@@ -41,7 +41,8 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">How did you learn it? People learn new skills every day, such as how to use the internet, how to record TV shows or how to drive a car. (NOTE: This question is to gather information about HOW the learning occurred, rather than WHAT the learning was about.)</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q1', old('tg_q1'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -51,7 +52,8 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">What helps you to learn? People learn in different ways. Some learn best by listening and writing, some from visual aids such as the whiteboard or the TV, some learn by watching and doing. Others like to learn in a group, while some people prefer to learn one-on-one with a support person.</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q2', old('tg_q2'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -61,7 +63,8 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">This may include reading (newspapers, emails, websites, notice boards, manuals); writing (letters, emails, forms, lists, messages, reports); numeracy (calculations, times tables, 24-hour clock, measurement, money and finance); speaking and listening (talking on the phone, asking for information, giving instructions or presentations).</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q3', old('tg_q3'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -71,7 +74,8 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">This might include specific vocational tasks, or it may be more general, such as reading novels or TV guides, writing letters, reading maps, using a calculator or reading a bus timetable.</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q4', old('tg_q4'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -81,7 +85,8 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">You could ask if there are barriers, for example the need for glasses; medication or family issues; unsuccessful previous schooling; English is second language. <br> Some may be able to identify a preference for small groups, extra time, one-on-one support, a mentor, tape recorder, computer, dictionary, calculator, etc.</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q5', old('tg_q5'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -91,7 +96,7 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">When did you leave school? For example, 1992 <br> Have you been enrolled in training (vocational training or tertiary studies) since you left school? If yes, which courses?</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q6', old('tg_q6'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}                <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -101,7 +106,8 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">In what sort of jobs have you worked?</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q7', old('tg_q7'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -109,7 +115,8 @@
                   <label for="" style="line-height: 1;">
                     <span class="bright-grey-font-color px-10-font no-margin">Did you receive on-the-job training?</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q8', old('tg_q8'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -117,7 +124,8 @@
                   <label for="" style="line-height: 1;">
                     <span class="bright-grey-font-color px-10-font no-margin">Did you do any writing at work? If so, what sort? What types of tasks involved writing? For example, taking telephone messages or filling in forms.</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q9', old('tg_q9'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -125,7 +133,8 @@
                   <label for="" style="line-height: 1;">
                     <span class="bright-grey-font-color px-10-font no-margin">Which skills would you require to be able to work in Early Childhood Education and Care industry?</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q10', old('tg_q10'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -135,7 +144,8 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">Did you use a calculator, count stock and materials, or measure? Did you use calculations? Give directions? Read maps?</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q11', old('tg_q11'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -145,7 +155,8 @@
                     <br>
                     <span class="bright-grey-font-color px-10-font no-margin">Team work, using technology, communication, self-management, problem solving, learning, initiative, planning.</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q12', old('tg_q12'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               <div class="col-md-12">
@@ -153,7 +164,8 @@
                   <label for="" style="line-height: 1;">
                     <span class="bright-grey-font-color px-10-font no-margin">What skills would you like to develop from this course?</span>
                   </label>
-                  <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                  {{ Form::textarea('tg_q13', old('tg_q13'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                  <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                 </div>
               </div>
               </div>
@@ -181,17 +193,20 @@
                                 <td>understand signs</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q1_context', old('sr_q1_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10 ,'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q1_text_com', old('sr_q1_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q1_task_com', old('sr_q1_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -199,17 +214,20 @@
                                 <td>fill in a time sheet</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q2_context', old('sr_q2_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q2_text_com', old('sr_q2_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q2_task_com', old('sr_q2_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -217,17 +235,20 @@
                                 <td>count and check change when shopping</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q3_context', old('sr_q3_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q3_text_com', old('sr_q3_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q3_task_com', old('sr_q3_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -235,17 +256,20 @@
                                 <td>Send a text message</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q4_context', old('sr_q4_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q4_text_com', old('sr_q4_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q4_task_com', old('sr_q4_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -253,17 +277,20 @@
                                 <td>use the internet to get information like telephone numbers</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q5_context', old('sr_q5_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q5_text_com', old('sr_q5_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q5_task_com', old('sr_q5_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -271,17 +298,20 @@
                                 <td>fill in a leave form</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q6_context', old('sr_q6_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q6_text_com', old('sr_q6_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q6_task_com', old('sr_q6_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -289,17 +319,20 @@
                                 <td>read a staff memo</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q7_context', old('sr_q7_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q7_text_com', old('sr_q7_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q7_task_com', old('sr_q7_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -307,17 +340,20 @@
                                 <td>use a computer to email</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q8_context', old('sr_q8_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q8_text_com', old('sr_q8_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q8_task_com', old('sr_q8_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -325,17 +361,20 @@
                                 <td>use a calculator for + – x ÷</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q9_context', old('sr_q9_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q9_text_com', old('sr_q9_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q9_task_com', old('sr_q9_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -343,17 +382,20 @@
                                 <td>read a work roster</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q10_context', old('sr_q10_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q10_text_com', old('sr_q10_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q10_task_com', old('sr_q10_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -361,17 +403,20 @@
                                 <td>follow instructions for mixing a solution or to follow a recipe</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q11_context', old('sr_q11_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q11_text_com', old('sr_q11_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q11_task_com', old('sr_q11_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -379,17 +424,20 @@
                                 <td>read a Google map or street directory</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q12_context', old('sr_q12_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q12_text_com', old('sr_q12_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q12_task_com', old('sr_q12_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -397,17 +445,20 @@
                                 <td>read and understand an MSDS</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q13_context', old('sr_q13_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q13_text_com', old('sr_q13_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q13_task_com', old('sr_q13_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -415,17 +466,20 @@
                                 <td>use an equipment manual</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q14_context', old('sr_q14_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q14_text_com', old('sr_q14_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q14_task_com', old('sr_q14_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -433,17 +487,20 @@
                                 <td>complete a log book</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q15_context', old('sr_q15_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q15_text_com', old('sr_q15_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q15_task_com', old('sr_q15_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -451,17 +508,20 @@
                                 <td>write an incident report</td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q16_context', old('sr_q16_context'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q16_text_com', old('sr_q16_text_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                                 <td>
                                   <div class="form-group no-margin">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                                    {{ Form::textarea('sr_q16_task_com', old('sr_q16_task_com'), ['class' => 'form-control', 'cols'=> 30, 'rows'=>10, 'placeholder' => '']) }}
+                                    <!-- <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea> -->
                                   </div>
                                 </td>
                               </tr>
@@ -472,7 +532,7 @@
                 <div class="clearfix"></div>
               </div>
 
-              <div class="horizontal-line-wrapper">
+              <!-- <div class="horizontal-line-wrapper">
                 <h3>Assessor notes</h3>
               </div>
               <div class="form-padding-left-right form-template">
@@ -482,10 +542,10 @@
                   </div>
                 </div>
                 <div class="clearfix"></div>
-              </div>
+              </div> -->
           </section>
           <div class="clearfix" style="height: 20px;"></div>
         </div>
-      </form>
+      <!-- </form> -->
     </div>
 </div>

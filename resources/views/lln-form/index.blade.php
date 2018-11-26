@@ -25,6 +25,23 @@
       	@include ( 'layouts.form.toolbarv2' )
       </div>
       <div class="clearfix" style="height: 10px;"></div>
+
+      <!-- Alerts -->
+      @if ( session('message') )
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> {{ session('message') }}
+          </div>
+      @endif
+      @if( $errors->has('status') && $errors->first('status') == 'error' )
+
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> {{ $errors->first('message') }}
+      </div>
+
+      @endif
+
       <!-- Tabs -->
       <div class="tabs">
         <!-- Nav tabs -->
@@ -44,10 +61,13 @@
           <li role="presentation">
             <a href="#lln-partB" aria-controls="lln-partB" role="tab" data-toggle="tab">Part B</a>
           </li> 
-          <li role="presentation">
+          <!-- <li role="presentation">
             <a href="#outcome" aria-controls="outcome" role="tab" data-toggle="tab">Outcome</a>
-          </li>
+          </li> -->
         </ul>
+
+        {!! Form::model($student, ['route' => ['lln-form.update', $lln->person->id], 'method' => 'put', 'class' => 'add-lln-form form-template no-padding'] ) !!}
+
         <!-- Tab panes -->
         <div class="tab-content crm-tabs-content">    
 
@@ -61,9 +81,11 @@
 
           @include ( 'lln-form.tabs.part-b' )
 
-          @include ( 'lln-form.tabs.outcome' )
+          {{-- @include ( 'lln-form.tabs.outcome' ) --}}
 
         </div>
+
+        </form>
       </div>
       </div>
     </div>
@@ -76,8 +98,12 @@
 <script type="text/javascript">
   $(function () {
       $('.generic-datepicker').datetimepicker({
-            format: 'DD-MMMM-YYYY'
+            format: 'DD/MM/YYYY'
         });
    });
+
+  $('#btn-save').on('click', function(){
+    $('.add-lln-form').submit();
+  })
 </script>
 @endsection
