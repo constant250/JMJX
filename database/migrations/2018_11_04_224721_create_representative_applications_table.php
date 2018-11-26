@@ -34,12 +34,12 @@ class CreateRepresentativeApplicationsTable extends Migration
             $table->string('others');
             $table->boolean('charge_student_additional_fee');
             $table->text('promote_eti');
-            $table->boolean('completed_all_relevant_sections');
-            $table->boolean('include_application');
-            $table->boolean('provide_copy_of_abn');
-            $table->boolean('include_copy_of_cert_appointment_iii');
-            $table->boolean('provide_copy_of_your_professional_industry');
-            $table->boolean('and_other_supporting_doc');
+            $table->boolean('completed_all_relevant_sections')->default(0);
+            $table->boolean('include_application')->default(0);
+            $table->boolean('provide_copy_of_abn')->default(0);
+            $table->boolean('include_copy_of_cert_appointment_iii')->default(0);
+            $table->boolean('provide_copy_of_your_professional_industry')->default(0);
+            $table->boolean('and_other_supporting_doc')->default(0);
             $table->string('name_of_applicant');
             $table->string('signature_of_applicant');
             $table->datetime('signature_date');

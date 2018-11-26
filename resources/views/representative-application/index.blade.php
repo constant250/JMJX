@@ -17,6 +17,24 @@
       <div class="inner-content-header">
         @include ( 'layouts.form.toolbarv2' )
       </div>
+
+        @if (session('message'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> Created Successfully!.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @endif
+
+        @if ($errors->any())
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Error!</strong> Please fill in all the required fields.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @endif
       <div class="clearfix" style="height: 10px;"></div>
             <!-- Tabs -->
       <div class="tabs">
@@ -50,61 +68,61 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Contact Name:</label>
-                          <input type="text" class="form-control" id="" value="" name="contact_name">
+                          <input type="text" class="form-control" id="" value="{{ old('contact_name') }}" name="contact_name">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Company Name:</label>
-                          <input type="text" class="form-control" id="" value="" name="company_name">
+                          <input type="text" class="form-control" id="" value="{{ old('company_name') }}" name="company_name">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Position:</label>
-                          <input type="text" class="form-control" id="" value="" name="position">
+                          <input type="text" class="form-control" id="" value="{{ old('position') }}" name="position">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Australian Business Number (ABN) if applicable:</label>
-                          <input type="text" class="form-control" id="" value="" name="abn_number">
+                          <input type="text" class="form-control" id="" value="{{ old('abn_number') }}" name="abn_number">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Migration Agent Registration Authority Number (MARN) if applicable:</label>
-                          <input type="text" class="form-control" id="" value="" name="marn_number">
+                          <input type="text" class="form-control" id="" value="{{ old('marn_number') }}" name="marn_number">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Address:</label>
-                          <input type="text" class="form-control" id="" value="" name="address">
+                          <input type="text" class="form-control" id="" value="{{ old('address') }}" name="address">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Phone:</label>
-                          <input type="text" class="form-control" id="" value="" name="phone">
+                          <input type="text" class="form-control" id="" value="{{ old('phone') }}" name="phone">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Mobile:</label>
-                          <input type="text" class="form-control" id="" value="" name="mobile">
+                          <input type="text" class="form-control" id="" value="{{ old('mobile') }}" name="mobile">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Fax:</label>
-                          <input type="text" class="form-control" id="" value="" name="fax">
+                          <input type="text" class="form-control" id="" value="{{ old('fax') }}" name="fax">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Email:</label>
-                          <input type="text" class="form-control" id="" value="" name="email">
+                          <input type="text" class="form-control" id="" value="{{ old('email') }}" name="email">
                         </div>
                       </div>
                     </div>
@@ -152,22 +170,22 @@
                           <label for=""> Services provided to students (Please check in appropriate circle)</label>
                           <div class="clearfix"></div>
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checkbox-1" name="services[student_counselling]">
+                            <input type="checkbox" class="" id="checkbox-1" name="type_services_provided[student_counselling]">
                             <label class="checkbox-input" for="checkbox-1"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checkbox-1">Student Counselling </label>
 
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checkbox-2" name="services['visa_application']">
+                            <input type="checkbox" class="" id="checkbox-2" name="type_services_provided['visa_application']">
                             <label class="checkbox-input" for="checkbox-2"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checkbox-2">Visa Application</label>
 
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checkbox-3" name="services['pre-departure']">
+                            <input type="checkbox" class="" id="checkbox-3" name="type_services_provided['pre-departure']">
                             <label class="checkbox-input" for="checkbox-3"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checkbox-3">Pre-departure </label>
 
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checkbox-4" name="services['follow_up_with_parents']">
+                            <input type="checkbox" class="" id="checkbox-4" name="type_services_provided['follow_up_with_parents']">
                             <label class="checkbox-input" for="checkbox-4"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checkbox-4">Briefing Follow up with parents</label>
 
@@ -231,7 +249,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Organization Name:</label>
-                          <input type="text" class="form-control" id="" value="" name="reference[one][organization_name]">
+                          <input type="text" class="form-control" id="" value="" name="reference[one][organisation_name]">
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -279,7 +297,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Organization Name:</label>
-                          <input type="text" class="form-control" id="" value="" name="reference[two][organization_name]">
+                          <input type="text" class="form-control" id="" value="" name="reference[two][organisation_name]">
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -333,32 +351,32 @@
                         <div class="form-group">
                           <div class="clearfix"></div>
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checklist-checkbox-1">
+                            <input type="checkbox" class="" id="checklist-checkbox-1" name="completed_all_relevant_sections" value="1">
                             <label class="checkbox-input" for="checklist-checkbox-1"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checklist-checkbox-1">Have you completed all relevant sections of the application form?</label>
                           <div class="clearfix"></div>
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checklist-checkbox-2">
+                            <input type="checkbox" class="" id="checklist-checkbox-2" name="include_application" value="1">
                             <label class="checkbox-input" for="checklist-checkbox-2"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checklist-checkbox-2">Have you included in your application, a copy of your company profile?</label>
                           <div class="clearfix"></div>
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checklist-checkbox-3">
+                            <input type="checkbox" class="" id="checklist-checkbox-3" name="provide_copy_of_abn" value="1">
                             <label class="checkbox-input" for="checklist-checkbox-3"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checklist-checkbox-3">Have you provided a copy of your ABN, and Business Registration Documentation?</label>
                           <div class="clearfix"></div>
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checklist-checkbox-4">
+                            <input type="checkbox" class="" id="checklist-checkbox-4" name="include_copy_of_cert_appointment_iii" value="1">
                             <label class="checkbox-input" for="checklist-checkbox-4"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checklist-checkbox-4">Have you included copy of the Certificate of Appointment from 3 other providers as references?</label>
                           <div class="clearfix"></div>
                           <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checklist-checkbox-5">
+                            <input type="checkbox" class="" id="checklist-checkbox-5" name="provide_copy_of_your_professional_industry" value="1">
                             <label class="checkbox-input" for="checklist-checkbox-5"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checklist-checkbox-5">Have you provided a copy of your professional or industry membership documentation?</label>
                           <div class="clearfix"></div>
                            <div class="crm-form-checkbox position-relative display-inlineblock">
-                            <input type="checkbox" class="" id="checklist-checkbox-6">
+                            <input type="checkbox" class="" id="checklist-checkbox-6"  name="and_other_supporting_doc" value="1">
                             <label class="checkbox-input" for="checklist-checkbox-6"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="checklist-checkbox-6">And other supporting document</label>
                         </div>
@@ -389,21 +407,21 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Name of Applicant:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="name_of_applicant">
                         </div>
                       </div>
                       <div class="clearfix"></div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Signatures:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="signature_of_applicant">
                         </div>
                       </div>
                        <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Date:</label>
                           <div class='input-group date generic-datepicker'>
-                            <input type='text' class="form-control"/>
+                            <input type='text' class="form-control" name="signature_date" />
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </span>
