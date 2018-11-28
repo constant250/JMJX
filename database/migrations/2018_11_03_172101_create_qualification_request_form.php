@@ -16,6 +16,7 @@ class CreateQualificationRequestForm extends Migration
         Schema::create('qualification_request_form', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('student_id')->unsigned();
+            $table->string('course');
             $table->string('document_being_requested');
             $table->string('student_signature');
             $table->datetime('date_received');

@@ -15,8 +15,8 @@ class CreateStudentQualificationRequest extends Migration
     {
         Schema::create('student_qualification_request', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('students_id')->unsigned();
+            $table->foreign('students_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
             $table->string('course_code')->index();
             $table->foreign('course_code')->references('code')->on('courses')->onDelete('cascade')->onUpdate('cascade');
             $table->string('course_request');

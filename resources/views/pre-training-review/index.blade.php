@@ -20,7 +20,9 @@
       <div class="clearfix" style="height: 10px;"></div>
         <!-- Form -->
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
+          <form action=" {{ route('pre-training-review.store') }} " method="post"  id="pretraining" class="form-template no-padding">
+            {{ csrf_field() }}
+
             <div class="crm-form-wrapper">
               <section>
               <div class="clearfix" style="height: 20px;"></div>
@@ -36,7 +38,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="" class="not-required">Training Program:</label>
-                        <select class="form-control" name="course_code_name">
+                        <select class="form-control" name="training_program">
                           <option></option>
                           <option>Program1</option>
                           <option>Program2</option>
@@ -111,11 +113,11 @@
               </section>
               <div class="clearfix" style="height: 20px;"></div>
             </div>
-          </form>
+          {{-- </form> --}}
         </div>
 
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
+          {{-- <form action="" class="form-template no-padding"> --}}
             <div class="crm-form-wrapper">
               <section>
                 <div class="form-padding-left-right form-template">
@@ -124,7 +126,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="" class="not-required">What are your aspirations and interests?</label>
-                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="aspiration_interest"></textarea>
+                        <textarea  id="" class="form-control" cols="30" rows="10" name="aspiration_interest"></textarea>
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -155,7 +157,16 @@
                         <br>
                         <div class="clearfix" style="height: 10px;"></div>
 
-                        <div class="crm-form-radio position-relative display-inlineblock">
+                        @foreach($courses as $course)
+
+                          <div class="crm-form-radio position-relative display-inlineblock">
+                            <input type="radio" class="" id="course-{{ $loop->index }}" value="{{ $course->code }} " name="course_code">
+                            <label class="radio-input" for="course-{{ $loop->index }}"></label>
+                          </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-{{ $loop->index }}">{{ $course->code }} – {{ $course->name }}</label>
+
+                        @endforeach
+
+                       {{--  <div class="crm-form-radio position-relative display-inlineblock">
                           <input type="radio" class="" id="course-1" value="CHC30113 " name="course_code">
                           <label class="radio-input" for="course-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-1">CHC30113 – Certificate III in Early Childhood Education and Care</label>
@@ -163,7 +174,7 @@
                         <div class="crm-form-radio position-relative display-inlineblock">
                           <input type="radio" class="" id="course-2" value="CHC50113 " name="course_code">
                           <label class="radio-input" for="course-2"></label>
-                        </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-2">CHC50113 Diploma of Early Childhood Education and Care</label>
+                        </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-2">CHC50113 Diploma of Early Childhood Education and Care</label> --}}
 
                       </div>
                     </div>
@@ -176,12 +187,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-familiar-1" name="learning_strategies_materials">
+                          <input type="radio" class="" id="yes-familiar-1" value="1" name="learning_strategies_materials">
                           <label class="radio-input" for="yes-familiar-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-familiar-1">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-familiar-1" name="learning_strategies_materials">
+                          <input type="radio" class="" id="no-familiar-1" value="0" name="learning_strategies_materials">
                           <label class="radio-input" for="no-familiar-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-familiar-1">No</label>
 
@@ -196,12 +207,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-potential" name="issues_challenge_barriers">
+                          <input type="radio" class="" id="yes-potential" value="1" name="issues_challenge_barriers">
                           <label class="radio-input" for="yes-potential"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-potential">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-potential" name="issues_challenge_barriers">
+                          <input type="radio" class="" id="no-potential" value="0" name="issues_challenge_barriers">
                           <label class="radio-input" for="no-potential"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-potential">No</label>
 
@@ -305,7 +316,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="get-job" name="study_reason_options_value[briefly_explain]">
+                                    <input type="radio" class="to-get-job" id="get-job" value="to-get-job" name="study_reason_options_value">
                                     <label class="radio-input" for="get-job"></label>
                                   </div>
                                 </td>
@@ -314,7 +325,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="extra-skills" name="briefly_explain">
+                                    <input type="radio" class="" id="extra-skills" value="extra-skills" name="study_reason_options_value">
                                     <label class="radio-input" for="extra-skills"></label>
                                   </div>
                                 </td>
@@ -326,7 +337,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="develop-start-business" name="briefly_explain">
+                                    <input type="radio" class="develop-start-business" id="develop-start-business" value="develop-start-business" name="study_reason_options_value">
                                     <label class="radio-input" for="develop-start-business"></label>
                                   </div>
                                 </td>
@@ -335,7 +346,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="improve-gen-ed" name="briefly_explain">
+                                    <input type="radio" class="improve-gen-ed" id="improve-gen-ed" value="improve-gen-ed" name="study_reason_options_value">
                                     <label class="radio-input" for="improve-gen-ed"></label>
                                   </div>
                                 </td>
@@ -347,7 +358,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="different-career" name="briefly_explain">
+                                    <input type="radio" class="different-career" id="different-career" value="different-career" name="study_reason_options_value">
                                     <label class="radio-input" for="different-career"></label>
                                   </div>
                                 </td>
@@ -356,7 +367,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="community-work" name="briefly_explain">
+                                    <input type="radio" class="" id="community-work" value="community-work" name="study_reason_options_value">
                                     <label class="radio-input" for="community-work"></label>
                                   </div>
                                 </td>
@@ -368,7 +379,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="get-better-job" name="briefly_explain">
+                                    <input type="radio" class="" id="get-better-job" value="get-better-job" name="study_reason_options_value">
                                     <label class="radio-input" for="get-better-job"></label>
                                   </div>
                                 </td>
@@ -377,7 +388,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="increase-self-esteem" name="briefly_explain">
+                                    <input type="radio" class="" id="increase-self-esteem" value="increase-self-esteem" name="study_reason_options_value">
                                     <label class="radio-input" for="increase-self-esteem"></label>
                                   </div>
                                 </td>
@@ -389,7 +400,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="job-requirement" name="briefly_explain">
+                                    <input type="radio" class="" id="job-requirement" value="job-requirement" name="study_reason_options_value">
                                     <label class="radio-input" for="job-requirement"></label>
                                   </div>
                                 </td>
@@ -398,7 +409,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="other-reasons" name="briefly_explain">
+                                    <input type="radio" class="" id="other-reasons" value=other-reasons"" name="study_reason_options_value">
                                     <label class="radio-input" for="other-reasons"></label>
                                   </div>
                                 </td>
@@ -424,7 +435,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="lln_support" name="eti_support_service">
+                                    <input type="radio" class="" id="lln_support" value="1" name="eti_support_service">
                                     <label class="radio-input" for="lln_support"></label>
                                   </div>
                                 </td>
@@ -433,7 +444,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="employment-help" name="eti_support_service">
+                                    <input type="radio" class="" id="employment-help" value="0" name="eti_support_service">
                                     <label class="radio-input" for="employment-help"></label>
                                   </div>
                                 </td>
@@ -478,12 +489,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-disability" name="disability">
+                          <input type="radio" class="" id="yes-disability" value="1" name="prevent_processing_training">
                           <label class="radio-input" for="yes-disability"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-disability">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-disability" name="disability">
+                          <input type="radio" class="" id="no-disability" value="0" name="prevent_processing_training">
                           <label class="radio-input" for="no-disability"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-disability">No</label>
 
@@ -492,7 +503,7 @@
                       <div class="form-group">
 
                         <label for="" class="not-required">If yes, please specify:</label>
-                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="yes_potential_specify"></textarea>
+                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="prevent_pt_if_yes_specify  "></textarea>
 
                       </div>
                     </div>
@@ -506,12 +517,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-aware-1" name="learning_outcomes">
+                          <input type="radio" class="" id="yes-aware-1" value="1" name="aware_outcome_course">
                           <label class="radio-input" for="yes-aware-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-aware-1">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-aware-1" name="learning_outcomes">
+                          <input type="radio" class="" id="no-aware-1" value="0" name="aware_outcome_course">
                           <label class="radio-input" for="no-aware-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-aware-1">No</label>
 
@@ -531,12 +542,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-aware-2" name="skills_required">
+                          <input type="radio" class="" id="yes-aware-2" value="1" name="skill_required_to_work">
                           <label class="radio-input" for="yes-aware-2"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-aware-2">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-aware-2" name="skills_required">
+                          <input type="radio" class="" id="no-aware-2" value="0" name="skill_required_to_work">
                           <label class="radio-input" for="no-aware-2"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-aware-2">No</label>
 
@@ -556,12 +567,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-know" name="ct_rpl_process">
+                          <input type="radio" class="" id="yes-know" value="1" name="credit_transfer_recognition_prior_learning">
                           <label class="radio-input" for="yes-know"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-know">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-know" name="ct_rpl_process">
+                          <input type="radio" class="" id="no-know" value="0" name="credit_transfer_recognition_prior_learning">
                           <label class="radio-input" for="no-know"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-know">No</label>
 
@@ -581,12 +592,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-attainment" name="educational_attainment">
+                          <input type="radio" class="" id="yes-attainment" value="1" name="education_attainment">
                           <label class="radio-input" for="yes-attainment"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-attainment">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-attainment" name="educational_attainment">
+                          <input type="radio" class="" id="no-attainment" value="0" name="education_attainment">
                           <label class="radio-input" for="no-attainment"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-attainment">No</label>
 
@@ -595,7 +606,7 @@
                       <div class="form-group">
 
                         <label for="" class="not-required">If yes, please specify below</label>
-                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="yes_potential_specify"></textarea>
+                        <textarea name="" id="" class="form-control" cols="30" rows="10" name="if_yes_education_attainment"></textarea>
 
                       </div>
 
@@ -625,12 +636,12 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-seeking" name="seeking_training">
+                          <input type="radio" class="" id="yes-seeking" value="1" name="current_working_industry_training">
                           <label class="radio-input" for="yes-seeking"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-seeking">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-seeking" name="seeking_training">
+                          <input type="radio" class="" id="no-seeking" value="0" name="current_working_industry_training">
                           <label class="radio-input" for="no-seeking"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-seeking">No</label>
 
@@ -662,7 +673,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="textbooks" name="learning_styles">
+                                    <input type="radio" class="" id="textbooks" value="textbooks" name="learning_styles">
                                     <label class="radio-input" for="textbooks"></label>
                                   </div>
                                 </td>
@@ -671,7 +682,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="listening_lectures" name="learning_styles">
+                                    <input type="radio" class="" id="listening_lectures" value="listening_lectures" name="learning_styles">
                                     <label class="radio-input" for="listening_lectures"></label>
                                   </div>
                                 </td>
@@ -683,7 +694,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="power-points" name="learning_styles">
+                                    <input type="radio" class="" id="power-points" value="power-points" name="learning_styles">
                                     <label class="radio-input" for="power-points"></label>
                                   </div>
                                 </td>
@@ -692,7 +703,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="watching-videos" name="learning_styles">
+                                    <input type="radio" class="" id="watching-videos" value="watching-videos" name="learning_styles">
                                     <label class="radio-input" for="watching-videos"></label>
                                   </div>
                                 </td>
@@ -704,7 +715,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="pictures-diagrams" name="learning_styles">
+                                    <input type="radio" class="" id="pictures-diagrams" value="pictures-diagrams" name="learning_styles">
                                     <label class="radio-input" for="pictures-diagrams"></label>
                                   </div>
                                 </td>
@@ -713,7 +724,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="real-examples" name="learning_styles">
+                                    <input type="radio" class="" id="real-examples" value="real-examples" name="learning_styles">
                                     <label class="radio-input" for="real-examples"></label>
                                   </div>
                                 </td>
@@ -725,7 +736,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="group-discussion" name="learning_styles">
+                                    <input type="radio" class="" id="group-discussion" value="group-discussion" name="learning_styles">
                                     <label class="radio-input" for="group-discussion"></label>
                                   </div>
                                 </td>
@@ -734,7 +745,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="other" name="learning_styles">
+                                    <input type="radio" class="" id="other" value="other" name="learning_styles">
                                     <label class="radio-input" for="other"></label>
                                   </div>
                                 </td>
@@ -746,7 +757,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="conducting-research" name="learning_styles">
+                                    <input type="radio" class="" id="conducting-research" value="conducting-research" name="learning_styles">
                                     <label class="radio-input" for="conducting-research"></label>
                                   </div>
                                 </td>
@@ -772,7 +783,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="eng-lang-support" name="additional_support">
+                                    <input type="radio" class="" id="eng-lang-support" value="eng-lang-support" name="additional_support_to_complete">
                                     <label class="radio-input" for="eng-lang-support"></label>
                                   </div>
                                 </td>
@@ -781,7 +792,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="one-on-one-guidance" name="additional_support">
+                                    <input type="radio" class="" id="one-on-one-guidance" value="one-on-one-guidance" name="additional_support_to_complete">
                                     <label class="radio-input" for="one-on-one-guidance"></label>
                                   </div>
                                 </td>
@@ -793,7 +804,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="reading-support" name="additional_support">
+                                    <input type="radio" class="" id="reading-support" value="reading-support" name="additional_support_to_complete">
                                     <label class="radio-input" for="reading-support"></label>
                                   </div>
                                 </td>
@@ -802,7 +813,7 @@
                                 </td>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="additional-resources" name="additional_support">
+                                    <input type="radio" class="" id="additional-resources" value="additional-resources" name="additional_support_to_complete">
                                     <label class="radio-input" for="additional-resources"></label>
                                   </div>
                                 </td>
@@ -814,7 +825,7 @@
                               <tr>
                                 <td width="1%" class="text-left">
                                   <div class="crm-form-radio position-relative display-inlineblock" style="vertical-align: 5px;">
-                                    <input type="radio" class="" id="writing-support" name="additional_support">
+                                    <input type="radio" class="" id="writing-support" value="writing-support" name="additional_support_to_complete">
                                     <label class="radio-input" for="writing-support"></label>
                                   </div>
                                 </td>
@@ -824,7 +835,7 @@
                                 <td width="1%" class="text-left"></td>
                                 <td width="24%" class="text-left">
                                   <label class="display-inlineblock px-10-font checkbox-label label-right not-required" style="margin-left: 10px; line-height: 1.5; vertical-align: -7px;">Other:</label>
-                                  <input type="text" class="form-control" name="">
+                                  <input type="text" class="form-control"  name="additional_support_to_complete_other">
                                 </td>
                               </tr>
 
@@ -848,17 +859,17 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-funding-contract-1" name="understand_eligibility">
+                          <input type="radio" class="" id="yes-funding-contract-1" value="1"  name="eligible_for_goverment_funding">
                           <label class="radio-input" for="yes-funding-contract-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-funding-contract-1">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-funding-contract-1" name="understand_eligibility">
+                          <input type="radio" class="" id="no-funding-contract-1" value="0"  name="eligible_for_goverment_funding">
                           <label class="radio-input" for="no-funding-contract-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-funding-contract-1">No</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="na-funding-contract-1" name="understand_eligibility">
+                          <input type="radio" class="" id="na-funding-contract-1" value="2"  name="eligible_for_goverment_funding">
                           <label class="radio-input" for="na-funding-contract-1"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="na-funding-contract-1">N/A</label>
 
@@ -874,17 +885,17 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-funding-contract-2" name="require_ncver">
+                          <input type="radio" class="" id="yes-funding-contract-2" value="1"  name="required_to_participate_in_ncver_or_funding_department_survey">
                           <label class="radio-input" for="yes-funding-contract-2"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-funding-contract-2">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-funding-contract-2" name="require_ncver">
+                          <input type="radio" class="" id="no-funding-contract-2" value="0"  name="required_to_participate_in_ncver_or_funding_department_survey">
                           <label class="radio-input" for="no-funding-contract-2"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-funding-contract-2">No</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="na-funding-contract-2" name="require_ncver">
+                          <input type="radio" class="" id="na-funding-contract-2" value="2"  name="required_to_participate_in_ncver_or_funding_department_survey">
                           <label class="radio-input" for="na-funding-contract-2"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="na-funding-contract-2">N/A</label>
 
@@ -900,17 +911,17 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-funding-contract-3" name="fees_charges_applicable">
+                          <input type="radio" class="" id="yes-funding-contract-3" value="1" name="aware_of_any_fee_including_refun_policy">
                           <label class="radio-input" for="yes-funding-contract-3"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-funding-contract-3">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-funding-contract-3" name="fees_charges_applicable">
+                          <input type="radio" class="" id="no-funding-contract-3" value="0"  name="aware_of_any_fee_including_refun_policy">
                           <label class="radio-input" for="no-funding-contract-3"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-funding-contract-3">No</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="na-funding-contract-3" name="fees_charges_applicable">
+                          <input type="radio" class="" id="na-funding-contract-3" value="2"  name="aware_of_any_fee_including_refun_policy">
                           <label class="radio-input" for="na-funding-contract-3"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="na-funding-contract-3">N/A</label>
 
@@ -926,17 +937,17 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-funding-contract-4" name="complaints_policy">
+                          <input type="radio" class="" id="yes-funding-contract-4" value="1"  name="aware_complaints_appeals_policy">
                           <label class="radio-input" for="yes-funding-contract-4"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-funding-contract-4">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-funding-contract-4" name="complaints_policy">
+                          <input type="radio" class="" id="no-funding-contract-4" value="0"  name="aware_complaints_appeals_policy">
                           <label class="radio-input" for="no-funding-contract-4"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-funding-contract-4">No</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="na-funding-contract-4" name="complaints_policy">
+                          <input type="radio" class="" id="na-funding-contract-4" value="2"  name="aware_complaints_appeals_policy">
                           <label class="radio-input" for="na-funding-contract-4"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="na-funding-contract-4">N/A</label>
 
@@ -952,17 +963,17 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-funding-contract-5" name="attendance_requirements">
+                          <input type="radio" class="" id="yes-funding-contract-5" value="1" name="aware_course_attendance_requirements">
                           <label class="radio-input" for="yes-funding-contract-5"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-funding-contract-5">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-funding-contract-5" name="attendance_requirements">
+                          <input type="radio" class="" id="no-funding-contract-5" value="0"  name="aware_course_attendance_requirements">
                           <label class="radio-input" for="no-funding-contract-5"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-funding-contract-5">No</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="na-funding-contract-5" name="attendance_requirements">
+                          <input type="radio" class="" id="na-funding-contract-5" value="2"  name="aware_course_attendance_requirements">
                           <label class="radio-input" for="na-funding-contract-5"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="na-funding-contract-5">N/A</label>
 
@@ -978,17 +989,17 @@
                         <div class="clearfix" style="height: 10px;"></div>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="yes-funding-contract-6" name="eligible_fees_charges">
+                          <input type="radio" class="" id="yes-funding-contract-6" value="1"  name="eligible_fees_charges">
                           <label class="radio-input" for="yes-funding-contract-6"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="yes-funding-contract-6">Yes</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="no-funding-contract-6" name="eligible_fees_charges">
+                          <input type="radio" class="" id="no-funding-contract-6" value="0"  name="eligible_fees_charges">
                           <label class="radio-input" for="no-funding-contract-6"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="no-funding-contract-6">No</label>
 
                         <div class="crm-form-radio position-relative display-inlineblock">
-                          <input type="radio" class="" id="na-funding-contract-6" name="eligible_fees_charges">
+                          <input type="radio" class="" id="na-funding-contract-6" value="2"  name="eligible_fees_charges">
                           <label class="radio-input" for="na-funding-contract-6"></label>
                         </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="na-funding-contract-6">N/A</label>
 
@@ -1216,7 +1227,7 @@
                       <div class="form-group">
                         <label for="" class="not-required">Date:</label>
                         <div class='input-group date generic-datepicker'>
-                          <input type='text' class="form-control" name="current_date" />
+                          <input type='text' class="form-control" value="{{\Carbon\Carbon::now()->format('d-M-Y')}}" name="current_date" />
                           <span class="input-group-addon">
                               <i class="fa fa-calendar" aria-hidden="true"></i>
                           </span>
@@ -1248,5 +1259,13 @@
             format: 'DD-MMMM-YYYY'
         });
    });
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#btn-save').on('click', function(e) {
+      e.preventDefault();
+      $('#pretraining').submit();
+    })
+  })
 </script>
 @endsection

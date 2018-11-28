@@ -44,4 +44,8 @@ class Student extends Model
     public function refund_request(){
         return $this->hasMany(RefundRequest::class);
     }
+
+    public function pretrainingreview(){
+        return $this->hasOne(PreTrainingReview::class);
+    }
 }

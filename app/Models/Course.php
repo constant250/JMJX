@@ -11,4 +11,8 @@ class Course extends Model
     public function locations(){
     	return $this->belongsToMany(CourseLocation::class)->withPivot('course_location_id');
     }
+
+    public function refund(){
+    	return $this->hasOne(RefundRequest::class);
+    }
 }
