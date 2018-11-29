@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class PaymentAuthorisationController extends Controller
@@ -14,7 +17,9 @@ class PaymentAuthorisationController extends Controller
     public function index()
     {
         //
-        return view('payment-authorization.index');
+
+        $student = User::with(['party.person'])->where('id',Auth::user()->id)->first();
+        return view('payment-authorization.index',compact('student'));
     }
 
     /**

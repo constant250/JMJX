@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\DeclarationByTheStudent;
+use App\Models\User;
+use Auth;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 
 class DeclarationByTheStudentController extends Controller
@@ -14,7 +18,9 @@ class DeclarationByTheStudentController extends Controller
     public function index()
     {
         //
-        return view('declaration.index');
+        // dd('hi');
+        $student = User::with(['party.person','party.student.details.course','party.releaseletter'])->where('id',Auth::user()->id)->first();
+        return view('declaration.index',compact('student'));
     }
 
     /**
@@ -36,6 +42,23 @@ class DeclarationByTheStudentController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->all());
+        // dd(Auth::user()->party->id);
+        try {
+            DB::beginTransaction();
+            $declartion = new DeclarationByTheStudent;
+            $declartion->fill([
+                'student_signature' => $request->student_signature,
+                'student_date'      => $request->student_date != '' ? Carbon::parse($request->student_date)->format('Y-m-d') : ''
+            ]);
+            $declartion->party()->associate(Auth::user()->party->id);
+            $declartion->save();
+            DB::commit();
+             return redirect()->route('declaration.index')->with('message','Update Success');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+        }
     }
 
     /**

@@ -17,10 +17,21 @@
       <div class="inner-content-header">
         @include ( 'layouts.form.toolbarv2' )
       </div>
+
        <div class="clearfix" style="height: 10px;"></div>
+        @if (session('message'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> You have updated successfully.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="clearfix"></div>
+          @endif
         <!-- Form -->
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
+          <form id="declaration" action="{{ route('declaration.store') }}" method="post" class="form-template no-padding">
+            {{ csrf_field() }}
             <div class="crm-form-wrapper">
               <section>
               <div class="clearfix" style="height: 20px;"></div>
@@ -49,31 +60,31 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="">First Name:</label>
-                            <input type="text" class="form-control" id="" value="">
+                            <input type="text" class="form-control" id="" value="{{ $student->party->person->firstname }}">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="">Given Name:</label>
-                            <input type="text" class="form-control" id="" value="">
+                            <input type="text" class="form-control" id="" value="{{ $student->party->person->lastname }}">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="">Email Address:</label>
-                            <input type="text" class="form-control" id="" value="">
+                            <input type="text" class="form-control" id="" value="{{ $student->party->person->email }}">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="">Phone Number:</label>
-                            <input type="number" class="form-control" id="" value="">
+                            <input type="number" class="form-control" id="" value="{{ $student->party->person->mobile }}">
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
                             <label for="">Residential Address:</label>
-                            <input type="text" class="form-control" id="" value="">
+                            <input type="text" class="form-control" id="" value="{{ $student->party->person->address }}">
                           </div>
                         </div>
                       </div>
@@ -87,26 +98,26 @@
                   <div class="container-fluid">
                     <div class="row">
                        <div class="col-md-12">
-                        <p class="px-12-font bright-grey-font-color"><b>Declaration:</b> I, <input type="text" style="width: 300px;" class="form-control position-relative display-inlineblock" id="" value=""> , hereby, declare that I have been informed that under the ESOS legislation, providers cannot require students to pay more than 50 per cent of their tuition fees before they start the course. However, I have chosen to pay more than 50% of my tuition fees upfront.</p>
+                        <p class="px-12-font bright-grey-font-color"><b>Declaration:</b> I, <input type="text" style="width: 300px;" class="form-control position-relative display-inlineblock" id="" value="{{ $student->party->name }}"> , hereby, declare that I have been informed that under the ESOS legislation, providers cannot require students to pay more than 50 per cent of their tuition fees before they start the course. However, I have chosen to pay more than 50% of my tuition fees upfront.</p>
                         <br>
                       </div>
                        <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Student name:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" name="" value="{{ $student->party->name }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Student Signature:</label>
-                          <input type="number" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" name="student_signature"  value="">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Date:</label>
                           <div class='input-group date generic-datepicker'>
-                            <input type='text' class="form-control"/>
+                            <input type='text' class="form-control" name="student_date" />
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </span>
@@ -137,5 +148,13 @@
             format: 'DD-MMMM-YYYY'
         });
    });
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#btn-save').on('click', function(e) {
+      e.preventDefault();
+      $('#declaration').submit();
+    })
+  })
 </script>
 @endsection

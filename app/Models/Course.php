@@ -15,4 +15,8 @@ class Course extends Model
     public function refund(){
     	return $this->hasOne(RefundRequest::class);
     }
+
+    public function feedback(){
+    	return $this->hasOne(StudentFeedback::class);
+    }
 }

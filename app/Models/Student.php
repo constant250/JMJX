@@ -48,4 +48,8 @@ class Student extends Model
     public function pretrainingreview(){
         return $this->hasOne(PreTrainingReview::class);
     }
+
+    public function feedback(){
+        return $this->hasOne(StudentFeedback::class);
+    }
 }
