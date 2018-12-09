@@ -15,7 +15,7 @@ class CreateRefundRequestForm extends Migration
     {
         Schema::create('refund_request', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id')->unsigned();
+            $table->integer('students_id')->unsigned();
             $table->string('course_code')->index();
             $table->datetime('course_start_date');
             $table->text('reason_for_refund');
@@ -38,7 +38,7 @@ class CreateRefundRequestForm extends Migration
             $table->string('office_refund_process_signature');
             $table->datetime('office_refund_process_signature_date');
             $table->foreign('course_code')->references('code')->on('courses')->onDelete('cascade');
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('students_id')->references('id')->on('students')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

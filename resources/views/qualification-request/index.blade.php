@@ -20,7 +20,8 @@
       <div class="clearfix" style="height: 10px;"></div>
         <!-- Form -->
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
+          <form id="qualificatin_request" action="{{ route('qualification-request.store') }}" method="post" class="form-template no-padding">
+            {{ csrf_field() }}
             <div class="crm-form-wrapper">
               <section>
               <div class="clearfix" style="height: 20px;"></div>
@@ -33,37 +34,37 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Full Name:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="{{ $student->party->name }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Student ID:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="{{ $student->party->student->id  }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">USI:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="{{ $student->party->student->usi }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Phone Number:</label>
-                          <input type="number" class="form-control" id="" value="">
+                          <input type="number" class="form-control" id="" value="{{ $student->party->person->mobile }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Email Address:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="{{ $student->party->person->email }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Address:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="{{ $student->party->person->address }}">
                         </div>
                       </div>
                     </div>
@@ -80,22 +81,22 @@
                           <div class="form-group">
                             <div class="clearfix"></div>
                             <div class="crm-form-checkbox position-relative display-inlineblock">
-                              <input type="checkbox" class="" id="tod-checkbox-1">
+                              <input type="checkbox" class="" id="tod-checkbox-1" name="document_being_requested[full_qualification]">
                               <label class="checkbox-input" for="tod-checkbox-1"></label>
                             </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="tod-checkbox-1">Full Qualification </label>
                             
                             <div class="crm-form-checkbox position-relative display-inlineblock">
-                              <input type="checkbox" class="" id="tod-checkbox-2">
+                              <input type="checkbox" class="" id="tod-checkbox-2" name="document_being_requested[statement_of_result]">
                               <label class="checkbox-input" for="tod-checkbox-2"></label>
                             </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="tod-checkbox-2">Statement of Result </label>
                             
                             <div class="crm-form-checkbox position-relative display-inlineblock">
-                              <input type="checkbox" class="" id="tod-checkbox-3">
+                              <input type="checkbox" class="" id="tod-checkbox-3"  name="document_being_requested[provissional_result]">
                               <label class="checkbox-input" for="tod-checkbox-3"></label>
                             </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="tod-checkbox-3">Provisional Result</label>
                             
                             <div class="crm-form-checkbox position-relative display-inlineblock">
-                              <input type="checkbox" class="" id="tod-checkbox-4">
+                              <input type="checkbox" class="" id="tod-checkbox-4" name="document_being_requested[statement_of_attainment]">
                               <label class="checkbox-input" for="tod-checkbox-4"></label>
                             </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="tod-checkbox-4"> Statement of Attainment</label>
                         </div>
@@ -115,11 +116,24 @@
                         <div class="form-group">
                           <label for="">Course name and Code</label>
                           <div class="clearfix"></div>
-                          <div class="crm-form-checkbox position-relative display-inlineblock">
+
+                          @foreach( $courses as $course )
+
+                            <div class="crm-form-checkbox position-relative display-inlineblock">
+                              <input type="checkbox" class="" id="course-checkbox-{{ $loop->index +1 }}" value="{{ $course->code }}" name="course_code[]">
+                              <label class="checkbox-input" for="course-checkbox-{{ $loop->index +1 }}"></label>
+                            </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-checkbox-{{$loop->index+1}}">{{ $course->code }} {{ $course->name }}</label>
+                            <div class="clearfix"></div>
+
+                          @endforeach
+
+                          {{-- <div class="crm-form-checkbox position-relative display-inlineblock">
                             <input type="checkbox" class="" id="course-checkbox-1">
                             <label class="checkbox-input" for="course-checkbox-1"></label>
                           </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-checkbox-1">CHC30113 Certificate III in Early Childhood Education and Care</label>
                           <div class="clearfix"></div>
+
+
                           <div class="crm-form-checkbox position-relative display-inlineblock">
                             <input type="checkbox" class="" id="course-checkbox-2">
                             <label class="checkbox-input" for="course-checkbox-2"></label>
@@ -158,21 +172,21 @@
                           <div class="crm-form-checkbox position-relative display-inlineblock">
                             <input type="checkbox" class="" id="course-checkbox-9">
                             <label class="checkbox-input" for="course-checkbox-9"></label>
-                          </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-checkbox-9"> CPC50210 Diploma of Building and Construction (BUILDING)</label>
+                          </div> <label class="display-inlineblock px-10-font checkbox-label label-right not-required" for="course-checkbox-9"> CPC50210 Diploma of Building and Construction (BUILDING)</label> --}}
                       </div>
                       <div class="clearfix"></div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Student Signature:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" value="" name="student_signature">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Date:</label>
-                           <div class='input-group date generic-datepicker'>
-                            <input type='text' class="form-control"/>
+                           <div class='input-group date generic-datepicker' >
+                            <input type='text' class="form-control" name="date_received"/>
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </span>
@@ -185,14 +199,14 @@
                        <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Student acknowledgement on receipt of qualification:</label>
-                          <input type="text" class="form-control" id="" value="">
+                          <input type="text" class="form-control" id="" name="student_acknowledgement_receipt_qualification">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Date:</label>
-                           <div class='input-group date generic-datepicker'>
-                            <input type='text' class="form-control"/>
+                           <div class='input-group date generic-datepicker' >
+                            <input type='text' class="form-control" name="student_acknowledgement_receipt_qualification_date"/>
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </span>
@@ -224,5 +238,13 @@
             format: 'DD-MMMM-YYYY'
         });
    });
+</script>
+<script type="text/javascript">
+   $(document).ready(function () {
+    $('#btn-save').on('click', function(e) {
+      e.preventDefault();
+      $('#qualificatin_request').submit();
+    })
+  })
 </script>
 @endsection

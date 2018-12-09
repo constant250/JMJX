@@ -19,8 +19,18 @@
       </div>
       <div class="clearfix" style="height: 10px;"></div>
         <!-- Form -->
+        @if (session('message'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> You have updated successfully.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="clearfix"></div>
+          @endif
         <div class="crm-form-container no-padding">
-          <form action="" class="form-template no-padding">
+          <form action="{{ route('payment-auth.store') }}" id="payment_auth" method="post" class="form-template no-padding">
+            {{ csrf_field() }}
             <div class="crm-form-wrapper">
               <section>
               <div class="clearfix" style="height: 20px;"></div>
@@ -30,39 +40,39 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Name of the person being nominated for refund:</label>
-                        <input type="text" class="form-control" id="" value="" name="fullname">
+                        <input type="text" class="form-control" id="" value="" name="name_of_person_nominated">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Address:</label>
-                        <input type="text" class="form-control" id="" value="" name="address">
+                        <input type="text" class="form-control" id="" value="" name="nominated_address">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Phone Number:</label>
-                        <input type="text" class="form-control" id="" value="" name="phone">
+                        <input type="text" class="form-control" id="" value="" name="nominated_phone_number">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Bank Name:</label>
-                        <input type="text" class="form-control" id="" value="" name="bank_name">
+                        <input type="text" class="form-control" id="" value="" name="nominated_bank_name">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Account Number:</label>
-                        <input type="text" class="form-control" id="" value="" name="account_num">
+                        <input type="text" class="form-control" id="" value="" name="nominated_account_number">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Bsb/Branch Number/Swiftcode:</label>
-                        <input type="text" class="form-control" id="" value="" name="bank_num">
+                        <input type="text" class="form-control" id="" value="" name="nominated_bsb_branch_number_swiftcode">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -77,7 +87,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="display-inlineblock not-required">I, </label>
-                        <input type="text" class="form-control width-auto display-inlineblock" id="" value="" name="fullname">
+                        <input type="text" class="form-control width-auto display-inlineblock" id="" value="{{ $student->party->name }}" name="fullname">
                         <label  class="display-inlineblock not-required">authorize Elite Training Institute to transfer the refund amount in the account of the above mentioned nominated person.</label>
                       </div>
                     </div>
@@ -85,20 +95,25 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Name of the Student:</label>
-                        <input type="text" class="form-control" id="" value="" name="stud_fullname">
+                        <input type="text" class="form-control" id="" value="{{ $student->party->name }}" name="stud_fullname">
                       </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="">Name of the Student:</label>
-                        <input type="text" class="form-control" id="" value="" name="stud_fullname">
+                        <label for="">Signature of the Student:</label>
+                        <input type="text" class="form-control" id="" value="" name="student_signature">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="">Name of the Student:</label>
-                        <input type="text" class="form-control" id="" value="" name="stud_fullname">
+                        <label for="">Date:</label>
+                        <div class='input-group date generic-datepicker'>
+                         <input type='text' class="form-control" name="date_received" value="" />
+                         <span class="input-group-addon">
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+                         </span>
+                       </div>
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -134,5 +149,13 @@
             format: 'DD-MMMM-YYYY'
         });
    });
+</script>
+<script type="text/javascript">
+   $(document).ready(function () {
+    $('#btn-save').on('click', function(e) {
+      e.preventDefault();
+      $('#payment_auth').submit();
+    })
+  })
 </script>
 @endsection

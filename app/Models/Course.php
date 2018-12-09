@@ -16,4 +16,12 @@ class Course extends Model
     {
     	return $this->hasMany(CourseStateIdentifier::class, 'course_id', 'id');
     }
+
+    public function refund(){
+    	return $this->hasOne(RefundRequest::class);
+    }
+
+    public function feedback(){
+    	return $this->hasOne(StudentFeedback::class);
+    }
 }

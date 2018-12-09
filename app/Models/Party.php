@@ -29,4 +29,8 @@ class Party extends Model
     public function releaseletter(){
         return $this->hasOne(ReleaseLetter::class);
     }
+
+    public function declaration(){
+        return $this->hasOne(DeclarationByTheStudent::class);
+    }
 }

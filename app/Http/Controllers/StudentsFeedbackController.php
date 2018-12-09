@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\StudentFeedback;
+use Auth;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 
 class StudentsFeedbackController extends Controller
@@ -14,7 +19,8 @@ class StudentsFeedbackController extends Controller
     public function index()
     {
         //
-        return view('feedback.index');
+        $courses = Course::all();
+        return view('feedback.index',compact('courses'));
     }
 
     /**
@@ -36,6 +42,21 @@ class StudentsFeedbackController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->all());
+        try {
+            DB::beginTransaction();
+            $feedback = new StudentFeedback;
+            $feedback->fill($request->except('_token'));
+            $feedback->student()->associate(Auth::user()->party->student->id);
+            $feedback->save();
+            DB::commit();
+            return redirect()->route('feedback.index')->with('message','Update Success');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            
+        }
+
     }
 
     /**
