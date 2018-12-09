@@ -4,16 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class CourseStateIdentifier extends Model
 {
     //
+	protected $table = 'course_state_identifier';
+
+
+	public function state()
+	{
+		return $this->belongsTo(StateIdentifier::class, 'state_identifier_id');
+	}
 
     // public function locations(){
     // 	return $this->belongsToMany(CourseLocation::class)->withPivot('course_location_id');
     // }
-
-    public function course_state_id()
-    {
-    	return $this->hasMany(CourseStateIdentifier::class, 'course_id', 'id');
-    }
 }

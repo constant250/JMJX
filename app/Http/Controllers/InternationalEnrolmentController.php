@@ -2,6 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Auth;
+use \Carbon\Carbon;
+
+use App\Models\InternationalStudentEnrolmentForm AS IntEnrol;
+use App\Models\Student;
+use App\Models\Party;
+use App\Models\Persons;
+use App\Models\Course;
+
 use Illuminate\Http\Request;
 
 class InternationalEnrolmentController extends Controller
@@ -57,7 +67,23 @@ class InternationalEnrolmentController extends Controller
      */
     public function edit($id)
     {
+        $intEnrol = IntEnrol::where('student_id', $id)->first();
+        $student = Student::with('party.person')->where('id', $id)->first();
+        
+        // $course = Course::with('locations')->get();
+        // $course = Course::with('course_state_id.state_identifier')->get();
+        $course = Course::with('course_state_id.state')->get();
+
+        // dump($intEnrol);
+        dd($course);
+
+        $int_enrol = [
+
+
+        ];
+
         //
+        return view('int-enrolment.index', compact('student', 'int_enrol'));
     }
 
     /**

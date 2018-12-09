@@ -22,7 +22,8 @@ class CreatePreviousEmploymentHistoriesTable extends Migration
             $table->string('position_held');
             $table->string('ft_pt_cas');
             $table->string('desc_mjr_duties');
-            $table->foreign('rpl_applications_id')->references('id')->on('rpl_applications')->onDelete('cascade');
+            // $table->foreign('rpl_applications_id')->references('id')->on('rpl_applications')->onDelete('cascade');
+            $table->integer('rpl_applications_id');
             $table->timestamps();
             $table->softDeletes();
         });
